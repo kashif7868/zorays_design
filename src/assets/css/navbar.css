@@ -522,3 +522,149 @@
     padding-top: env(safe-area-inset-top);
   }
 }
+
+/* ============================================
+   BOTTOM NAV BAR — Android App Style
+   Only visible on mobile (≤960px)
+   ============================================ */
+
+.zr-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1500;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.10);
+  height: 62px;
+  align-items: stretch;
+  justify-content: space-around;
+  padding: 0 4px;
+  /* iOS safe area */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ── Each tab item ── */
+.zr-bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 3px;
+  text-decoration: none;
+  color: #94a3b8;
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 6px 4px;
+  border-radius: 12px;
+  position: relative;
+  transition: color var(--trans), background var(--trans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.zr-bottom-nav__item:hover {
+  color: var(--green);
+}
+
+/* ── Active tab ── */
+.zr-bottom-nav__item.is-active {
+  color: var(--green);
+}
+
+.zr-bottom-nav__item.is-active .zr-bottom-nav__icon {
+  transform: translateY(-2px);
+}
+
+/* ── Icon wrapper ── */
+.zr-bottom-nav__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  line-height: 1;
+}
+
+/* ── Label ── */
+.zr-bottom-nav__label {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  transition: font-weight var(--trans);
+}
+
+.zr-bottom-nav__item.is-active .zr-bottom-nav__label {
+  font-weight: 700;
+}
+
+/* ── Active indicator dot ── */
+.zr-bottom-nav__dot {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: dot-pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes dot-pop {
+  from { transform: translateX(-50%) scale(0); opacity: 0; }
+  to   { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+/* ── CTA (middle Quote button) ── */
+.zr-bottom-nav__item.is-cta {
+  color: var(--white);
+  background: var(--green);
+  border-radius: 16px;
+  flex: 1.1;
+  max-width: 72px;
+  margin: 6px 4px;
+  box-shadow: 0 4px 14px rgba(26, 138, 60, 0.35);
+  padding: 6px 8px;
+  gap: 2px;
+}
+
+.zr-bottom-nav__item.is-cta:hover {
+  color: var(--white);
+  background: var(--green-dark);
+}
+
+.zr-bottom-nav__item.is-cta.is-active {
+  color: var(--white);
+  box-shadow: 0 6px 18px rgba(26, 138, 60, 0.45);
+}
+
+.zr-bottom-nav__item.is-cta .zr-bottom-nav__icon {
+  transform: none !important;
+}
+
+/* ── Show on mobile only ── */
+@media (max-width: 960px) {
+  .zr-bottom-nav {
+    display: flex;
+  }
+
+  /* Push page content up so it doesn't hide behind bottom bar */
+  body {
+    padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ── Extra small screens ── */
+@media (max-width: 360px) {
+  .zr-bottom-nav__label {
+    font-size: 9px;
+  }
+
+  .zr-bottom-nav {
+    height: 58px;
+  }
+}
