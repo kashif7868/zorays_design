@@ -1,0 +1,326 @@
+.zorays-hero-section {
+  width: 100%;
+  position: relative;
+  background: #ffffff;
+  overflow: visible;
+}
+
+.zorays-hero-bg {
+  position: relative;
+  width: 100%;
+  height: 610px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.zorays-hero-green-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 118, 70, 0.98) 0%,
+    rgba(0, 145, 85, 0.88) 30%,
+    rgba(0, 145, 85, 0.45) 48%,
+    rgba(0, 145, 85, 0.08) 68%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  z-index: 1;
+}
+
+.zorays-hero-container {
+  position: relative;
+  z-index: 2;
+  width: min(1510px, 91%);
+  margin: 0 auto;
+}
+
+.zorays-hero-content {
+  max-width: 690px;
+  margin-top: -32px;
+  color: #ffffff;
+}
+
+.zorays-hero-badge {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  margin-bottom: 23px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  background: rgba(0, 130, 76, 0.22);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1px;
+  line-height: 1;
+}
+
+.zorays-hero-badge span {
+  color: #f5c400;
+  font-size: 14px;
+}
+
+.zorays-hero-content h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(48px, 4.5vw, 72px);
+  line-height: 1.08;
+  font-weight: 850;
+  letter-spacing: -1.8px;
+}
+
+.zorays-hero-content h1 span {
+  color: #f5c400;
+}
+
+.zorays-hero-content p {
+  max-width: 610px;
+  margin: 27px 0 0;
+  color: rgba(255, 255, 255, 0.96);
+  font-size: 20px;
+  line-height: 1.45;
+  font-weight: 450;
+}
+
+.zorays-hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.hero-btn {
+  min-height: 61px;
+  padding: 0 29px;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 850;
+  transition: 0.25s ease;
+}
+
+.hero-btn-primary,
+.hero-btn-secondary {
+  background: rgba(0, 120, 70, 0.22);
+  border: 2px solid rgba(255, 255, 255, 0.78);
+}
+
+.hero-btn:hover {
+  background: #ffffff;
+  color: #008f55;
+  transform: translateY(-2px);
+}
+
+.hero-btn span {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.zorays-trust-wrapper {
+  width: min(1210px, 75%);
+  position: relative;
+  z-index: 5;
+  margin: -64px auto 0;
+}
+
+.zorays-trust-card {
+  min-height: 120px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 13px 35px rgba(0, 0, 0, 0.16);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  overflow: hidden;
+}
+
+.zorays-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 25px 31px;
+  position: relative;
+}
+
+.zorays-trust-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 31px;
+  width: 1px;
+  height: 58px;
+  background: #d8d8d8;
+}
+
+.zorays-trust-icon {
+  width: 58px;
+  min-width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  color: #009f5c;
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.zorays-trust-item:first-child .zorays-trust-icon {
+  border: 5px solid #009f5c;
+  border-radius: 18px;
+  transform: rotate(-12deg);
+}
+
+.trust-badge-text {
+  display: block;
+  transform: rotate(12deg);
+  font-size: 17px;
+  font-weight: 950;
+}
+
+.zorays-trust-text h3 {
+  margin: 0 0 8px;
+  color: #151515;
+  font-size: 16px;
+  line-height: 1.15;
+  font-weight: 850;
+}
+
+.zorays-trust-text p {
+  margin: 0;
+  color: #626262;
+  font-size: 13.5px;
+  line-height: 1.45;
+  font-weight: 450;
+}
+
+@media (max-width: 1200px) {
+  .zorays-trust-wrapper {
+    width: min(1120px, 88%);
+  }
+
+  .zorays-trust-item {
+    padding: 24px 22px;
+  }
+
+  .zorays-hero-container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 992px) {
+  .zorays-hero-bg {
+    height: 650px;
+    background-position: center right;
+  }
+
+  .zorays-hero-green-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 118, 70, 0.98) 0%,
+      rgba(0, 145, 85, 0.9) 65%,
+      rgba(0, 145, 85, 0.5) 100%
+    );
+  }
+
+  .zorays-trust-card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .zorays-trust-item:nth-child(2)::after {
+    display: none;
+  }
+
+  .zorays-trust-item:nth-child(1),
+  .zorays-trust-item:nth-child(2) {
+    border-bottom: 1px solid #eeeeee;
+  }
+}
+
+@media (max-width: 768px) {
+  .zorays-hero-bg {
+    height: 690px;
+  }
+
+  .zorays-hero-content {
+    margin-top: -10px;
+  }
+
+  .zorays-hero-content h1 {
+    font-size: 45px;
+    letter-spacing: -1.1px;
+  }
+
+  .zorays-hero-content p {
+    font-size: 17px;
+  }
+
+  .zorays-hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-btn {
+    width: 100%;
+  }
+
+  .zorays-trust-wrapper {
+    width: 90%;
+    margin-top: -44px;
+  }
+
+  .zorays-trust-card {
+    grid-template-columns: 1fr;
+  }
+
+  .zorays-trust-item {
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .zorays-trust-item:last-child {
+    border-bottom: none;
+  }
+
+  .zorays-trust-item::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .zorays-hero-bg {
+    height: 650px;
+  }
+
+  .zorays-hero-badge {
+    font-size: 10px;
+    padding: 10px 14px;
+  }
+
+  .zorays-hero-content h1 {
+    font-size: 38px;
+  }
+
+  .zorays-hero-content p {
+    font-size: 15.5px;
+  }
+
+  .hero-btn {
+    min-height: 54px;
+    font-size: 14px;
+    padding: 0 18px;
+  }
+
+  .zorays-trust-item {
+    padding: 22px 20px;
+  }
+}

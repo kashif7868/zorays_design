@@ -1,0 +1,610 @@
+/* ============================================
+   ZORAYS NAVBAR — react-icons | No Tailwind
+   Full Responsive: Desktop + Tablet + Mobile
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --green:        #1a8a3c;
+  --green-dark:   #156e30;
+  --white:        #ffffff;
+  --text:         #2d2d2d;
+  --text-muted:   #555555;
+  --border:       #e8e8e8;
+  --font:         'Poppins', sans-serif;
+  --topbar-h:     38px;
+  --navbar-h:     70px;
+  --trans:        0.22s ease;
+  --shadow:       0 2px 18px rgba(0,0,0,0.09);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   TOP BAR
+   ============================================ */
+
+.zr-topbar {
+  background: var(--green);
+  color: var(--white);
+  min-height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-family: var(--font);
+  font-size: 12.5px;
+  position: relative;
+  z-index: 900;
+}
+
+.zr-topbar__inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Social */
+.zr-topbar__social {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-shrink: 0;
+}
+
+.zr-topbar__social a {
+  color: var(--white);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity var(--trans);
+}
+
+.zr-topbar__social a:hover { opacity: 0.72; }
+
+/* Center badges */
+.zr-topbar__center {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+  justify-content: center;
+}
+
+.zr-topbar__badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+
+.zr-topbar__badge .badge-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* Right contacts */
+.zr-topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-shrink: 0;
+}
+
+.zr-topbar__contact {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity var(--trans);
+}
+
+.zr-topbar__contact svg { font-size: 14px; flex-shrink: 0; }
+.zr-topbar__contact:hover { opacity: 0.75; }
+
+/* ============================================
+   MAIN NAVBAR
+   ============================================ */
+
+.zr-navbar {
+  background: var(--white);
+  height: var(--navbar-h);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: var(--font);
+}
+
+.zr-navbar__inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  gap: 16px;
+}
+
+/* ── Logo ── */
+.zr-navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.zorays_logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo-mark-z {
+  color: var(--white);
+  font-size: 22px;
+  font-weight: 800;
+  font-family: var(--font);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.zr-navbar__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.zr-navbar__logo-text .logo-name {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 0.05em;
+  line-height: 1.15;
+}
+
+.zr-navbar__logo-text .logo-sub {
+  font-size: 9px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ── Desktop Menu ── */
+.zr-navbar__menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.zr-nav-item {
+  position: relative;
+}
+
+.zr-nav-link,
+.zr-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 8px 10px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: color var(--trans), background var(--trans);
+  line-height: 1;
+}
+
+.zr-nav-link:hover,
+.zr-nav-btn:hover {
+  color: var(--green);
+  background: rgba(26,138,60,0.07);
+}
+
+.zr-chevron {
+  font-size: 14px;
+  transition: transform var(--trans);
+  flex-shrink: 0;
+}
+
+.zr-chevron.rotated { transform: rotate(180deg); }
+
+/* ── Dropdown ── */
+.zr-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  min-width: 205px;
+  padding: 6px 0;
+  list-style: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--trans), transform var(--trans), visibility var(--trans);
+  z-index: 300;
+}
+
+.zr-nav-item.has-drop:hover .zr-dropdown,
+.zr-nav-item.is-open .zr-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.zr-dropdown li a {
+  display: block;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: background var(--trans), color var(--trans);
+}
+
+.zr-dropdown li a:hover {
+  background: rgba(26,138,60,0.07);
+  color: var(--green);
+}
+
+/* ── Right: CTA + Hamburger ── */
+.zr-navbar__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* ── CTA Button ── */
+.zr-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  background: var(--green);
+  color: var(--white) !important;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
+}
+
+.zr-cta:hover {
+  background: var(--green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(26,138,60,0.30);
+}
+
+.zr-cta--full {
+  width: 100%;
+  justify-content: center;
+  padding: 13px;
+  font-size: 14px;
+}
+
+.zr-cta-icon {
+  font-size: 14px;
+  animation: spin-slow 4s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Hamburger ── */
+.zr-hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: rgba(26,138,60,0.08);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--green);
+  transition: background var(--trans);
+  flex-shrink: 0;
+}
+
+.zr-hamburger:hover { background: rgba(26,138,60,0.16); }
+.zr-hamburger.is-open { background: rgba(26,138,60,0.14); }
+
+/* ============================================
+   MOBILE OVERLAY + DRAWER
+   ============================================ */
+
+.zr-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.zr-mobile-overlay.is-open { pointer-events: all; }
+
+.zr-mobile-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.42);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.zr-mobile-overlay.is-open .zr-mobile-backdrop { opacity: 1; }
+
+.zr-mobile-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(300px, 85vw);
+  height: 100%;
+  background: var(--white);
+  box-shadow: -6px 0 36px rgba(0,0,0,0.16);
+  transform: translateX(100%);
+  transition: transform 0.30s cubic-bezier(0.4,0,0.2,1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.zr-mobile-overlay.is-open .zr-mobile-drawer { transform: translateX(0); }
+
+/* Drawer header */
+.zr-mobile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.zr-mobile-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(26,138,60,0.08);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--green);
+  transition: background var(--trans);
+  flex-shrink: 0;
+}
+
+.zr-mobile-close:hover { background: rgba(26,138,60,0.18); }
+
+/* Nav list */
+.zr-mobile-nav {
+  list-style: none;
+  padding: 6px 0;
+  flex: 1;
+}
+
+.zr-mobile-item {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.zr-mobile-link,
+.zr-mobile-parent-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 18px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--trans), background var(--trans);
+  text-align: left;
+}
+
+.zr-mobile-link:hover,
+.zr-mobile-parent-btn:hover {
+  color: var(--green);
+  background: rgba(26,138,60,0.05);
+}
+
+.zr-mobile-chevron {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* Sub menu */
+.zr-mobile-sub {
+  list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  background: rgba(26,138,60,0.03);
+  transition: max-height 0.28s ease;
+}
+
+.zr-mobile-sub.is-open { max-height: 300px; }
+
+.zr-mobile-sub li a {
+  display: block;
+  padding: 11px 18px 11px 34px;
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--trans), background var(--trans);
+}
+
+.zr-mobile-sub li a:hover {
+  color: var(--green);
+  background: rgba(26,138,60,0.05);
+}
+
+/* Contacts */
+.zr-mobile-contacts {
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.zr-mobile-contacts a {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 4px 0;
+  transition: color var(--trans);
+}
+
+.zr-mobile-contacts a:hover { color: var(--green); }
+
+/* Footer */
+.zr-mobile-footer {
+  padding: 16px 18px;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* ── Large screens: compact font ── */
+@media (max-width: 1200px) {
+  .zr-nav-link,
+  .zr-nav-btn {
+    font-size: 12.5px;
+    padding: 8px 8px;
+  }
+}
+
+/* ── Tablet: hide text labels in topbar contacts ── */
+@media (max-width: 1024px) {
+  .zr-topbar__contact span { display: none; }
+  .zr-topbar__contact { gap: 0; }
+  .zr-topbar__contact svg { font-size: 16px; }
+  .zr-nav-link,
+  .zr-nav-btn {
+    font-size: 12px;
+    padding: 7px 7px;
+  }
+}
+
+/* ── Mobile breakpoint: show hamburger ── */
+@media (max-width: 960px) {
+  .zr-navbar__menu { display: none; }
+  .zr-cta { display: none; }
+  .zr-hamburger { display: flex; }
+
+  /* Hide center badges from topbar */
+  .zr-topbar__center { display: none; }
+
+  /* Topbar: left + right only */
+  .zr-topbar__inner {
+    justify-content: space-between;
+  }
+}
+
+/* ── Small mobile ── */
+@media (max-width: 480px) {
+  .zr-topbar {
+    padding: 0 14px;
+    min-height: 34px;
+  }
+
+  .zr-topbar__social { gap: 10px; }
+  .zr-topbar__social a { font-size: 14px; }
+
+  .zr-topbar__right { gap: 12px; }
+
+  .zr-navbar {
+    height: 60px;
+  }
+
+  .zr-navbar__inner { padding: 0 14px; }
+
+  .zorays-logo-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-mark-z { font-size: 18px; }
+
+  .zr-navbar__logo-text .logo-name { font-size: 18px; }
+  .zr-navbar__logo-text .logo-sub  { font-size: 8px; }
+}
+
+/* ── Extra small: hide email icon on very small screens ── */
+@media (max-width: 360px) {
+  .zr-topbar__right .zr-topbar__contact:last-child { display: none; }
+}
+
+/* ============================================
+   CAPACITOR SAFE AREA (iOS/Android notch)
+   ============================================ */
+
+@supports (padding-top: env(safe-area-inset-top)) {
+  .zr-topbar {
+    padding-top: max(0px, env(safe-area-inset-top));
+    min-height: calc(var(--topbar-h) + env(safe-area-inset-top));
+  }
+
+  .zr-mobile-drawer {
+    padding-top: env(safe-area-inset-top);
+  }
+}
