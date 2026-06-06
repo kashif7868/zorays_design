@@ -8,6 +8,7 @@
 :root {
   --green:        #1a8a3c;
   --green-dark:   #156e30;
+  --green-light:  rgba(26,138,60,0.08);
   --white:        #ffffff;
   --text:         #2d2d2d;
   --text-muted:   #555555;
@@ -52,7 +53,6 @@
   gap: 12px;
 }
 
-/* Social */
 .zr-topbar__social {
   display: flex;
   align-items: center;
@@ -71,7 +71,6 @@
 
 .zr-topbar__social a:hover { opacity: 0.72; }
 
-/* Center badges */
 .zr-topbar__center {
   display: flex;
   align-items: center;
@@ -94,7 +93,6 @@
   flex-shrink: 0;
 }
 
-/* Right contacts */
 .zr-topbar__right {
   display: flex;
   align-items: center;
@@ -162,6 +160,17 @@
   flex-shrink: 0;
 }
 
+.zorays-logo-mark {
+  width: 42px;
+  height: 42px;
+  background: var(--green);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
 .logo-mark-z {
   color: var(--white);
   font-size: 22px;
@@ -207,11 +216,12 @@
   position: relative;
 }
 
-.zr-nav-link,
-.zr-nav-btn {
+/* ── Nav Link — base ── */
+.zr-nav-link {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   padding: 8px 10px;
   font-family: var(--font);
   font-size: 13px;
@@ -225,61 +235,36 @@
   white-space: nowrap;
   transition: color var(--trans), background var(--trans);
   line-height: 1;
+  overflow: hidden;
 }
 
-.zr-nav-link:hover,
-.zr-nav-btn:hover {
+.zr-nav-link:hover {
   color: var(--green);
-  background: rgba(26,138,60,0.07);
+  background: var(--green-light);
 }
 
-.zr-chevron {
-  font-size: 14px;
-  transition: transform var(--trans);
-  flex-shrink: 0;
+/* ── Active state ── */
+.zr-nav-link.is-active {
+  color: var(--green);
+  font-weight: 600;
+  background: var(--green-light);
 }
 
-.zr-chevron.rotated { transform: rotate(180deg); }
-
-/* ── Dropdown ── */
-.zr-dropdown {
+/* Animated underline bar */
+.zr-nav-active-bar {
   position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-  min-width: 205px;
-  padding: 6px 0;
-  list-style: none;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  transition: opacity var(--trans), transform var(--trans), visibility var(--trans);
-  z-index: 300;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  height: 2.5px;
+  background: var(--green);
+  border-radius: 2px;
+  animation: bar-grow 0.25s ease both;
 }
 
-.zr-nav-item.has-drop:hover .zr-dropdown,
-.zr-nav-item.is-open .zr-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.zr-dropdown li a {
-  display: block;
-  padding: 10px 18px;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text);
-  text-decoration: none;
-  transition: background var(--trans), color var(--trans);
-}
-
-.zr-dropdown li a:hover {
-  background: rgba(26,138,60,0.07);
-  color: var(--green);
+@keyframes bar-grow {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
 }
 
 /* ── Right: CTA + Hamburger ── */
@@ -341,7 +326,7 @@
   justify-content: center;
   width: 38px;
   height: 38px;
-  background: rgba(26,138,60,0.08);
+  background: var(--green-light);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -394,7 +379,6 @@
 
 .zr-mobile-overlay.is-open .zr-mobile-drawer { transform: translateX(0); }
 
-/* Drawer header */
 .zr-mobile-header {
   display: flex;
   align-items: center;
@@ -410,7 +394,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(26,138,60,0.08);
+  background: var(--green-light);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -421,7 +405,6 @@
 
 .zr-mobile-close:hover { background: rgba(26,138,60,0.18); }
 
-/* Nav list */
 .zr-mobile-nav {
   list-style: none;
   padding: 6px 0;
@@ -432,11 +415,10 @@
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.zr-mobile-link,
-.zr-mobile-parent-btn {
+/* ── Mobile nav link ── */
+.zr-mobile-link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   padding: 13px 18px;
   font-family: var(--font);
@@ -444,52 +426,23 @@
   font-weight: 500;
   color: var(--text);
   text-decoration: none;
-  background: none;
-  border: none;
-  cursor: pointer;
   transition: color var(--trans), background var(--trans);
-  text-align: left;
+  border-left: 3px solid transparent;
 }
 
-.zr-mobile-link:hover,
-.zr-mobile-parent-btn:hover {
+.zr-mobile-link:hover {
   color: var(--green);
-  background: rgba(26,138,60,0.05);
+  background: var(--green-light);
 }
 
-.zr-mobile-chevron {
-  font-size: 16px;
-  flex-shrink: 0;
-}
-
-/* Sub menu */
-.zr-mobile-sub {
-  list-style: none;
-  max-height: 0;
-  overflow: hidden;
-  background: rgba(26,138,60,0.03);
-  transition: max-height 0.28s ease;
-}
-
-.zr-mobile-sub.is-open { max-height: 300px; }
-
-.zr-mobile-sub li a {
-  display: block;
-  padding: 11px 18px 11px 34px;
-  font-family: var(--font);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color var(--trans), background var(--trans);
-}
-
-.zr-mobile-sub li a:hover {
+/* ── Mobile active state ── */
+.zr-mobile-link.is-active {
   color: var(--green);
-  background: rgba(26,138,60,0.05);
+  font-weight: 600;
+  background: var(--green-light);
+  border-left-color: var(--green);
 }
 
-/* Contacts */
 .zr-mobile-contacts {
   padding: 14px 18px;
   border-top: 1px solid var(--border);
@@ -514,7 +467,6 @@
 
 .zr-mobile-contacts a:hover { color: var(--green); }
 
-/* Footer */
 .zr-mobile-footer {
   padding: 16px 18px;
   flex-shrink: 0;
@@ -524,86 +476,48 @@
    RESPONSIVE
    ============================================ */
 
-/* ── Large screens: compact font ── */
 @media (max-width: 1200px) {
-  .zr-nav-link,
-  .zr-nav-btn {
-    font-size: 12.5px;
-    padding: 8px 8px;
-  }
+  .zr-nav-link { font-size: 12.5px; padding: 8px 8px; }
 }
 
-/* ── Tablet: hide text labels in topbar contacts ── */
 @media (max-width: 1024px) {
   .zr-topbar__contact span { display: none; }
   .zr-topbar__contact { gap: 0; }
   .zr-topbar__contact svg { font-size: 16px; }
-  .zr-nav-link,
-  .zr-nav-btn {
-    font-size: 12px;
-    padding: 7px 7px;
-  }
+  .zr-nav-link { font-size: 12px; padding: 7px 7px; }
 }
 
-/* ── Mobile breakpoint: show hamburger ── */
 @media (max-width: 960px) {
   .zr-navbar__menu { display: none; }
   .zr-cta { display: none; }
   .zr-hamburger { display: flex; }
-
-  /* Hide center badges from topbar */
   .zr-topbar__center { display: none; }
-
-  /* Topbar: left + right only */
-  .zr-topbar__inner {
-    justify-content: space-between;
-  }
+  .zr-topbar__inner { justify-content: space-between; }
 }
 
-/* ── Small mobile ── */
 @media (max-width: 480px) {
-  .zr-topbar {
-    padding: 0 14px;
-    min-height: 34px;
-  }
-
+  .zr-topbar { padding: 0 14px; min-height: 34px; }
   .zr-topbar__social { gap: 10px; }
   .zr-topbar__social a { font-size: 14px; }
-
   .zr-topbar__right { gap: 12px; }
-
-  .zr-navbar {
-    height: 60px;
-  }
-
+  .zr-navbar { height: 60px; }
   .zr-navbar__inner { padding: 0 14px; }
-
-  .zorays-logo-mark {
-    width: 36px;
-    height: 36px;
-  }
-
+  .zorays-logo-mark { width: 36px; height: 36px; }
   .logo-mark-z { font-size: 18px; }
-
   .zr-navbar__logo-text .logo-name { font-size: 18px; }
   .zr-navbar__logo-text .logo-sub  { font-size: 8px; }
 }
 
-/* ── Extra small: hide email icon on very small screens ── */
 @media (max-width: 360px) {
   .zr-topbar__right .zr-topbar__contact:last-child { display: none; }
 }
 
-/* ============================================
-   CAPACITOR SAFE AREA (iOS/Android notch)
-   ============================================ */
-
+/* ── iOS/Android Safe Area ── */
 @supports (padding-top: env(safe-area-inset-top)) {
   .zr-topbar {
     padding-top: max(0px, env(safe-area-inset-top));
     min-height: calc(var(--topbar-h) + env(safe-area-inset-top));
   }
-
   .zr-mobile-drawer {
     padding-top: env(safe-area-inset-top);
   }

@@ -1,0 +1,490 @@
+/* ─── Variables ──────────────────────────────────────────────────────────────── */
+:root {
+  --msf-green:      #16a34a;
+  --msf-green-dark: #14532d;
+  --msf-green-light:#dcfce7;
+  --msf-navy:       #0f172a;
+  --msf-navy-mid:   #1e293b;
+  --msf-slate:      #475569;
+  --msf-border:     #e2e8f0;
+  --msf-bg:         #f8fafc;
+  --msf-white:      #ffffff;
+  --msf-accent:     #4f46e5;
+  --msf-accent-light: #eef2ff;
+  --msf-red:        #dc2626;
+  --msf-radius:     12px;
+  --msf-shadow:     0 4px 24px rgba(15, 23, 42, 0.08);
+  --msf-shadow-lg:  0 8px 40px rgba(15, 23, 42, 0.14);
+}
+
+/* ─── Section ────────────────────────────────────────────────────────────────── */
+.msf-section {
+  background: var(--msf-bg);
+  padding: 72px 20px 80px;
+  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+.msf-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* ─── Stepper ────────────────────────────────────────────────────────────────── */
+.msf-stepper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 44px;
+  gap: 0;
+  position: relative;
+}
+
+.msf-stepper__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.msf-connector {
+  position: absolute;
+  top: 22px;
+  right: 50%;
+  left: -50%;
+  height: 3px;
+  background: var(--msf-border);
+  z-index: 0;
+  transition: background 0.35s ease;
+}
+
+.msf-connector.filled {
+  background: var(--msf-green);
+}
+
+.msf-step-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid var(--msf-border);
+  background: var(--msf-white);
+  color: var(--msf-slate);
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  z-index: 1;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.msf-step-circle.active {
+  border-color: var(--msf-green);
+  background: var(--msf-green);
+  color: #fff;
+  box-shadow: 0 0 0 5px rgba(22, 163, 74, 0.15), 0 4px 12px rgba(22, 163, 74, 0.3);
+  transform: scale(1.1);
+}
+
+.msf-step-circle.completed {
+  border-color: var(--msf-green);
+  background: var(--msf-green);
+  color: #fff;
+  cursor: pointer;
+}
+
+.msf-step-circle.completed:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);
+}
+
+.msf-check {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.msf-step-label {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--msf-slate);
+  text-align: center;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.msf-step-label.active {
+  color: var(--msf-green);
+  font-weight: 700;
+}
+
+.msf-step-label.done {
+  color: var(--msf-green);
+}
+
+/* ─── Form Card ──────────────────────────────────────────────────────────────── */
+.msf-form-card {
+  background: var(--msf-white);
+  border-radius: var(--msf-radius);
+  box-shadow: var(--msf-shadow-lg);
+  overflow: hidden;
+  border: 1px solid var(--msf-border);
+  animation: msf-slide-in 0.3s ease both;
+}
+
+@keyframes msf-slide-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Step Body ──────────────────────────────────────────────────────────────── */
+.msf-step-body {
+  display: flex;
+  min-height: 260px;
+}
+
+.msf-step-accent {
+  width: 6px;
+  background: linear-gradient(180deg, var(--msf-green) 0%, #4ade80 100%);
+  flex-shrink: 0;
+}
+
+.msf-step-content {
+  padding: 36px 40px 36px 36px;
+  flex: 1;
+}
+
+.msf-step-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--msf-navy);
+  margin: 0 0 28px;
+  letter-spacing: -0.4px;
+}
+
+/* ─── Fields ─────────────────────────────────────────────────────────────────── */
+.msf-field {
+  margin-bottom: 28px;
+}
+
+.msf-field:last-child {
+  margin-bottom: 0;
+}
+
+.msf-label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--msf-navy-mid);
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+}
+
+.msf-required {
+  color: var(--msf-red);
+  margin-left: 2px;
+}
+
+/* ─── Radio Buttons ──────────────────────────────────────────────────────────── */
+.msf-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.msf-radio-group--wrap {
+  flex-wrap: wrap;
+}
+
+.msf-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 2px solid var(--msf-border);
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--msf-slate);
+  background: var(--msf-white);
+  transition: all 0.2s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.msf-radio-label:hover {
+  border-color: var(--msf-green);
+  color: var(--msf-green);
+  background: var(--msf-green-light);
+}
+
+.msf-radio-label.selected {
+  border-color: var(--msf-green);
+  background: var(--msf-green);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.25);
+}
+
+.msf-radio-label input[type="radio"] {
+  display: none;
+}
+
+.msf-radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.msf-radio-label.selected .msf-radio-dot {
+  background: #fff;
+  border-color: #fff;
+}
+
+/* ─── Text Inputs ────────────────────────────────────────────────────────────── */
+.msf-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--msf-border);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--msf-navy);
+  background: var(--msf-white);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.msf-input:focus {
+  border-color: var(--msf-green);
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.1);
+}
+
+.msf-textarea {
+  resize: vertical;
+  min-height: 88px;
+  line-height: 1.6;
+}
+
+/* ─── Navigation ─────────────────────────────────────────────────────────────── */
+.msf-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+  gap: 16px;
+}
+
+.msf-btn-next,
+.msf-btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 32px;
+  background: var(--msf-green);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  text-transform: uppercase;
+  margin-left: auto;
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+}
+
+.msf-btn-next:hover,
+.msf-btn-submit:hover {
+  background: var(--msf-green-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.38);
+}
+
+.msf-btn-submit {
+  background: var(--msf-navy);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+}
+
+.msf-btn-submit:hover {
+  background: #334155;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
+}
+
+.msf-btn-prev {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 13px 24px;
+  background: transparent;
+  color: var(--msf-slate);
+  border: 2px solid var(--msf-border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.msf-btn-prev:hover {
+  border-color: var(--msf-slate);
+  color: var(--msf-navy);
+  background: var(--msf-bg);
+}
+
+/* ─── Success ────────────────────────────────────────────────────────────────── */
+.msf-success {
+  text-align: center;
+  padding: 72px 40px;
+  animation: msf-slide-in 0.4s ease;
+}
+
+.msf-success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--msf-green);
+  color: #fff;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  box-shadow: 0 8px 28px rgba(22, 163, 74, 0.35);
+}
+
+.msf-success h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--msf-navy);
+  margin: 0 0 12px;
+}
+
+.msf-success p {
+  color: var(--msf-slate);
+  font-size: 15px;
+  margin: 0 0 32px;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .msf-step-content {
+    padding: 24px 20px;
+  }
+
+  .msf-step-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .msf-step-label {
+    font-size: 10px;
+  }
+
+  .msf-step-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .msf-connector {
+    top: 18px;
+  }
+
+  .msf-radio-label {
+    padding: 8px 14px;
+    font-size: 12.5px;
+  }
+
+  .msf-btn-next,
+  .msf-btn-prev,
+  .msf-btn-submit {
+    padding: 11px 20px;
+    font-size: 13px;
+  }
+
+  .msf-section {
+    padding: 48px 16px 56px;
+  }
+}
+
+/* ─── Validation ─────────────────────────────────────────────────────────────── */
+.msf-error {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+  color: var(--msf-red);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  animation: msf-fade-in 0.2s ease;
+}
+
+.msf-error::before {
+  content: "!";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--msf-red);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+@keyframes msf-fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.msf-input--error {
+  border-color: var(--msf-red) !important;
+  background: #fff5f5;
+}
+
+.msf-input--error:focus {
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1) !important;
+}
+
+/* ─── Shake Animation ────────────────────────────────────────────────────────── */
+@keyframes msf-shake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-8px); }
+  30%       { transform: translateX(8px); }
+  45%       { transform: translateX(-6px); }
+  60%       { transform: translateX(6px); }
+  75%       { transform: translateX(-3px); }
+  90%       { transform: translateX(3px); }
+}
+
+.msf-shake {
+  animation: msf-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  border: 1px solid rgba(220, 38, 38, 0.3) !important;
+}
+
+/* ─── Disabled Button ────────────────────────────────────────────────────────── */
+.msf-btn--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.msf-btn--disabled:hover {
+  background: var(--msf-green) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
