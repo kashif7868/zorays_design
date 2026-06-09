@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaStar, FaSun } from "react-icons/fa";
 import { MdPhone, MdEmail } from "react-icons/md";
-import { IoShieldCheckmark, IoClose, IoHomeOutline, IoHome, IoCallOutline, IoCall, IoSearchOutline, IoSearch } from "react-icons/io5";
+import { IoShieldCheckmark, IoClose, IoHomeOutline, IoHome,  IoSearchOutline, IoSearch } from "react-icons/io5";
 import { RiMenu3Line } from "react-icons/ri";
 import { PiSolarPanelLight } from "react-icons/pi";
 import { MdOutlineElectricBolt, MdElectricBolt } from "react-icons/md";
