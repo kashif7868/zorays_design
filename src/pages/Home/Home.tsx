@@ -1,19 +1,19 @@
 import HeroSection from "./HeroSection";
 import ServicesOverview from "./Servicesoverview";
+import ClientTestimonials from "./ClientTestimonials";
+import BlogSection from "./BlogSection";
 import MultiStepForm from "./MultiStepForm";
-// import WhyChooseUs from "./WhyChooseUs";
-// import Testimonials from "./Testimonials";
-// import CallToAction from "./CallToAction";
+import ShopSection from "./ShopSection";
 
 const Home = () => {
   return (
     <main>
-    <HeroSection />
-    <ServicesOverview />
-    <MultiStepForm />
-     {/* <WhyChooseUs />
-      <Testimonials />
-      <CallToAction /> */}
+      <HeroSection />
+      <ServicesOverview />
+      <ShopSection />
+      <MultiStepForm />
+      <ClientTestimonials />
+      <BlogSection />
     </main>
   );
 };
