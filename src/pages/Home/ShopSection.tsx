@@ -172,14 +172,6 @@ const ShopSection = () => {
               <Zap size={15} />
               Zorays Solar Shop
             </span>
-
-            <h2>Solar Products</h2>
-
-            <p>
-              Browse solar panels, hybrid inverters, lithium batteries, and
-              accessories selected for Pakistan’s residential, commercial, and
-              industrial power needs.
-            </p>
           </div>
 
           <div className="shop-header-actions">

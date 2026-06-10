@@ -1,5 +1,6 @@
 import HeroSection from "./HeroSection";
 import ServicesOverview from "./Servicesoverview";
+import ZoraysTrustPromise from "./ZoraysTrustPromise";
 import ClientTestimonials from "./ClientTestimonials";
 import BlogSection from "./BlogSection";
 import MultiStepForm from "./MultiStepForm";
@@ -10,10 +11,11 @@ const Home = () => {
     <main>
       <HeroSection />
       <ServicesOverview />
+      <ZoraysTrustPromise />
       <ShopSection />
       <MultiStepForm />
-      <ClientTestimonials />
       <BlogSection />
+      <ClientTestimonials />
     </main>
   );
 };
