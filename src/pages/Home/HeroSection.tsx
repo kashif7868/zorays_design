@@ -1,17 +1,17 @@
 import React from "react";
 import "../../assets/css/home/heroSection.css";
 
-type TrustCard = {
+type ZspHeroTrustCard = {
   id: number;
   icon: React.ReactNode;
   title: string;
   text: string;
 };
 
-const trustCards: TrustCard[] = [
+const zspHeroTrustCards: ZspHeroTrustCard[] = [
   {
     id: 1,
-    icon: <span className="trust-badge-text">10+</span>,
+    icon: <span className="zsp-home-hero-trust-badge-text">10+</span>,
     title: "10+ Years Experience",
     text: "Proven track record of quality & reliability",
   },
@@ -35,43 +35,49 @@ const trustCards: TrustCard[] = [
   },
 ];
 
-const heroBg =
+const zspHeroBg =
   "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1920&q=90";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="zorays-hero-section">
+    <section className="zsp-home-hero-section">
       <div
-        className="zorays-hero-bg"
-        style={{ backgroundImage: `url(${heroBg})` }}
+        className="zsp-home-hero-bg"
+        style={{ backgroundImage: `url(${zspHeroBg})` }}
       >
-        <div className="zorays-hero-green-overlay" />
+        <div className="zsp-home-hero-overlay" />
 
-        <div className="zorays-hero-container">
-          <div className="zorays-hero-content">
-            <div className="zorays-hero-badge">
-              <span>☀</span>
+        <div className="zsp-home-hero-container">
+          <div className="zsp-home-hero-content">
+            <div className="zsp-home-hero-badge">
+              <span className="zsp-home-hero-badge-icon">☀</span>
               Smart Solar For A Brighter Pakistan
             </div>
 
-            <h1>
+            <h1 className="zsp-home-hero-title">
               Power Your Home
               <br />
               With <span>Smart Solar Energy</span>
             </h1>
 
-            <p>
+            <p className="zsp-home-hero-description">
               Premium solar, hybrid backup, and net metering solutions
               engineered for Pakistan&apos;s power environment.
             </p>
 
-            <div className="zorays-hero-buttons">
-              <a href="/contact" className="hero-btn hero-btn-primary">
+            <div className="zsp-home-hero-actions">
+              <a
+                href="/contact"
+                className="zsp-home-hero-btn zsp-home-hero-btn-primary"
+              >
                 <span>▣</span>
                 Get Free Solar Assessment
               </a>
 
-              <a href="/solar-packages" className="hero-btn hero-btn-secondary">
+              <a
+                href="/solar-packages"
+                className="zsp-home-hero-btn zsp-home-hero-btn-secondary"
+              >
                 <span>▣</span>
                 View Solar Packages
               </a>
@@ -80,13 +86,13 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      <div className="zorays-trust-wrapper">
-        <div className="zorays-trust-card">
-          {trustCards.map((card) => (
-            <div className="zorays-trust-item" key={card.id}>
-              <div className="zorays-trust-icon">{card.icon}</div>
+      <div className="zsp-home-hero-trust-wrapper">
+        <div className="zsp-home-hero-trust-card">
+          {zspHeroTrustCards.map((card) => (
+            <div className="zsp-home-hero-trust-item" key={card.id}>
+              <div className="zsp-home-hero-trust-icon">{card.icon}</div>
 
-              <div className="zorays-trust-text">
+              <div className="zsp-home-hero-trust-content">
                 <h3>{card.title}</h3>
                 <p>{card.text}</p>
               </div>

@@ -1,0 +1,360 @@
+.zorays-faq-section {
+  position: relative;
+  overflow: hidden;
+  padding: 95px 20px;
+  background:
+    radial-gradient(circle at 10% 15%, rgba(0, 152, 79, 0.1), transparent 26%),
+    radial-gradient(circle at 92% 80%, rgba(255, 196, 0, 0.12), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, #f7fbf8 100%);
+}
+
+.zorays-faq-container {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 1380px);
+  margin: 0 auto;
+}
+
+.zorays-faq-header {
+  margin-bottom: 34px;
+}
+
+.zorays-faq-eyebrow {
+  display: inline-flex;
+  margin-bottom: 12px;
+  color: #00984f;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.zorays-faq-title-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.zorays-faq-title-wrap h2 {
+  margin: 0;
+  color: #151515;
+  font-size: clamp(34px, 4vw, 58px);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.zorays-faq-title-wrap p {
+  max-width: 760px;
+  margin: 16px 0 0;
+  color: #5d6360;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+.zorays-faq-cta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0 26px;
+  border-radius: 14px;
+  color: #ffffff;
+  background: linear-gradient(180deg, #16b866 0%, #008d49 100%);
+  box-shadow: 0 14px 30px rgba(0, 152, 79, 0.22);
+  font-size: 15px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.zorays-faq-layout {
+  display: grid;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+
+.zorays-faq-side-card {
+  position: sticky;
+  top: 110px;
+  min-height: 420px;
+  padding: 34px;
+  border: 1px solid rgba(0, 152, 79, 0.18);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(241, 250, 245, 0.96)),
+    url("https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: screen;
+  box-shadow: 0 24px 60px rgba(12, 42, 27, 0.12);
+  overflow: hidden;
+}
+
+.zorays-faq-side-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -50px -80px auto;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: rgba(0, 152, 79, 0.12);
+}
+
+.zorays-faq-side-icon {
+  width: 64px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border-radius: 50%;
+  color: #00984f;
+  background: rgba(0, 152, 79, 0.1);
+  font-size: 34px;
+  font-weight: 900;
+}
+
+.zorays-faq-side-card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #151515;
+  font-size: 28px;
+  line-height: 1.18;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.zorays-faq-side-card p {
+  position: relative;
+  z-index: 1;
+  margin: 16px 0 28px;
+  color: #505a55;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.zorays-faq-side-card a {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1px solid rgba(0, 152, 79, 0.28);
+  border-radius: 14px;
+  color: #00984f;
+  background: rgba(255, 255, 255, 0.84);
+  font-size: 14px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.zorays-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.zorays-faq-item {
+  overflow: hidden;
+  border: 1px solid rgba(0, 152, 79, 0.12);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 14px 36px rgba(12, 42, 27, 0.08);
+  transition: 0.25s ease;
+}
+
+.zorays-faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 44px rgba(12, 42, 27, 0.11);
+}
+
+.zorays-faq-item.active {
+  border-color: rgba(0, 152, 79, 0.28);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(245, 252, 248, 0.96) 100%);
+  box-shadow: 0 24px 58px rgba(0, 100, 52, 0.13);
+}
+
+.zorays-faq-question {
+  width: 100%;
+  min-height: 86px;
+  padding: 24px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+.zorays-faq-question span:first-child {
+  color: #171717;
+  font-size: clamp(18px, 1.55vw, 23px);
+  line-height: 1.4;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.zorays-faq-item.active .zorays-faq-question span:first-child {
+  color: #00984f;
+}
+
+.zorays-faq-toggle {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.6px solid rgba(0, 152, 79, 0.85);
+  border-radius: 50%;
+  color: #00984f;
+  background: #ffffff;
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1;
+  transition: 0.25s ease;
+}
+
+.zorays-faq-item.active .zorays-faq-toggle {
+  color: #ffffff;
+  border-color: #00984f;
+  background: linear-gradient(180deg, #13b866 0%, #008d49 100%);
+  box-shadow: 0 10px 25px rgba(0, 152, 79, 0.28);
+}
+
+.zorays-faq-answer-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.28s ease;
+}
+
+.zorays-faq-item.active .zorays-faq-answer-wrap {
+  grid-template-rows: 1fr;
+}
+
+.zorays-faq-answer {
+  overflow: hidden;
+}
+
+.zorays-faq-answer p {
+  position: relative;
+  margin: 0;
+  padding: 0 30px 32px 30px;
+  color: #343a36;
+  font-size: clamp(16px, 1.3vw, 20px);
+  line-height: 1.75;
+  font-weight: 500;
+}
+
+.zorays-faq-answer p::before {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin-bottom: 20px;
+  border-radius: 99px;
+  background: #ffc400;
+}
+
+.zorays-faq-glow {
+  position: absolute;
+  pointer-events: none;
+}
+
+.zorays-faq-glow-one {
+  left: -120px;
+  bottom: -180px;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background:
+    linear-gradient(45deg, rgba(0, 152, 79, 0.13), transparent),
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 152, 79, 0.11) 0,
+      rgba(0, 152, 79, 0.11) 1px,
+      transparent 1px,
+      transparent 18px
+    );
+}
+
+.zorays-faq-glow-two {
+  right: -100px;
+  top: 80px;
+  width: 380px;
+  height: 560px;
+  border-radius: 220px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 152, 79, 0.09) 1.6px,
+    transparent 1.6px
+  );
+  background-size: 16px 16px;
+}
+
+@media (max-width: 1100px) {
+  .zorays-faq-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .zorays-faq-side-card {
+    position: relative;
+    top: auto;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .zorays-faq-section {
+    padding: 64px 14px;
+  }
+
+  .zorays-faq-title-wrap {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .zorays-faq-title-wrap p {
+    font-size: 16px;
+  }
+
+  .zorays-faq-cta {
+    width: 100%;
+  }
+
+  .zorays-faq-side-card {
+    padding: 26px;
+    border-radius: 22px;
+  }
+
+  .zorays-faq-question {
+    min-height: 78px;
+    padding: 20px;
+  }
+
+  .zorays-faq-question span:first-child {
+    font-size: 17px;
+  }
+
+  .zorays-faq-toggle {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+    font-size: 28px;
+  }
+
+  .zorays-faq-answer p {
+    padding: 0 20px 24px;
+    font-size: 16px;
+  }
+}
