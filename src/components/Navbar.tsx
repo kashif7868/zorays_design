@@ -13,30 +13,30 @@ import "../assets/css/navbar.css";
 
 const navLinks = [
   { label: "Solar Net Metering", href: "#multi-step-form" },
-  { label: "Solar Backup", href: "#" },
-  { label: "Solar Financing", href: "#" },
-  { label: "Solar Tubewell", href: "#" },
-  { label: "Solar Clientele", href: "#" },
-  { label: "Solar Blog", href: "#" },
-  { label: "Zorays Pakistan", href: "#" },
+  { label: "Solar Backup", href: "/solar-backup" },
+  { label: "Solar Financing", href: "/solar-financing" },
+  { label: "Solar Tubewell", href: "/solar-tubewell" },
+  { label: "Solar Clientele", href: "/solar-clientele" },
+  { label: "Solar Blog", href: "/solar-blog" },
+  { label: "Zorays Pakistan", href: "/zorays-pakistan" },
 ];
 
 const drawerLinks = [
   { label: "Solar Net Metering", href: "#multi-step-form" },
-  { label: "Solar Backup", href: "#" },
-  { label: "Solar Financing", href: "#" },
-  { label: "Solar Tubewell", href: "#" },
-  { label: "Solar Clientele", href: "#" },
-  { label: "Solar Shop", href: "#", icon: <BsShop size={15} /> },
-  { label: "Solar Blog", href: "#" },
-  { label: "Zorays Pakistan", href: "#" },
+  { label: "Solar Backup", href: "/solar-backup" },
+  { label: "Solar Financing", href: "/solar-financing" },
+  { label: "Solar Tubewell", href: "/solar-tubewell" },
+  { label: "Solar Clientele", href: "/solar-clientele" },
+  { label: "Solar Shop", href: "/shop", icon: <BsShop size={15} /> },
+  { label: "Solar Blog", href: "/solar-blog" },
+  { label: "Zorays Pakistan", href: "/zorays-pakistan" },
 ];
 
 const bottomNav = [
   { label: "Home", href: "/", icon: <IoHomeOutline size={22} />, iconActive: <IoHome size={22} /> },
   { label: "Solar", href: "#multi-step-form", icon: <PiSolarPanelLight size={22} />, iconActive: <PiSolarPanelLight size={22} /> },
-  { label: "Quote", href: "#quote", icon: <MdOutlineElectricBolt size={24} />, iconActive: <MdElectricBolt size={24} />, isCta: true },
-  { label: "Shop", href: "#", icon: <BsShop size={20} />, iconActive: <BsShopWindow size={20} /> },
+  { label: "Quote", href: "/quote", icon: <MdOutlineElectricBolt size={24} />, iconActive: <MdElectricBolt size={24} />, isCta: true },
+  { label: "Shop", href: "/shop", icon: <BsShop size={20} />, iconActive: <BsShopWindow size={20} /> },
   { label: "Search", href: "#", icon: <IoSearchOutline size={22} />, iconActive: <IoSearch size={22} />, isSearch: true },
 ];
 
@@ -118,10 +118,22 @@ const Navbar = () => {
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const goToLink = (href: string) => {
+    if (href.startsWith("#")) {
+      scrollToSection(href);
+      return;
+    }
+
+    window.location.href = href;
+  };
+
   const handleNavClick = (label: string, href: string) => {
     setActiveLink(label);
     closeMobile();
-    scrollToSection(href);
+
+    if (href.startsWith("#")) {
+      scrollToSection(href);
+    }
   };
 
   const handleBottomClick = (item: typeof bottomNav[0]) => {
@@ -131,7 +143,7 @@ const Navbar = () => {
     }
 
     setActiveBottom(item.label);
-    scrollToSection(item.href);
+    goToLink(item.href);
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -148,11 +160,11 @@ const Navbar = () => {
       <div className="zr-topbar">
         <div className="zr-topbar__inner">
           <div className="zr-topbar__social">
-            <a href="#" aria-label="WhatsApp"><FaWhatsapp /></a>
-            <a href="#" aria-label="Facebook"><FaFacebookF /></a>
-            <a href="#" aria-label="Instagram"><FaInstagram /></a>
-            <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
-            <a href="#" aria-label="YouTube"><FaYoutube /></a>
+            <a href="https://wa.me/923001234567" aria-label="WhatsApp"><FaWhatsapp /></a>
+            <a href="https://facebook.com/zorays" aria-label="Facebook"><FaFacebookF /></a>
+            <a href="https://instagram.com/zoraysinc" aria-label="Instagram"><FaInstagram /></a>
+            <a href="https://linkedin.com/company/zorays" aria-label="LinkedIn"><FaLinkedinIn /></a>
+            <a href="https://youtube.com/@zorays" aria-label="YouTube"><FaYoutube /></a>
           </div>
 
           <div className="zr-topbar__center">
@@ -206,7 +218,7 @@ const Navbar = () => {
           </ul>
 
           <div className="zr-navbar__right">
-            <a href="#" className="zr-icon-btn" aria-label="Solar Shop" title="Solar Shop">
+            <a href="/shop" className="zr-icon-btn" aria-label="Solar Shop" title="Solar Shop">
               <BsShop size={18} />
             </a>
 
@@ -250,14 +262,10 @@ const Navbar = () => {
             </div>
 
             <a
-              href="#quote"
+              href="/quote"
               className={`zr-cta${searchOpen ? " zr-cta--gone" : ""}`}
               aria-hidden={searchOpen}
               tabIndex={searchOpen ? -1 : 0}
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("#quote");
-              }}
             >
               <FaSun className="zr-cta-icon" />
               Get Solar Quote
@@ -347,15 +355,7 @@ const Navbar = () => {
           </div>
 
           <div className="zr-mobile-footer">
-            <a
-              href="#quote"
-              className="zr-cta zr-cta--full"
-              onClick={(e) => {
-                e.preventDefault();
-                closeMobile();
-                scrollToSection("#quote");
-              }}
-            >
+            <a href="/quote" className="zr-cta zr-cta--full" onClick={closeMobile}>
               <FaSun className="zr-cta-icon" />
               Get Solar Quote
             </a>

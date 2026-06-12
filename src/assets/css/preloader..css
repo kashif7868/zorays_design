@@ -1,0 +1,241 @@
+.zorays-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(0, 148, 74, 0.14), transparent 30%),
+    radial-gradient(circle at 78% 22%, rgba(255, 196, 0, 0.16), transparent 28%),
+    linear-gradient(135deg, #ffffff 0%, #f4fbf7 100%);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.zorays-preloader-hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.zorays-preloader::before {
+  content: "";
+  position: absolute;
+  right: -140px;
+  bottom: -170px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 148, 74, 0.09) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 17px 17px;
+}
+
+.zorays-preloader::after {
+  content: "";
+  position: absolute;
+  left: -120px;
+  top: -120px;
+  width: 340px;
+  height: 340px;
+  border: 1px solid rgba(0, 148, 74, 0.14);
+  border-radius: 50%;
+}
+
+.zorays-preloader-card {
+  position: relative;
+  z-index: 2;
+  width: 248px;
+  min-height: 238px;
+  padding: 28px 24px 24px;
+  border: 1px solid rgba(0, 148, 74, 0.18);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 24px 60px rgba(12, 42, 27, 0.15);
+  text-align: center;
+  overflow: hidden;
+}
+
+.zorays-preloader-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(0, 148, 74, 0.08), transparent 52%),
+    linear-gradient(315deg, rgba(255, 196, 0, 0.1), transparent 42%);
+  pointer-events: none;
+}
+
+.zorays-preloader-brand-mark {
+  position: relative;
+  z-index: 2;
+  width: 44px;
+  height: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin: 0 auto 16px;
+}
+
+.zorays-preloader-brand-mark span {
+  height: 6px;
+  border-radius: 99px;
+  background: #00984f;
+  transform: skewY(-25deg);
+}
+
+.zorays-preloader-brand-mark span:nth-child(1) {
+  width: 38px;
+}
+
+.zorays-preloader-brand-mark span:nth-child(2) {
+  width: 27px;
+  margin-left: 7px;
+}
+
+.zorays-preloader-brand-mark span:nth-child(3) {
+  width: 38px;
+}
+
+.zorays-solar-loader {
+  position: relative;
+  z-index: 2;
+  width: 96px;
+  height: 76px;
+  margin: 0 auto 18px;
+}
+
+.zorays-loader-sun {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffc400;
+  box-shadow:
+    0 0 0 8px rgba(255, 196, 0, 0.13),
+    0 0 28px rgba(255, 196, 0, 0.5);
+  animation: zoraysSunPulse 1.45s ease-in-out infinite;
+}
+
+.zorays-loader-panel {
+  position: absolute;
+  left: 5px;
+  bottom: 4px;
+  width: 72px;
+  height: 46px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 6px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #12aa62 0%, #05623e 100%);
+  transform: perspective(150px) rotateX(18deg) rotateZ(-8deg);
+  box-shadow: 0 16px 28px rgba(0, 100, 52, 0.25);
+  animation: zoraysPanelFloat 1.7s ease-in-out infinite;
+}
+
+.zorays-loader-panel span {
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.38);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+}
+
+.zorays-preloader-card h3 {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  color: #13251c;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.zorays-preloader-card p {
+  position: relative;
+  z-index: 2;
+  margin: 7px 0 18px;
+  color: #5d6560;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.zorays-loader-bar {
+  position: relative;
+  z-index: 2;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(0, 148, 74, 0.12);
+}
+
+.zorays-loader-bar span {
+  display: block;
+  width: 44%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #00984f, #16b866, #ffc400);
+  animation: zoraysLoaderBar 1.05s ease-in-out infinite;
+}
+
+@keyframes zoraysLoaderBar {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(260%);
+  }
+}
+
+@keyframes zoraysSunPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+}
+
+@keyframes zoraysPanelFloat {
+  0%,
+  100% {
+    transform: perspective(150px) rotateX(18deg) rotateZ(-8deg) translateY(0);
+  }
+
+  50% {
+    transform: perspective(150px) rotateX(18deg) rotateZ(-8deg) translateY(-6px);
+  }
+}
+
+@media (max-width: 480px) {
+  .zorays-preloader-card {
+    width: 228px;
+    min-height: 220px;
+    padding: 25px 20px 22px;
+    border-radius: 23px;
+  }
+
+  .zorays-preloader-card h3 {
+    font-size: 18px;
+  }
+
+  .zorays-preloader-card p {
+    font-size: 12px;
+  }
+}
