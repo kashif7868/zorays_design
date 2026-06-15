@@ -1,0 +1,36 @@
+/* ============================================================
+   ZORAYS SHOP PAGE BASE
+   Only global shop page wrapper styles here
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --zs-green: #1a8a3c;
+  --zs-green-dark: #156e30;
+  --zs-green-soft: rgba(26, 138, 60, 0.08);
+  --zs-green-mid: rgba(26, 138, 60, 0.16);
+  --zs-white: #ffffff;
+  --zs-bg: #f4faf6;
+  --zs-text: #17231d;
+  --zs-muted: #66736b;
+  --zs-border: #e4eee8;
+  --zs-shadow: 0 20px 55px rgba(15, 56, 34, 0.12);
+  --zs-shadow-soft: 0 10px 30px rgba(15, 56, 34, 0.08);
+  --zs-font: "Poppins", sans-serif;
+}
+
+.zorays-shop-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  color: var(--zs-text);
+  font-family: var(--zs-font);
+  overflow-x: hidden;
+}
+
+.zs-shop-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}

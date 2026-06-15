@@ -1,12 +1,30 @@
 import { useState, useEffect, useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import { FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube, FaStar, FaSun } from "react-icons/fa";
+import {
+  FaWhatsapp,
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+  FaStar,
+  FaSun,
+} from "react-icons/fa";
 import { MdPhone, MdEmail } from "react-icons/md";
-import { IoShieldCheckmark, IoClose, IoHomeOutline, IoHome, IoSearchOutline, IoSearch } from "react-icons/io5";
+import {
+  IoShieldCheckmark,
+  IoClose,
+  IoHomeOutline,
+  IoHome,
+  IoSearchOutline,
+  IoSearch,
+} from "react-icons/io5";
 import { RiMenu3Line } from "react-icons/ri";
 import { PiSolarPanelLight } from "react-icons/pi";
 import { MdOutlineElectricBolt, MdElectricBolt } from "react-icons/md";
-import { BsShop, BsShopWindow } from "react-icons/bs";
+import { BsShop, BsShopWindow, BsCart3 } from "react-icons/bs";
+
+import { useAppSelector } from "../app/reduxHooks";
 
 import zoraysLogo from "../assets/images/logo.png";
 import "../assets/css/navbar.css";
@@ -27,20 +45,55 @@ const drawerLinks = [
   { label: "Solar Financing", href: "/solar-financing" },
   { label: "Solar Tubewell", href: "/solar-tubewell" },
   { label: "Solar Clientele", href: "/solar-clientele" },
-  { label: "Solar Shop", href: "/shop", icon: <BsShop size={15} /> },
+  { label: "Solar Shop", href: "/shop", icon: <BsShop size={15} />, hasCartBadge: true },
   { label: "Solar Blog", href: "/solar-blog" },
   { label: "Zorays Pakistan", href: "/zorays-pakistan" },
 ];
 
 const bottomNav = [
-  { label: "Home", href: "/", icon: <IoHomeOutline size={22} />, iconActive: <IoHome size={22} /> },
-  { label: "Solar", href: "#multi-step-form", icon: <PiSolarPanelLight size={22} />, iconActive: <PiSolarPanelLight size={22} /> },
-  { label: "Quote", href: "/quote", icon: <MdOutlineElectricBolt size={24} />, iconActive: <MdElectricBolt size={24} />, isCta: true },
-  { label: "Shop", href: "/shop", icon: <BsShop size={20} />, iconActive: <BsShopWindow size={20} /> },
-  { label: "Search", href: "#", icon: <IoSearchOutline size={22} />, iconActive: <IoSearch size={22} />, isSearch: true },
+  {
+    label: "Home",
+    href: "/",
+    icon: <IoHomeOutline size={22} />,
+    iconActive: <IoHome size={22} />,
+  },
+  {
+    label: "Solar",
+    href: "#multi-step-form",
+    icon: <PiSolarPanelLight size={22} />,
+    iconActive: <PiSolarPanelLight size={22} />,
+  },
+  {
+    label: "Quote",
+    href: "/quote",
+    icon: <MdOutlineElectricBolt size={24} />,
+    iconActive: <MdElectricBolt size={24} />,
+    isCta: true,
+  },
+  {
+    label: "Shop",
+    href: "/shop",
+    icon: <BsShop size={20} />,
+    iconActive: <BsShopWindow size={20} />,
+    hasCartBadge: true,
+  },
+  {
+    label: "Search",
+    href: "#",
+    icon: <IoSearchOutline size={22} />,
+    iconActive: <IoSearch size={22} />,
+    isSearch: true,
+  },
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const cartCount = useAppSelector((state) =>
+    state.cart.items.reduce((total, item) => total + item.quantity, 0)
+  );
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -49,6 +102,16 @@ const Navbar = () => {
 
   const searchInputRef = useRef<HTMLInputElement>(null);
   const searchRowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setActiveBottom("Home");
+    } else if (location.pathname.startsWith("/shop")) {
+      setActiveBottom("Shop");
+    } else if (location.pathname.startsWith("/quote")) {
+      setActiveBottom("Quote");
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     const fn = () => {
@@ -61,6 +124,7 @@ const Navbar = () => {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -120,23 +184,26 @@ const Navbar = () => {
 
   const goToLink = (href: string) => {
     if (href.startsWith("#")) {
+      if (location.pathname !== "/") {
+        navigate("/");
+        setTimeout(() => scrollToSection(href), 100);
+        return;
+      }
+
       scrollToSection(href);
       return;
     }
 
-    window.location.href = href;
+    navigate(href);
   };
 
   const handleNavClick = (label: string, href: string) => {
     setActiveLink(label);
     closeMobile();
-
-    if (href.startsWith("#")) {
-      scrollToSection(href);
-    }
+    goToLink(href);
   };
 
-  const handleBottomClick = (item: typeof bottomNav[0]) => {
+  const handleBottomClick = (item: (typeof bottomNav)[0]) => {
     if (item.isSearch) {
       toggleSearch();
       return;
@@ -160,11 +227,21 @@ const Navbar = () => {
       <div className="zr-topbar">
         <div className="zr-topbar__inner">
           <div className="zr-topbar__social">
-            <a href="https://wa.me/923001234567" aria-label="WhatsApp"><FaWhatsapp /></a>
-            <a href="https://facebook.com/zorays" aria-label="Facebook"><FaFacebookF /></a>
-            <a href="https://instagram.com/zoraysinc" aria-label="Instagram"><FaInstagram /></a>
-            <a href="https://linkedin.com/company/zorays" aria-label="LinkedIn"><FaLinkedinIn /></a>
-            <a href="https://youtube.com/@zorays" aria-label="YouTube"><FaYoutube /></a>
+            <a href="https://wa.me/923001234567" aria-label="WhatsApp">
+              <FaWhatsapp />
+            </a>
+            <a href="https://facebook.com/zorays" aria-label="Facebook">
+              <FaFacebookF />
+            </a>
+            <a href="https://instagram.com/zoraysinc" aria-label="Instagram">
+              <FaInstagram />
+            </a>
+            <a href="https://linkedin.com/company/zorays" aria-label="LinkedIn">
+              <FaLinkedinIn />
+            </a>
+            <a href="https://youtube.com/@zorays" aria-label="YouTube">
+              <FaYoutube />
+            </a>
           </div>
 
           <div className="zr-topbar__center">
@@ -180,10 +257,12 @@ const Navbar = () => {
 
           <div className="zr-topbar__right">
             <a href="tel:+923001234567" className="zr-topbar__contact">
-              <MdPhone /><span>+92 300 1234567</span>
+              <MdPhone />
+              <span>+92 300 1234567</span>
             </a>
             <a href="mailto:info@zorays.com.pk" className="zr-topbar__contact">
-              <MdEmail /><span>info@zorays.com.pk</span>
+              <MdEmail />
+              <span>info@zorays.com.pk</span>
             </a>
           </div>
         </div>
@@ -191,13 +270,13 @@ const Navbar = () => {
 
       <nav className="zr-navbar" role="navigation" aria-label="Main navigation">
         <div className="zr-navbar__inner">
-          <a href="/" className="zr-navbar__logo" aria-label="Zorays Home">
+          <Link to="/" className="zr-navbar__logo" aria-label="Zorays Home">
             <img src={zoraysLogo} alt="Zorays Solar" className="zorays_logo" />
             <div className="zr-navbar__logo-text">
               <span className="logo-name">ZORAYS</span>
               <span className="logo-sub">SMC · PVT LTD</span>
             </div>
-          </a>
+          </Link>
 
           <ul className="zr-navbar__menu">
             {navLinks.map((item) => (
@@ -206,7 +285,7 @@ const Navbar = () => {
                   href={item.href}
                   className={`zr-nav-link${activeLink === item.label ? " is-active" : ""}`}
                   onClick={(e) => {
-                    if (item.href.startsWith("#")) e.preventDefault();
+                    e.preventDefault();
                     handleNavClick(item.label, item.href);
                   }}
                 >
@@ -218,9 +297,15 @@ const Navbar = () => {
           </ul>
 
           <div className="zr-navbar__right">
-            <a href="/shop" className="zr-icon-btn" aria-label="Solar Shop" title="Solar Shop">
-              <BsShop size={18} />
-            </a>
+            <Link
+              to="/cart"
+              className="zr-icon-btn zr-cart-link"
+              aria-label={`Cart ${cartCount} items`}
+              title="Cart"
+            >
+              <BsCart3 size={18} />
+              {cartCount > 0 && <span className="zr-cart-badge">{cartCount}</span>}
+            </Link>
 
             <div ref={searchRowRef} className={`zr-search-row${searchOpen ? " is-open" : ""}`}>
               <form onSubmit={handleSearchSubmit} className="zr-search-form" role="search">
@@ -261,15 +346,15 @@ const Navbar = () => {
               </button>
             </div>
 
-            <a
-              href="/quote"
+            <Link
+              to="/quote"
               className={`zr-cta${searchOpen ? " zr-cta--gone" : ""}`}
               aria-hidden={searchOpen}
               tabIndex={searchOpen ? -1 : 0}
             >
               <FaSun className="zr-cta-icon" />
               Get Solar Quote
-            </a>
+            </Link>
 
             <button
               className={`zr-hamburger${mobileOpen ? " is-open" : ""}`}
@@ -289,13 +374,17 @@ const Navbar = () => {
 
         <div className="zr-mobile-drawer" role="dialog" aria-modal="true">
           <div className="zr-mobile-header">
-            <a href="/" className="zr-navbar__logo" onClick={closeMobile}>
-              <img src={zoraysLogo} alt="Zorays Solar" className="zorays_logo zorays_logo--drawer" />
+            <Link to="/" className="zr-navbar__logo" onClick={closeMobile}>
+              <img
+                src={zoraysLogo}
+                alt="Zorays Solar"
+                className="zorays_logo zorays_logo--drawer"
+              />
               <div className="zr-navbar__logo-text">
                 <span className="logo-name">ZORAYS</span>
                 <span className="logo-sub">SMC · PVT LTD</span>
               </div>
-            </a>
+            </Link>
 
             <button className="zr-mobile-close" onClick={closeMobile} aria-label="Close menu" type="button">
               <IoClose size={20} />
@@ -334,7 +423,7 @@ const Navbar = () => {
                   href={item.href}
                   className={`zr-mobile-link${activeLink === item.label ? " is-active" : ""}`}
                   onClick={(e) => {
-                    if (item.href.startsWith("#")) e.preventDefault();
+                    e.preventDefault();
                     handleNavClick(item.label, item.href);
                   }}
                 >
@@ -343,22 +432,33 @@ const Navbar = () => {
                       {item.icon}
                     </span>
                   )}
-                  {item.label}
+
+                  <span className="zr-mobile-link__text">{item.label}</span>
+
+                  {item.hasCartBadge && cartCount > 0 && (
+                    <span className="zr-mobile-cart-badge">{cartCount}</span>
+                  )}
                 </a>
               </li>
             ))}
           </ul>
 
           <div className="zr-mobile-contacts">
-            <a href="tel:+923001234567"><MdPhone size={15} />+92 300 1234567</a>
-            <a href="mailto:info@zorays.com.pk"><MdEmail size={15} />info@zorays.com.pk</a>
+            <a href="tel:+923001234567">
+              <MdPhone size={15} />
+              +92 300 1234567
+            </a>
+            <a href="mailto:info@zorays.com.pk">
+              <MdEmail size={15} />
+              info@zorays.com.pk
+            </a>
           </div>
 
           <div className="zr-mobile-footer">
-            <a href="/quote" className="zr-cta zr-cta--full" onClick={closeMobile}>
+            <Link to="/quote" className="zr-cta zr-cta--full" onClick={closeMobile}>
               <FaSun className="zr-cta-icon" />
               Get Solar Quote
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -372,7 +472,9 @@ const Navbar = () => {
               key={item.label}
               href={item.isSearch ? "#" : item.href}
               role={item.isSearch ? "button" : undefined}
-              className={`zr-bottom-nav__item${isActive ? " is-active" : ""}${item.isCta ? " is-cta" : ""}`}
+              className={`zr-bottom-nav__item${isActive ? " is-active" : ""}${
+                item.isCta ? " is-cta" : ""
+              }`}
               aria-label={item.isSearch ? (searchOpen ? "Close search" : "Search") : item.label}
               onClick={(e) => {
                 e.preventDefault();
@@ -381,10 +483,16 @@ const Navbar = () => {
             >
               <span className="zr-bottom-nav__icon">
                 {isActive ? item.iconActive : item.icon}
+
+                {item.hasCartBadge && cartCount > 0 && (
+                  <span className="zr-bottom-cart-badge">{cartCount}</span>
+                )}
               </span>
+
               <span className="zr-bottom-nav__label">
                 {item.isSearch && searchOpen ? "Close" : item.label}
               </span>
+
               {isActive && !item.isCta && <span className="zr-bottom-nav__dot" />}
             </a>
           );
@@ -415,8 +523,19 @@ const Navbar = () => {
           </form>
 
           <div className="zr-mob-search-tags">
-            {["Solar Net Metering", "Solar Panels", "Solar Backup", "Solar Financing", "Solar Tubewell"].map((tag) => (
-              <button key={tag} type="button" className="zr-mob-search-tag" onClick={() => setSearchQuery(tag)}>
+            {[
+              "Solar Net Metering",
+              "Solar Panels",
+              "Solar Backup",
+              "Solar Financing",
+              "Solar Tubewell",
+            ].map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                className="zr-mob-search-tag"
+                onClick={() => setSearchQuery(tag)}
+              >
                 {tag}
               </button>
             ))}

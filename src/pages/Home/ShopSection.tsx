@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   ArrowLeft,
   ArrowRight,
@@ -11,82 +13,21 @@ import {
   Minus,
 } from "lucide-react";
 import "../../assets/css/home/shopSection.css";
-
-const products = [
-  {
-    id: 1,
-    title: "Canadian Solar 620W N-Type",
-    desc: "High-efficiency bifacial solar panel for residential and commercial solar systems.",
-    price: "Rs. 29,915",
-    oldPrice: "Rs. 31,500",
-    tag: "Solar Panel",
-    rating: "4.9",
-    image:
-      "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    title: "Solis 6kW Hybrid Inverter",
-    desc: "Smart hybrid inverter for solar charging, battery backup, and load management.",
-    price: "Rs. 265,000",
-    oldPrice: "Rs. 285,000",
-    tag: "Hybrid Inverter",
-    rating: "4.8",
-    image:
-      "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    title: "SES 314Ah Lithium Battery",
-    desc: "Long-life LiFePO₄ battery for stable backup and solar energy storage.",
-    price: "Rs. 475,000",
-    oldPrice: "Rs. 505,000",
-    tag: "Lithium Battery",
-    rating: "4.9",
-    image:
-      "https://images.unsplash.com/photo-1605648916361-9bc12ad6a569?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: 4,
-    title: "GoodWe 8kW Hybrid Inverter",
-    desc: "Premium hybrid inverter for efficient backup and three-phase solar applications.",
-    price: "Rs. 360,000",
-    oldPrice: "Rs. 385,000",
-    tag: "GoodWe",
-    rating: "4.8",
-    image:
-      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: 5,
-    title: "DC Protection Box",
-    desc: "Solar protection accessories including breakers, fuses, SPD, and isolators.",
-    price: "Rs. 5,000",
-    oldPrice: "Rs. 6,500",
-    tag: "Accessories",
-    rating: "4.7",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: 6,
-    title: "Solar DC Cable 6mm",
-    desc: "Durable solar cable for safe DC wiring and reliable rooftop installations.",
-    price: "Rs. 180 / meter",
-    oldPrice: "Rs. 220 / meter",
-    tag: "Cable",
-    rating: "4.6",
-    image:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=700&auto=format&fit=crop",
-  },
-];
+import { shopProductsData } from "../../Data/home/shopProductsData";
+import { useAppDispatch, useAppSelector } from "../../app/reduxHooks";
+import { addToCart } from "../../app/features/cart/cartSlice";
 
 const ShopSection = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const cartItems = useAppSelector((state) => state.cart.items);
+
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
   const [quantities, setQuantities] = useState<Record<number, number>>(
-    products.reduce((acc, product) => {
+    shopProductsData.reduce((acc, product) => {
       acc[product.id] = 1;
       return acc;
     }, {} as Record<number, number>)
@@ -104,6 +45,47 @@ const ShopSection = () => {
       ...prev,
       [productId]: Math.max(1, prev[productId] - 1),
     }));
+  };
+
+  const isProductAlreadyInCart = (productId: number) => {
+    return cartItems.some((item) => item.id === productId);
+  };
+
+  const handleAddToCart = (productId: number) => {
+    const product = shopProductsData.find((item) => item.id === productId);
+
+    if (!product) return;
+
+    if (isProductAlreadyInCart(productId)) {
+      toast.info("This product is already added to cart.");
+      return;
+    }
+
+    dispatch(
+      addToCart({
+        product,
+        quantity: quantities[productId] || 1,
+      })
+    );
+
+    toast.success("Product added to cart.");
+  };
+
+  const handleOrderNow = (productId: number) => {
+    const product = shopProductsData.find((item) => item.id === productId);
+
+    if (!product) return;
+
+    if (!isProductAlreadyInCart(productId)) {
+      dispatch(
+        addToCart({
+          product,
+          quantity: quantities[productId] || 1,
+        })
+      );
+    }
+
+    navigate("/checkout");
   };
 
   const scrollToProduct = (index: number) => {
@@ -124,7 +106,7 @@ const ShopSection = () => {
   const scrollProducts = (direction: "left" | "right") => {
     const nextIndex =
       direction === "right"
-        ? Math.min(activeIndex + 1, products.length - 1)
+        ? Math.min(activeIndex + 1, shopProductsData.length - 1)
         : Math.max(activeIndex - 1, 0);
 
     scrollToProduct(nextIndex);
@@ -203,7 +185,7 @@ const ShopSection = () => {
         </div>
 
         <div className="shop-products-scroll" ref={scrollRef}>
-          {products.map((product) => (
+          {shopProductsData.map((product) => (
             <div key={product.id} className="shop-product-card" tabIndex={0}>
               <div className="shop-product-image-wrap">
                 <img
@@ -245,6 +227,7 @@ const ShopSection = () => {
                   <span>{product.rating}</span>
                   <small>Verified</small>
                 </div>
+
                 <div className="shop-price-row">
                   <strong>{product.price}</strong>
                   <del>{product.oldPrice}</del>
@@ -275,14 +258,22 @@ const ShopSection = () => {
                 </div>
 
                 <div className="shop-card-actions">
-                  <button type="button" className="shop-cart-btn">
+                  <button
+                    type="button"
+                    className="shop-cart-btn"
+                    onClick={() => handleAddToCart(product.id)}
+                  >
                     <ShoppingCart size={15} />
                     Add to Cart
                   </button>
 
-                  <a href="/shop" className="shop-order-btn">
+                  <button
+                    type="button"
+                    className="shop-order-btn"
+                    onClick={() => handleOrderNow(product.id)}
+                  >
                     Order Now
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
@@ -290,7 +281,7 @@ const ShopSection = () => {
         </div>
 
         <div className="shop-dots">
-          {products.map((product, index) => (
+          {shopProductsData.map((product, index) => (
             <button
               key={product.id}
               type="button"
