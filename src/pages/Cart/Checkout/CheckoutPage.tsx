@@ -39,7 +39,7 @@ const CheckoutPage = () => {
             <p>Review your selected solar products before submitting your order.</p>
           </div>
 
-          <Link to="/shop" className="checkout-continue-link">
+          <Link to="/zorays-shop" className="checkout-continue-link">
             Continue Shopping
           </Link>
         </div>
@@ -49,7 +49,7 @@ const CheckoutPage = () => {
             <ShoppingCart size={42} />
             <h2>Your cart is empty</h2>
             <p>Add solar products to cart before checkout.</p>
-            <Link to="/shop">Go to Shop</Link>
+            <Link to="/zorays-shop">Go to Shop</Link>
           </div>
         ) : (
           <div className="checkout-layout">

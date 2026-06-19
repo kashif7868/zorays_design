@@ -51,7 +51,7 @@ const CartPage = () => {
             </p>
           </div>
 
-          <Link to="/shop" className="zr-cart-continue-btn">
+          <Link to="/zorays-shop" className="zr-cart-continue-btn">
             Continue Shopping
             <ArrowRight size={17} />
           </Link>
@@ -73,7 +73,7 @@ const CartPage = () => {
                 checkout.
               </p>
 
-              <Link to="/shop" className="zr-cart-empty-btn">
+              <Link to="/zorays-shop" className="zr-cart-empty-btn">
                 Explore Solar Shop
                 <ArrowRight size={17} />
               </Link>

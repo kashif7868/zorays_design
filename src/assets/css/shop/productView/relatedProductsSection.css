@@ -1,0 +1,349 @@
+/* ============================================================
+   RELATED PRODUCTS SECTION
+   ============================================================ */
+
+.zpr-section {
+  position: relative;
+  padding: 40px 18px 78px;
+  background: linear-gradient(180deg, #fffcf0 0%, #ffffff 100%);
+}
+
+.zpr-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.zpr-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--zpv-yellow-soft);
+  color: var(--zpv-text);
+  border: 1px solid rgba(245, 196, 0, 0.35);
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.zpr-header h2 {
+  margin: 0;
+  color: var(--zpv-text);
+  font-size: clamp(28px, 3.5vw, 42px);
+  line-height: 1.14;
+  letter-spacing: -1px;
+  font-weight: 900;
+}
+
+.zpr-header p {
+  margin: 0;
+  max-width: 430px;
+  color: var(--zpv-muted);
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+.zpr-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.zpr-card {
+  background: #ffffff;
+  border: 1px solid var(--zpv-border);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(60, 48, 0, 0.07);
+  cursor: pointer;
+  transition: 0.22s ease;
+}
+
+.zpr-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(245, 196, 0, 0.55);
+  box-shadow: 0 16px 38px rgba(60, 48, 0, 0.12);
+}
+
+.zpr-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 155px;
+  overflow: hidden;
+  background: #fff7d1;
+}
+
+.zpr-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.35s ease;
+}
+
+.zpr-card:hover .zpr-image-wrap img {
+  transform: scale(1.045);
+}
+
+.zpr-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--zpv-text);
+  border: 1px solid rgba(245, 196, 0, 0.45);
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.zpr-view-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--zpv-text);
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(60, 48, 0, 0.1);
+  transition: 0.18s ease;
+}
+
+.zpr-view-btn:hover {
+  background: var(--zpv-yellow);
+  transform: translateY(-2px);
+}
+
+.zpr-content {
+  padding: 14px;
+}
+
+.zpr-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.zpr-meta > span {
+  color: var(--zpv-text);
+  background: var(--zpv-yellow-soft);
+  border: 1px solid rgba(245, 196, 0, 0.35);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.zpr-meta > div {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--zpv-yellow);
+}
+
+.zpr-meta strong {
+  color: var(--zpv-text);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.zpr-content h3 {
+  margin: 0;
+  color: var(--zpv-text);
+  font-size: 15px;
+  line-height: 1.32;
+  font-weight: 900;
+  min-height: 40px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.zpr-content p {
+  margin: 7px 0 11px;
+  color: var(--zpv-muted);
+  font-size: 12px;
+  line-height: 1.55;
+  font-weight: 500;
+  min-height: 56px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.zpr-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 9px;
+  margin-bottom: 11px;
+}
+
+.zpr-price-row strong {
+  color: var(--zpv-text);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.zpr-price-row del {
+  color: #9a927c;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.zpr-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.zpr-cart-btn,
+.zpr-order-btn {
+  min-height: 38px;
+  border: 0;
+  border-radius: 12px;
+  font-family: var(--zpv-font);
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: 0.2s ease;
+}
+
+.zpr-cart-btn {
+  background: #ffffff;
+  color: var(--zpv-text);
+  border: 1px solid rgba(245, 196, 0, 0.45);
+}
+
+.zpr-cart-btn:hover {
+  background: var(--zpv-yellow-soft);
+}
+
+.zpr-order-btn {
+  background: var(--zpv-yellow);
+  color: #111111;
+  box-shadow: 0 8px 18px rgba(245, 196, 0, 0.24);
+}
+
+.zpr-order-btn:hover {
+  background: var(--zpv-yellow-dark);
+}
+
+@media (max-width: 1080px) {
+  .zpr-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .zpr-section {
+    padding: 34px 12px 64px;
+  }
+
+  .zpr-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .zpr-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .zpr-image-wrap {
+    height: 130px;
+  }
+}
+
+@media (max-width: 430px) {
+  .zpr-grid {
+    gap: 9px;
+  }
+
+  .zpr-card {
+    border-radius: 17px;
+  }
+
+  .zpr-image-wrap {
+    height: 108px;
+  }
+
+  .zpr-content {
+    padding: 9px;
+  }
+
+  .zpr-tag {
+    font-size: 8.5px;
+    padding: 4px 6px;
+    top: 7px;
+    left: 7px;
+  }
+
+  .zpr-view-btn {
+    width: 28px;
+    height: 28px;
+    right: 7px;
+    bottom: 7px;
+  }
+
+  .zpr-meta > span {
+    font-size: 8.5px;
+    padding: 3px 6px;
+    max-width: 74px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .zpr-meta strong {
+    font-size: 9.5px;
+  }
+
+  .zpr-content h3 {
+    font-size: 11.5px;
+    min-height: 30px;
+  }
+
+  .zpr-content p {
+    display: none;
+  }
+
+  .zpr-price-row strong {
+    font-size: 11.5px;
+  }
+
+  .zpr-price-row del {
+    display: none;
+  }
+
+  .zpr-actions {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+
+  .zpr-cart-btn,
+  .zpr-order-btn {
+    min-height: 31px;
+    font-size: 9.5px;
+  }
+}

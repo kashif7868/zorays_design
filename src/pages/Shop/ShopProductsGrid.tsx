@@ -6,7 +6,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Eye,
-  Heart,
   Minus,
   Plus,
   ShoppingCart,
@@ -109,6 +108,10 @@ const ShopProductsGrid = ({
     return cartItems.some((item) => item.id === productId);
   };
 
+const handleViewProduct = (productId: number) => {
+  navigate(`/zorays-shop/product/${productId}`);
+};
+
   const handleAddToCart = (productId: number) => {
     const product = zoraysShopProductsData.find((item) => item.id === productId);
 
@@ -193,7 +196,18 @@ const ShopProductsGrid = ({
           <>
             <div className="zs-products-grid">
               {paginatedProducts.map((product) => (
-                <article className="zs-product-card" key={product.id}>
+                <article
+                  className="zs-product-card"
+                  key={product.id}
+                  onClick={() => handleViewProduct(product.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter") {
+                      handleViewProduct(product.id);
+                    }
+                  }}
+                >
                   <div className="zs-product-image-wrap">
                     <img
                       src={product.image}
@@ -208,12 +222,15 @@ const ShopProductsGrid = ({
                     )}
 
                     <div className="zs-product-quick-actions">
-                      <button type="button" aria-label={`View ${product.title}`}>
+                      <button
+                        type="button"
+                        aria-label={`View ${product.title}`}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleViewProduct(product.id);
+                        }}
+                      >
                         <Eye size={15} />
-                      </button>
-
-                      <button type="button" aria-label={`Save ${product.title}`}>
-                        <Heart size={15} />
                       </button>
                     </div>
                   </div>
@@ -242,7 +259,10 @@ const ShopProductsGrid = ({
                       <div className="zs-product-qty-control">
                         <button
                           type="button"
-                          onClick={() => decreaseQuantity(product.id)}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            decreaseQuantity(product.id);
+                          }}
                           aria-label={`Decrease ${product.title} quantity`}
                         >
                           <Minus size={13} />
@@ -252,7 +272,10 @@ const ShopProductsGrid = ({
 
                         <button
                           type="button"
-                          onClick={() => increaseQuantity(product.id)}
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            increaseQuantity(product.id);
+                          }}
                           aria-label={`Increase ${product.title} quantity`}
                         >
                           <Plus size={13} />
@@ -264,7 +287,10 @@ const ShopProductsGrid = ({
                       <button
                         type="button"
                         className="zs-product-cart-btn"
-                        onClick={() => handleAddToCart(product.id)}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleAddToCart(product.id);
+                        }}
                       >
                         <ShoppingCart size={15} />
                         Add to Cart
@@ -273,7 +299,10 @@ const ShopProductsGrid = ({
                       <button
                         type="button"
                         className="zs-product-order-btn"
-                        onClick={() => handleOrderNow(product.id)}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleOrderNow(product.id);
+                        }}
                       >
                         Order Now
                         <ArrowRight size={15} />

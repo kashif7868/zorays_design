@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import type { FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import {
@@ -22,8 +23,8 @@ import {
 import { RiMenu3Line } from "react-icons/ri";
 import { PiSolarPanelLight } from "react-icons/pi";
 import { MdOutlineElectricBolt, MdElectricBolt } from "react-icons/md";
-import { BsShop, BsShopWindow, BsCart3 } from "react-icons/bs";
-
+import { BsShop, BsShopWindow } from "react-icons/bs";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { useAppSelector } from "../app/reduxHooks";
 
 import zoraysLogo from "../assets/images/logo.png";
@@ -45,7 +46,12 @@ const drawerLinks = [
   { label: "Solar Financing", href: "/solar-financing" },
   { label: "Solar Tubewell", href: "/solar-tubewell" },
   { label: "Solar Clientele", href: "/solar-clientele" },
-  { label: "Solar Shop", href: "/shop", icon: <BsShop size={15} />, hasCartBadge: true },
+  {
+    label: "Zorays Shop",
+    href: "/zorays-shop",
+    icon: <BsShop size={15} />,
+    hasCartBadge: true,
+  },
   { label: "Solar Blog", href: "/solar-blog" },
   { label: "Zorays Pakistan", href: "/zorays-pakistan" },
 ];
@@ -72,7 +78,7 @@ const bottomNav = [
   },
   {
     label: "Shop",
-    href: "/shop",
+    href: "/zorays-shop",
     icon: <BsShop size={20} />,
     iconActive: <BsShopWindow size={20} />,
     hasCartBadge: true,
@@ -106,11 +112,28 @@ const Navbar = () => {
   useEffect(() => {
     if (location.pathname === "/") {
       setActiveBottom("Home");
-    } else if (location.pathname.startsWith("/shop")) {
-      setActiveBottom("Shop");
-    } else if (location.pathname.startsWith("/quote")) {
-      setActiveBottom("Quote");
+      setActiveLink(null);
+      return;
     }
+
+    if (location.pathname.startsWith("/zorays-shop")) {
+      setActiveBottom("Shop");
+      setActiveLink("Zorays Shop");
+      return;
+    }
+
+    if (location.pathname.startsWith("/quote")) {
+      setActiveBottom("Quote");
+      setActiveLink(null);
+      return;
+    }
+
+    const matchedLink = navLinks.find(
+      (item) =>
+        !item.href.startsWith("#") && location.pathname.startsWith(item.href)
+    );
+
+    setActiveLink(matchedLink ? matchedLink.label : null);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -140,7 +163,10 @@ const Navbar = () => {
     if (!searchOpen) return;
 
     const fn = (e: MouseEvent) => {
-      if (searchRowRef.current && !searchRowRef.current.contains(e.target as Node)) {
+      if (
+        searchRowRef.current &&
+        !searchRowRef.current.contains(e.target as Node)
+      ) {
         closeSearch();
       }
     };
@@ -186,7 +212,7 @@ const Navbar = () => {
     if (href.startsWith("#")) {
       if (location.pathname !== "/") {
         navigate("/");
-        setTimeout(() => scrollToSection(href), 100);
+        setTimeout(() => scrollToSection(href), 120);
         return;
       }
 
@@ -213,13 +239,25 @@ const Navbar = () => {
     goToLink(item.href);
   };
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
+  const handleSearchSubmit = (e: FormEvent) => {
     e.preventDefault();
 
     const cleanQuery = searchQuery.trim();
     if (!cleanQuery) return;
 
-    console.log("Search:", cleanQuery);
+    navigate(`/zorays-shop?search=${encodeURIComponent(cleanQuery)}`);
+    closeSearch();
+    closeMobile();
+  };
+
+  const isNavItemActive = (label: string, href: string) => {
+    if (label === activeLink) return true;
+
+    if (href === "/zorays-shop" && location.pathname.startsWith("/zorays-shop")) {
+      return true;
+    }
+
+    return !href.startsWith("#") && location.pathname === href;
   };
 
   return (
@@ -272,6 +310,7 @@ const Navbar = () => {
         <div className="zr-navbar__inner">
           <Link to="/" className="zr-navbar__logo" aria-label="Zorays Home">
             <img src={zoraysLogo} alt="Zorays Solar" className="zorays_logo" />
+
             <div className="zr-navbar__logo-text">
               <span className="logo-name">ZORAYS</span>
               <span className="logo-sub">SMC · PVT LTD</span>
@@ -279,36 +318,59 @@ const Navbar = () => {
           </Link>
 
           <ul className="zr-navbar__menu">
-            {navLinks.map((item) => (
-              <li key={item.label} className="zr-nav-item">
-                <a
-                  href={item.href}
-                  className={`zr-nav-link${activeLink === item.label ? " is-active" : ""}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.label, item.href);
-                  }}
-                >
-                  {item.label}
-                  {activeLink === item.label && <span className="zr-nav-active-bar" />}
-                </a>
-              </li>
-            ))}
+            {navLinks.map((item) => {
+              const isActive = isNavItemActive(item.label, item.href);
+
+              return (
+                <li key={item.label} className="zr-nav-item">
+                  <a
+                    href={item.href}
+                    className={`zr-nav-link${isActive ? " is-active" : ""}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.label, item.href);
+                    }}
+                  >
+                    {item.label}
+                    {isActive && <span className="zr-nav-active-bar" />}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="zr-navbar__right">
+            <Link
+              to="/zorays-shop"
+              className="zr-shop-quick-link"
+              aria-label="Zorays Shop"
+              title="Zorays Shop"
+            >
+              <BsShop size={17} />
+              <span>Zorays Shop</span>
+            </Link>
+
             <Link
               to="/cart"
               className="zr-icon-btn zr-cart-link"
               aria-label={`Cart ${cartCount} items`}
               title="Cart"
             >
-              <BsCart3 size={18} />
-              {cartCount > 0 && <span className="zr-cart-badge">{cartCount}</span>}
+              <HiOutlineShoppingBag size={21} />
+              {cartCount > 0 && (
+                <span className="zr-cart-badge">{cartCount}</span>
+              )}
             </Link>
 
-            <div ref={searchRowRef} className={`zr-search-row${searchOpen ? " is-open" : ""}`}>
-              <form onSubmit={handleSearchSubmit} className="zr-search-form" role="search">
+            <div
+              ref={searchRowRef}
+              className={`zr-search-row${searchOpen ? " is-open" : ""}`}
+            >
+              <form
+                onSubmit={handleSearchSubmit}
+                className="zr-search-form"
+                role="search"
+              >
                 <input
                   ref={searchInputRef}
                   type="search"
@@ -342,7 +404,11 @@ const Navbar = () => {
                 aria-expanded={searchOpen}
                 type="button"
               >
-                {searchOpen ? <IoClose size={19} /> : <IoSearchOutline size={19} />}
+                {searchOpen ? (
+                  <IoClose size={19} />
+                ) : (
+                  <IoSearchOutline size={19} />
+                )}
               </button>
             </div>
 
@@ -369,7 +435,10 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <div className={`zr-mobile-overlay${mobileOpen ? " is-open" : ""}`} aria-hidden={!mobileOpen}>
+      <div
+        className={`zr-mobile-overlay${mobileOpen ? " is-open" : ""}`}
+        aria-hidden={!mobileOpen}
+      >
         <div className="zr-mobile-backdrop" onClick={closeMobile} />
 
         <div className="zr-mobile-drawer" role="dialog" aria-modal="true">
@@ -380,20 +449,35 @@ const Navbar = () => {
                 alt="Zorays Solar"
                 className="zorays_logo zorays_logo--drawer"
               />
+
               <div className="zr-navbar__logo-text">
                 <span className="logo-name">ZORAYS</span>
                 <span className="logo-sub">SMC · PVT LTD</span>
               </div>
             </Link>
 
-            <button className="zr-mobile-close" onClick={closeMobile} aria-label="Close menu" type="button">
+            <button
+              className="zr-mobile-close"
+              onClick={closeMobile}
+              aria-label="Close menu"
+              type="button"
+            >
               <IoClose size={20} />
             </button>
           </div>
 
           <div className="zr-mobile-search-box">
-            <form onSubmit={handleSearchSubmit} className="zr-drawer-search-form" role="search">
-              <IoSearchOutline size={16} className="zr-drawer-search-icon" aria-hidden="true" />
+            <form
+              onSubmit={handleSearchSubmit}
+              className="zr-drawer-search-form"
+              role="search"
+            >
+              <IoSearchOutline
+                size={16}
+                className="zr-drawer-search-icon"
+                aria-hidden="true"
+              />
+
               <input
                 type="search"
                 className="zr-drawer-search-input"
@@ -417,30 +501,34 @@ const Navbar = () => {
           </div>
 
           <ul className="zr-mobile-nav">
-            {drawerLinks.map((item) => (
-              <li key={item.label} className="zr-mobile-item">
-                <a
-                  href={item.href}
-                  className={`zr-mobile-link${activeLink === item.label ? " is-active" : ""}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleNavClick(item.label, item.href);
-                  }}
-                >
-                  {item.icon && (
-                    <span className="zr-mobile-link__icon" aria-hidden="true">
-                      {item.icon}
-                    </span>
-                  )}
+            {drawerLinks.map((item) => {
+              const isActive = isNavItemActive(item.label, item.href);
 
-                  <span className="zr-mobile-link__text">{item.label}</span>
+              return (
+                <li key={item.label} className="zr-mobile-item">
+                  <a
+                    href={item.href}
+                    className={`zr-mobile-link${isActive ? " is-active" : ""}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.label, item.href);
+                    }}
+                  >
+                    {item.icon && (
+                      <span className="zr-mobile-link__icon" aria-hidden="true">
+                        {item.icon}
+                      </span>
+                    )}
 
-                  {item.hasCartBadge && cartCount > 0 && (
-                    <span className="zr-mobile-cart-badge">{cartCount}</span>
-                  )}
-                </a>
-              </li>
-            ))}
+                    <span className="zr-mobile-link__text">{item.label}</span>
+
+                    {item.hasCartBadge && cartCount > 0 && (
+                      <span className="zr-mobile-cart-badge">{cartCount}</span>
+                    )}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="zr-mobile-contacts">
@@ -448,6 +536,7 @@ const Navbar = () => {
               <MdPhone size={15} />
               +92 300 1234567
             </a>
+
             <a href="mailto:info@zorays.com.pk">
               <MdEmail size={15} />
               info@zorays.com.pk
@@ -455,7 +544,11 @@ const Navbar = () => {
           </div>
 
           <div className="zr-mobile-footer">
-            <Link to="/quote" className="zr-cta zr-cta--full" onClick={closeMobile}>
+            <Link
+              to="/quote"
+              className="zr-cta zr-cta--full"
+              onClick={closeMobile}
+            >
               <FaSun className="zr-cta-icon" />
               Get Solar Quote
             </Link>
@@ -465,7 +558,9 @@ const Navbar = () => {
 
       <nav className="zr-bottom-nav" aria-label="Bottom navigation">
         {bottomNav.map((item) => {
-          const isActive = item.isSearch ? searchOpen : activeBottom === item.label;
+          const isActive = item.isSearch
+            ? searchOpen
+            : activeBottom === item.label;
 
           return (
             <a
@@ -475,7 +570,13 @@ const Navbar = () => {
               className={`zr-bottom-nav__item${isActive ? " is-active" : ""}${
                 item.isCta ? " is-cta" : ""
               }`}
-              aria-label={item.isSearch ? (searchOpen ? "Close search" : "Search") : item.label}
+              aria-label={
+                item.isSearch
+                  ? searchOpen
+                    ? "Close search"
+                    : "Search"
+                  : item.label
+              }
               onClick={(e) => {
                 e.preventDefault();
                 handleBottomClick(item);
@@ -493,7 +594,9 @@ const Navbar = () => {
                 {item.isSearch && searchOpen ? "Close" : item.label}
               </span>
 
-              {isActive && !item.isCta && <span className="zr-bottom-nav__dot" />}
+              {isActive && !item.isCta && (
+                <span className="zr-bottom-nav__dot" />
+              )}
             </a>
           );
         })}
@@ -504,9 +607,21 @@ const Navbar = () => {
         onClick={closeSearch}
         aria-hidden={!searchOpen}
       >
-        <div className="zr-mob-search-panel" onClick={(e) => e.stopPropagation()}>
-          <form onSubmit={handleSearchSubmit} className="zr-mob-search-form" role="search">
-            <IoSearchOutline size={20} className="zr-mob-search-icon" aria-hidden="true" />
+        <div
+          className="zr-mob-search-panel"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <form
+            onSubmit={handleSearchSubmit}
+            className="zr-mob-search-form"
+            role="search"
+          >
+            <IoSearchOutline
+              size={20}
+              className="zr-mob-search-icon"
+              aria-hidden="true"
+            />
+
             <input
               type="search"
               className="zr-mob-search-input"
@@ -517,7 +632,12 @@ const Navbar = () => {
               aria-label="Search"
             />
 
-            <button type="button" className="zr-mob-search-close" onClick={closeSearch} aria-label="Close">
+            <button
+              type="button"
+              className="zr-mob-search-close"
+              onClick={closeSearch}
+              aria-label="Close"
+            >
               <IoClose size={20} />
             </button>
           </form>
