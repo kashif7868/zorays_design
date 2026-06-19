@@ -6,12 +6,16 @@ import { Provider } from "react-redux";
 import { store } from "./app/store.ts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ScrollToTop from "./components/common/ScrollToTop.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
+        <ScrollToTop />
+
         <App />
+
         <ToastContainer
           position="top-right"
           autoClose={2200}

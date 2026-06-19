@@ -2,8 +2,8 @@ import { useState } from "react";
 import ShopHero from "./ShopHero";
 import ShopCategoryFilter from "./ShopCategoryFilter";
 import ShopProductsGrid from "./ShopProductsGrid";
-// import ShopWhyZorays from "./ShopWhyZorays";
-// import ShopCtaSection from "./ShopCtaSection";
+import ShopWhyZorays from "./ShopWhyZorays";
+import ShopCtaSection from "./ShopCtaSection";
 import "../../assets/css/shop/zoraysShop.css";
 
 const ZoraysShop = () => {
@@ -30,8 +30,8 @@ const ZoraysShop = () => {
         sortOption={sortOption}
       />
 
-      {/* <ShopWhyZorays /> */}
-      {/* <ShopCtaSection /> */}
+      <ShopWhyZorays />
+      <ShopCtaSection />
     </main>
   );
 };

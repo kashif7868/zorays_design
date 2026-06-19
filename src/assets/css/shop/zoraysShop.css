@@ -1,22 +1,30 @@
 /* ============================================================
    ZORAYS SHOP PAGE BASE
-   Only global shop page wrapper styles here
+   White + #f5c400 Theme
    ============================================================ */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --zs-green: #1a8a3c;
-  --zs-green-dark: #156e30;
-  --zs-green-soft: rgba(26, 138, 60, 0.08);
-  --zs-green-mid: rgba(26, 138, 60, 0.16);
+  --zs-green: #f5c400;
+  --zs-green-dark: #d6aa00;
+  --zs-green-soft: rgba(245, 196, 0, 0.12);
+  --zs-green-mid: rgba(245, 196, 0, 0.24);
+
+  --zs-yellow: #f5c400;
+  --zs-yellow-dark: #d6aa00;
+  --zs-yellow-soft: rgba(245, 196, 0, 0.12);
+  --zs-yellow-mid: rgba(245, 196, 0, 0.24);
+
   --zs-white: #ffffff;
-  --zs-bg: #f4faf6;
-  --zs-text: #17231d;
-  --zs-muted: #66736b;
-  --zs-border: #e4eee8;
-  --zs-shadow: 0 20px 55px rgba(15, 56, 34, 0.12);
-  --zs-shadow-soft: 0 10px 30px rgba(15, 56, 34, 0.08);
+  --zs-bg: #fffcf0;
+  --zs-text: #171717;
+  --zs-muted: #6f6a58;
+  --zs-border: #eee4bd;
+  --zs-black: #111111;
+
+  --zs-shadow: 0 20px 55px rgba(60, 48, 0, 0.12);
+  --zs-shadow-soft: 0 10px 30px rgba(60, 48, 0, 0.08);
   --zs-font: "Poppins", sans-serif;
 }
 
