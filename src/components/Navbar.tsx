@@ -347,7 +347,6 @@ const Navbar = () => {
               title="Zorays Shop"
             >
               <BsShop size={17} />
-              <span>Zorays Shop</span>
             </Link>
 
             <Link
