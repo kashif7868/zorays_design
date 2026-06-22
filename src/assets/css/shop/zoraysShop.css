@@ -1,37 +1,63 @@
 /* ============================================================
    ZORAYS SHOP PAGE BASE
-   White + #f5c400 Theme
+   White + Purple + Orange Theme
    ============================================================ */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
 
 :root {
-  --zs-green: #f5c400;
-  --zs-green-dark: #d6aa00;
-  --zs-green-soft: rgba(245, 196, 0, 0.12);
-  --zs-green-mid: rgba(245, 196, 0, 0.24);
+  /* Main Brand Colors */
+  --zs-purple: #5b2cff;
+  --zs-purple-dark: #3f1bb8;
+  --zs-purple-soft: rgba(91, 44, 255, 0.10);
+  --zs-purple-mid: rgba(91, 44, 255, 0.22);
 
-  --zs-yellow: #f5c400;
-  --zs-yellow-dark: #d6aa00;
-  --zs-yellow-soft: rgba(245, 196, 0, 0.12);
-  --zs-yellow-mid: rgba(245, 196, 0, 0.24);
+  --zs-orange: #ff8a00;
+  --zs-orange-dark: #d96f00;
+  --zs-orange-soft: rgba(255, 138, 0, 0.12);
+  --zs-orange-mid: rgba(255, 138, 0, 0.25);
 
+  /* Compatibility Variables */
+  --zs-green: var(--zs-purple);
+  --zs-green-dark: var(--zs-purple-dark);
+  --zs-green-soft: var(--zs-purple-soft);
+  --zs-green-mid: var(--zs-purple-mid);
+
+  --zs-yellow: var(--zs-orange);
+  --zs-yellow-dark: var(--zs-orange-dark);
+  --zs-yellow-soft: var(--zs-orange-soft);
+  --zs-yellow-mid: var(--zs-orange-mid);
+
+  /* Neutral Colors */
   --zs-white: #ffffff;
-  --zs-bg: #fffcf0;
-  --zs-text: #171717;
-  --zs-muted: #6f6a58;
-  --zs-border: #eee4bd;
+  --zs-bg: #fbf8ff;
+  --zs-bg-soft: #fff7ed;
+  --zs-text: #171321;
+  --zs-muted: #6d6478;
+  --zs-border: #eadfff;
   --zs-black: #111111;
 
-  --zs-shadow: 0 20px 55px rgba(60, 48, 0, 0.12);
-  --zs-shadow-soft: 0 10px 30px rgba(60, 48, 0, 0.08);
+  /* Effects */
+  --zs-gradient: linear-gradient(135deg, var(--zs-purple), var(--zs-orange));
+  --zs-gradient-soft: linear-gradient(
+    135deg,
+    rgba(91, 44, 255, 0.10),
+    rgba(255, 138, 0, 0.12)
+  );
+
+  --zs-shadow: 0 20px 55px rgba(50, 20, 120, 0.14);
+  --zs-shadow-soft: 0 10px 30px rgba(50, 20, 120, 0.08);
+
   --zs-font: "Poppins", sans-serif;
 }
 
 .zorays-shop-page {
   width: 100%;
   min-height: 100vh;
-  background: #ffffff;
+  background:
+    radial-gradient(circle at top left, rgba(91, 44, 255, 0.08), transparent 34%),
+    radial-gradient(circle at top right, rgba(255, 138, 0, 0.10), transparent 32%),
+    #ffffff;
   color: var(--zs-text);
   font-family: var(--zs-font);
   overflow-x: hidden;
@@ -41,4 +67,6 @@
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
+  padding-left: 18px;
+  padding-right: 18px;
 }
