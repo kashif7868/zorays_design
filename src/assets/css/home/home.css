@@ -1,0 +1,49 @@
+.home-page {
+  width: 100%;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+.home-section {
+  width: 100%;
+  position: relative;
+}
+
+.home-section--hero {
+  padding: 0;
+  margin: 0;
+}
+
+.home-section--soft {
+  background: #f7faf8;
+}
+
+.home-section--green-soft {
+  background: #f3fbf6;
+}
+
+.home-section--form {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f7faf8 100%
+  );
+}
+
+.home-section--final {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f5faf7 100%
+  );
+}
+
+.home-page img {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .home-page {
+    overflow-x: hidden;
+  }
+}

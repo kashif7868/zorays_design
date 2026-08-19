@@ -1,32 +1,68 @@
+/* ============================================================
+   ZORAYS SOLAR — TRUST PROMISE
+   Same Layout + Compact + Responsive Process Scroll
+   ============================================================ */
+
 .ztp-section {
   position: relative;
-  padding: 58px 18px 64px;
+
+  padding: 46px 18px 52px;
+
   background:
-    radial-gradient(circle at 8% 14%, rgba(0, 128, 73, 0.075), transparent 30%),
-    radial-gradient(circle at 92% 82%, rgba(255, 196, 0, 0.12), transparent 28%),
-    linear-gradient(180deg, #ffffff 0%, #f7fff9 100%);
+    radial-gradient(
+      circle at 8% 14%,
+      rgba(0, 128, 73, 0.065),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 92% 82%,
+      rgba(255, 196, 0, 0.09),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7fff9 100%
+    );
+
   overflow: hidden;
 }
 
 .ztp-section::before {
   content: "";
+
   position: absolute;
   inset: 0;
+
   background:
-    linear-gradient(120deg, transparent 0%, rgba(0, 128, 73, 0.025) 50%, transparent 100%);
+    linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(0, 128, 73, 0.022) 50%,
+      transparent 100%
+    );
+
   pointer-events: none;
 }
 
 .ztp-container {
   position: relative;
   z-index: 1;
-  width: min(100%, 1240px);
+
+  width: min(1220px, 100%);
   margin: 0 auto;
 }
 
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
 .ztp-header {
-  max-width: 720px;
-  margin: 0 auto 30px;
+  max-width: 700px;
+
+  margin: 0 auto 24px;
+
   text-align: center;
 }
 
@@ -34,113 +70,201 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 18px;
-  border: 1px solid rgba(0, 128, 73, 0.2);
+
+  padding: 7px 15px;
+
+  border: 1px solid rgba(0, 128, 73, 0.18);
+
   border-radius: 999px;
+
   background: #ffffff;
+
   color: #008047;
-  font-size: 12.5px;
-  font-weight: 800;
+
+  font-size: 10.5px;
+  font-weight: 850;
+
   line-height: 1;
-  letter-spacing: 0.35px;
+
+  letter-spacing: 0.45px;
+
   text-transform: uppercase;
-  box-shadow: 0 10px 26px rgba(0, 80, 45, 0.055);
+
+  box-shadow:
+    0 7px 18px rgba(0, 80, 45, 0.045);
 }
 
 .ztp-heading {
-  margin: 15px 0 9px;
+  margin: 13px 0 8px;
+
   color: #005f35;
-  font-size: clamp(30px, 4vw, 48px);
+
+  font-size: clamp(28px, 3.5vw, 42px);
   line-height: 1.08;
+
   font-weight: 900;
-  letter-spacing: -0.04em;
+
+  letter-spacing: -0.035em;
 }
 
 .ztp-heading span {
-  color: #ffc400;
+  color: #f5c400;
 }
 
 .ztp-description {
-  margin: 0;
+  max-width: 620px;
+
+  margin: 0 auto;
+
   color: #51635b;
-  font-size: 15.5px;
-  line-height: 1.65;
+
+  font-size: 13.5px;
+  line-height: 1.6;
 }
+
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
 
 .ztp-main-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: 22px;
+
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
+  gap: 18px;
+
   align-items: stretch;
 }
 
+
+/* ============================================================
+   VIDEO
+   ============================================================ */
+
 .ztp-video-card {
   min-width: 0;
-  border-radius: 22px;
+
+  border-radius: 17px;
+
   background: #ffffff;
+
   overflow: hidden;
-  border: 1px solid rgba(0, 128, 73, 0.11);
-  box-shadow: 0 20px 48px rgba(0, 89, 50, 0.14);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  border:
+    1px solid rgba(0, 128, 73, 0.1);
+
+  box-shadow:
+    0 14px 34px rgba(0, 89, 50, 0.1);
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .ztp-video-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 24px 58px rgba(0, 89, 50, 0.18);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 18px 42px rgba(0, 89, 50, 0.13);
 }
 
 .ztp-video-frame {
   position: relative;
+
   width: 100%;
+
   aspect-ratio: 16 / 9;
+
   overflow: hidden;
+
   background: #063d25;
 }
 
 .ztp-video-frame iframe {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100%;
+
+  border: 0;
 }
+
+
+/* ============================================================
+   PROMISE GRID
+   ============================================================ */
 
 .ztp-promise-grid {
   min-width: 0;
+
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 13px;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
 }
 
 .ztp-promise-card {
   min-width: 0;
+
   display: grid;
-  grid-template-columns: 46px minmax(0, 1fr);
-  gap: 12px;
+
+  grid-template-columns:
+    40px minmax(0, 1fr);
+
+  gap: 10px;
+
   align-items: flex-start;
-  padding: 15px;
-  border: 1px solid rgba(0, 128, 73, 0.1);
-  border-radius: 17px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 13px 30px rgba(0, 80, 45, 0.065);
-  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+
+  padding: 12px;
+
+  border:
+    1px solid rgba(0, 128, 73, 0.09);
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 9px 22px rgba(0, 80, 45, 0.05);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .ztp-promise-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(0, 128, 73, 0.24);
-  box-shadow: 0 18px 40px rgba(0, 80, 45, 0.11);
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(0, 128, 73, 0.2);
+
+  box-shadow:
+    0 13px 28px rgba(0, 80, 45, 0.08);
 }
 
 .ztp-promise-icon {
-  width: 46px;
-  height: 46px;
+  width: 40px;
+  height: 40px;
+
   display: grid;
   place-items: center;
-  border: 1px solid rgba(0, 128, 73, 0.15);
-  border-radius: 14px;
+
+  border:
+    1px solid rgba(0, 128, 73, 0.13);
+
+  border-radius: 11px;
+
   background: #f0fff7;
+
   color: #008047;
-  flex: 0 0 auto;
 }
 
 .ztp-promise-content {
@@ -149,99 +273,181 @@
 
 .ztp-promise-content h4 {
   margin: 0 0 4px;
+
   color: #052b1b;
-  font-size: 15.5px;
+
+  font-size: 13px;
   line-height: 1.25;
+
   font-weight: 900;
 }
 
 .ztp-promise-content p {
   margin: 0;
+
   color: #4f6259;
-  font-size: 13.4px;
-  line-height: 1.45;
+
+  font-size: 11.5px;
+  line-height: 1.48;
 }
+
+
+/* ============================================================
+   PROCESS TIMELINE
+   ============================================================ */
 
 .ztp-process-timeline {
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr) 88px;
+
+  grid-template-columns:
+    70px minmax(0, 1fr) 70px;
+
   align-items: center;
+
   gap: 0;
-  margin-top: 34px;
-  padding: 34px 10px 42px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 16px 38px rgba(0, 80, 45, 0.075);
-  border: 1px solid rgba(0, 128, 73, 0.1);
+
+  margin-top: 24px;
+
+  padding: 24px 8px 28px;
+
+  border-radius: 17px;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  box-shadow:
+    0 12px 28px rgba(0, 80, 45, 0.055);
+
+  border:
+    1px solid rgba(0, 128, 73, 0.09);
 }
+
+
+/* ============================================================
+   START / FINISH
+   ============================================================ */
 
 .ztp-process-start,
 .ztp-process-finish {
-  width: 82px;
-  height: 82px;
+  width: 64px;
+  height: 64px;
+
   border-radius: 50%;
+
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #008047, #00a85f);
+
+  background:
+    linear-gradient(
+      135deg,
+      #008047,
+      #00a85f
+    );
+
   color: #ffffff;
-  font-size: 17px;
+
+  font-size: 12px;
   font-weight: 900;
-  box-shadow: 0 14px 28px rgba(0, 128, 73, 0.24);
+
+  box-shadow:
+    0 10px 22px rgba(0, 128, 73, 0.2);
+
   z-index: 3;
 }
 
+
+/* ============================================================
+   DESKTOP PROCESS TRACK
+   ============================================================ */
+
 .ztp-process-track {
   position: relative;
-  min-height: 230px;
+
+  min-height: 180px;
+
   display: grid;
-  grid-template-columns: repeat(7, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(7, minmax(0, 1fr));
+
   align-items: center;
 }
 
 .ztp-process-track::before {
   content: "";
+
   position: absolute;
+
   top: 50%;
   left: -2px;
   right: -2px;
-  height: 6px;
+
+  height: 5px;
+
   transform: translateY(-50%);
+
   border-radius: 999px;
-  background: linear-gradient(90deg, #008047, #ffc400, #008047);
+
+  background:
+    linear-gradient(
+      90deg,
+      #008047,
+      #f5c400,
+      #008047
+    );
+
   z-index: 1;
 }
 
+
+/* ============================================================
+   PROCESS NODE
+   ============================================================ */
+
 .ztp-process-node {
   position: relative;
-  height: 230px;
+
+  height: 180px;
+
   text-align: center;
+
   z-index: 2;
 }
 
 .ztp-process-node::before {
   content: "";
+
   position: absolute;
+
   left: 50%;
-  width: 4px;
-  height: 34px;
+
+  width: 3px;
+  height: 26px;
+
   transform: translateX(-50%);
+
   background: #008047;
+
   border-radius: 999px;
+
   z-index: 1;
 }
 
 .ztp-process-node-top::before {
-  top: 64px;
+  top: 52px;
 }
 
 .ztp-process-node-bottom::before {
-  bottom: 64px;
+  bottom: 52px;
 }
 
 .ztp-process-content {
   position: absolute;
+
   left: 50%;
-  width: 150px;
+
+  width: 116px;
+
   transform: translateX(-50%);
 }
 
@@ -254,106 +460,159 @@
 }
 
 .ztp-process-icon {
-  width: 54px;
-  height: 54px;
-  margin: 0 auto 10px;
+  width: 42px;
+  height: 42px;
+
+  margin: 0 auto 7px;
+
   display: grid;
   place-items: center;
+
   color: #008047;
+
   background: #f0fff7;
-  border: 2px solid rgba(0, 128, 73, 0.16);
-  border-radius: 16px;
+
+  border:
+    1.5px solid rgba(0, 128, 73, 0.14);
+
+  border-radius: 12px;
+}
+
+.ztp-process-icon svg {
+  width: 22px;
+  height: 22px;
 }
 
 .ztp-process-title {
   margin: 0;
+
   color: #2b2f2d;
-  font-size: 13px;
-  line-height: 1.28;
+
+  font-size: 9.5px;
+  line-height: 1.25;
+
   font-weight: 900;
+
   text-transform: uppercase;
 }
 
 .ztp-process-number {
   position: absolute;
+
   left: 50%;
   top: 50%;
-  width: 28px;
-  height: 28px;
-  transform: translate(-50%, -50%);
+
+  width: 24px;
+  height: 24px;
+
+  transform:
+    translate(-50%, -50%);
+
   display: grid;
   place-items: center;
+
   border-radius: 50%;
-  background: #ffc400;
+
+  background: #f5c400;
+
   color: #073b24;
-  font-size: 12px;
+
+  font-size: 10px;
   font-weight: 900;
-  border: 4px solid #ffffff;
-  box-shadow: 0 8px 16px rgba(0, 128, 73, 0.22);
+
+  border: 3px solid #ffffff;
+
+  box-shadow:
+    0 6px 13px rgba(0, 128, 73, 0.17);
+
   z-index: 3;
 }
 
+
+/* ============================================================
+   LARGE TABLET
+   ============================================================ */
+
 @media (max-width: 1180px) {
+  .ztp-container {
+    width: min(980px, 100%);
+  }
+
   .ztp-main-grid {
     grid-template-columns: 1fr;
   }
 
   .ztp-video-card {
-    max-width: 780px;
+    max-width: 700px;
+
     width: 100%;
+
     margin: 0 auto;
   }
 
   .ztp-promise-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
   }
 
+
+  /* Process becomes horizontal scroll */
+
   .ztp-process-timeline {
-    grid-template-columns: 76px minmax(0, 1fr) 76px;
+    display: block;
+
+    padding: 18px 16px 20px;
+
+    overflow: hidden;
   }
 
   .ztp-process-start,
   .ztp-process-finish {
-    width: 72px;
-    height: 72px;
-    font-size: 15px;
-  }
-
-  .ztp-process-content {
-    width: 128px;
-  }
-
-  .ztp-process-title {
-    font-size: 11.5px;
-  }
-}
-
-@media (max-width: 920px) {
-  .ztp-section {
-    padding: 52px 16px 58px;
-  }
-
-  .ztp-promise-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .ztp-process-timeline {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 28px 18px;
-  }
-
-  .ztp-process-start,
-  .ztp-process-finish {
-    width: 74px;
-    height: 74px;
-    margin: 0 auto;
+    display: none;
   }
 
   .ztp-process-track {
-    grid-template-columns: 1fr;
-    min-height: unset;
-    gap: 12px;
+    min-height: auto;
+
+    display: flex;
+
+    align-items: stretch;
+
+    gap: 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding:
+      4px 2px
+      12px;
+
+    scroll-behavior: smooth;
+
+    scroll-snap-type: x proximity;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+      rgba(0, 128, 73, 0.28)
+      transparent;
+  }
+
+  .ztp-process-track::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .ztp-process-track::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .ztp-process-track::-webkit-scrollbar-thumb {
+    background:
+      rgba(0, 128, 73, 0.25);
+
+    border-radius: 999px;
   }
 
   .ztp-process-track::before {
@@ -361,16 +620,28 @@
   }
 
   .ztp-process-node {
+    flex: 0 0 150px;
+
     height: auto;
-    display: grid;
-    grid-template-columns: 34px minmax(0, 1fr);
-    gap: 13px;
+
+    min-height: 120px;
+
+    display: flex;
+    flex-direction: column;
+
     align-items: center;
-    padding: 13px 14px;
-    border-radius: 16px;
+    justify-content: center;
+
+    padding: 14px 10px;
+
+    border:
+      1px solid rgba(0, 128, 73, 0.1);
+
+    border-radius: 14px;
+
     background: #f7fff9;
-    border: 1px solid rgba(0, 128, 73, 0.12);
-    text-align: left;
+
+    scroll-snap-align: start;
   }
 
   .ztp-process-node::before {
@@ -378,117 +649,193 @@
   }
 
   .ztp-process-content,
-  .ztp-process-node-top .ztp-process-content,
-  .ztp-process-node-bottom .ztp-process-content {
+  .ztp-process-node-top
+  .ztp-process-content,
+  .ztp-process-node-bottom
+  .ztp-process-content {
     position: static;
-    width: auto;
-    transform: none;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-  }
 
-  .ztp-process-icon {
-    width: 46px;
-    height: 46px;
-    margin: 0;
-    border-radius: 14px;
-    flex: 0 0 auto;
+    width: auto;
+
+    transform: none;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
   }
 
   .ztp-process-number {
     position: static;
-    width: 30px;
-    height: 30px;
+
+    order: -1;
+
+    width: 26px;
+    height: 26px;
+
+    margin-bottom: 8px;
+
     transform: none;
-    grid-column: 1;
-    grid-row: 1;
+
     border-width: 3px;
   }
 
-  .ztp-process-content {
-    grid-column: 2;
-    grid-row: 1;
+  .ztp-process-icon {
+    width: 40px;
+    height: 40px;
+
+    margin-bottom: 7px;
   }
 
   .ztp-process-title {
-    font-size: 13px;
+    font-size: 10px;
   }
 }
 
-@media (max-width: 640px) {
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 820px) {
   .ztp-section {
-    padding: 46px 14px 52px;
+    padding:
+      40px 15px
+      44px;
   }
 
   .ztp-header {
-    margin-bottom: 24px;
+    margin-bottom: 21px;
+  }
+
+  .ztp-promise-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .ztp-process-node {
+    flex-basis: 145px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .ztp-section {
+    padding:
+      34px 13px
+      38px;
+  }
+
+  .ztp-header {
+    margin-bottom: 19px;
   }
 
   .ztp-eyebrow {
-    padding: 8px 15px;
-    font-size: 11.5px;
+    padding: 7px 12px;
+
+    font-size: 9.5px;
   }
 
   .ztp-heading {
-    font-size: clamp(28px, 9vw, 38px);
+    font-size:
+      clamp(25px, 8vw, 32px);
+
+    margin-top: 11px;
   }
 
   .ztp-description {
-    font-size: 14.5px;
+    font-size: 12.5px;
   }
 
   .ztp-main-grid {
-    gap: 18px;
+    gap: 14px;
   }
 
   .ztp-video-card {
-    border-radius: 18px;
+    border-radius: 14px;
   }
 
   .ztp-promise-grid {
     grid-template-columns: 1fr;
-    gap: 11px;
+
+    gap: 8px;
   }
 
   .ztp-promise-card {
-    grid-template-columns: 42px minmax(0, 1fr);
-    padding: 14px;
-    border-radius: 16px;
+    grid-template-columns:
+      38px minmax(0, 1fr);
+
+    padding: 11px;
+
+    border-radius: 12px;
   }
 
   .ztp-promise-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 13px;
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+  }
+
+  .ztp-promise-icon svg {
+    width: 19px;
+    height: 19px;
   }
 
   .ztp-promise-content h4 {
-    font-size: 15px;
+    font-size: 12.5px;
   }
 
   .ztp-promise-content p {
-    font-size: 13.2px;
+    font-size: 11.2px;
   }
 
   .ztp-process-timeline {
-    margin-top: 24px;
-    padding: 24px 14px;
-    border-radius: 18px;
+    margin-top: 18px;
+
+    padding:
+      14px 12px
+      16px;
+
+    border-radius: 14px;
   }
 
-  .ztp-process-start,
-  .ztp-process-finish {
-    width: 66px;
-    height: 66px;
-    font-size: 14px;
+  .ztp-process-track {
+    gap: 9px;
+
+    scroll-snap-type: x mandatory;
   }
 
   .ztp-process-node {
-    padding: 12px;
+    flex: 0 0 72%;
+
+    min-height: 108px;
+
+    scroll-snap-align: start;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 430px) {
+  .ztp-section {
+    padding:
+      30px 12px
+      34px;
   }
 
-  .ztp-process-title {
-    font-size: 12.5px;
+  .ztp-heading {
+    font-size: 24px;
+  }
+
+  .ztp-process-node {
+    flex-basis: 78%;
   }
 }

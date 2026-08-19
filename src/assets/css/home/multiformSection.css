@@ -1,174 +1,333 @@
-/* ─── Variables ──────────────────────────────────────────────────────────────── */
+/* ============================================================
+   ZORAYS SOLAR — MULTI STEP FORM
+   Premium Green + Solar Yellow Theme
+   ============================================================ */
+
+
+/* ============================================================
+   ROOT VARIABLES
+   ============================================================ */
+
 :root {
-  --msf-green:      #16a34a;
-  --msf-green-dark: #14532d;
-  --msf-green-light:#dcfce7;
-  --msf-navy:       #0f172a;
-  --msf-navy-mid:   #1e293b;
-  --msf-slate:      #475569;
-  --msf-border:     #e2e8f0;
-  --msf-bg:         #f8fafc;
-  --msf-white:      #ffffff;
-  --msf-accent:     #4f46e5;
-  --msf-accent-light: #eef2ff;
-  --msf-red:        #dc2626;
-  --msf-radius:     12px;
-  --msf-shadow:     0 4px 24px rgba(15, 23, 42, 0.08);
-  --msf-shadow-lg:  0 8px 40px rgba(15, 23, 42, 0.14);
+  --msf-green: #009f5c;
+  --msf-green-dark: #087a49;
+  --msf-green-deep: #075d3a;
+
+  --msf-green-soft: #eaf8f1;
+  --msf-green-soft-2: #f4fbf7;
+
+  --msf-yellow: #f5c400;
+  --msf-yellow-dark: #d8aa00;
+  --msf-yellow-soft: #fff8d8;
+
+  --msf-white: #ffffff;
+
+  --msf-bg: #f7faf8;
+  --msf-card: #ffffff;
+
+  --msf-text: #10251c;
+  --msf-text-2: #34483f;
+  --msf-muted: #718078;
+
+  --msf-border: #dce9e2;
+  --msf-border-strong: #c5dbcf;
+
+  --msf-danger: #dc2626;
+  --msf-danger-soft: #fff1f1;
+
+  --msf-radius-sm: 10px;
+  --msf-radius: 16px;
+  --msf-radius-lg: 24px;
+
+  --msf-shadow:
+    0 12px 32px rgba(0, 75, 43, 0.08);
+
+  --msf-shadow-lg:
+    0 24px 70px rgba(0, 75, 43, 0.12);
 }
 
-/* ─── Section ────────────────────────────────────────────────────────────────── */
+
+/* ============================================================
+   SECTION
+   ============================================================ */
+
 .msf-section {
-  background: var(--msf-bg);
-  padding: 72px 20px 80px;
-  font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+  position: relative;
+  padding: 70px 20px 90px;
+  background:
+    radial-gradient(
+      circle at 8% 10%,
+      rgba(0, 159, 92, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 25%,
+      rgba(245, 196, 0, 0.08),
+      transparent 26%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7faf8 100%
+    );
+
+  font-family:
+    "Poppins",
+    "Inter",
+    "Segoe UI",
+    sans-serif;
 }
 
 .msf-wrapper {
-  max-width: 860px;
+  width: 100%;
+  max-width: 1180px;
   margin: 0 auto;
 }
 
-/* ─── Stepper ────────────────────────────────────────────────────────────────── */
+
+/* ============================================================
+   STEPPER
+   ============================================================ */
+
 .msf-stepper {
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  margin-bottom: 44px;
-  gap: 0;
+  justify-content: space-between;
   position: relative;
+  margin-bottom: 42px;
+  padding: 0 10px;
 }
 
 .msf-stepper__item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
   flex: 1;
   min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .msf-connector {
   position: absolute;
-  top: 22px;
+  top: 23px;
   right: 50%;
   left: -50%;
-  height: 3px;
-  background: var(--msf-border);
+
+  height: 4px;
+
+  background: #dce7e1;
   z-index: 0;
-  transition: background 0.35s ease;
+
+  transition: all 0.3s ease;
 }
 
 .msf-connector.filled {
-  background: var(--msf-green);
+  background:
+    linear-gradient(
+      90deg,
+      var(--msf-green),
+      #22b974
+    );
 }
 
 .msf-step-circle {
-  width: 44px;
-  height: 44px;
+  position: relative;
+  z-index: 2;
+
+  width: 48px;
+  height: 48px;
+
   border-radius: 50%;
   border: 3px solid var(--msf-border);
-  background: var(--msf-white);
-  color: var(--msf-slate);
-  font-size: 15px;
-  font-weight: 700;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background: var(--msf-white);
+  color: var(--msf-muted);
+
+  font-size: 16px;
+  font-weight: 800;
+
+  box-shadow:
+    0 4px 14px rgba(0, 75, 43, 0.08);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
   cursor: default;
-  z-index: 1;
-  position: relative;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .msf-step-circle.active {
-  border-color: var(--msf-green);
+  color: #ffffff;
   background: var(--msf-green);
-  color: #fff;
-  box-shadow: 0 0 0 5px rgba(22, 163, 74, 0.15), 0 4px 12px rgba(22, 163, 74, 0.3);
-  transform: scale(1.1);
+  border-color: var(--msf-green);
+
+  transform: scale(1.12);
+
+  box-shadow:
+    0 0 0 6px rgba(0, 159, 92, 0.12),
+    0 10px 24px rgba(0, 159, 92, 0.24);
 }
 
 .msf-step-circle.completed {
-  border-color: var(--msf-green);
   background: var(--msf-green);
-  color: #fff;
+  border-color: var(--msf-green);
+  color: #ffffff;
   cursor: pointer;
 }
 
 .msf-step-circle.completed:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);
-}
+  transform: translateY(-2px) scale(1.04);
 
-.msf-check {
-  font-size: 16px;
-  font-weight: 800;
+  box-shadow:
+    0 10px 22px rgba(0, 159, 92, 0.22);
 }
 
 .msf-step-label {
-  margin-top: 10px;
+  margin-top: 12px;
+
   font-size: 12px;
-  font-weight: 500;
-  color: var(--msf-slate);
+  font-weight: 600;
+
+  color: var(--msf-muted);
+
   text-align: center;
-  transition: color 0.3s;
   white-space: nowrap;
+
+  transition: all 0.2s ease;
 }
 
 .msf-step-label.active {
   color: var(--msf-green);
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .msf-step-label.done {
-  color: var(--msf-green);
+  color: var(--msf-green-dark);
 }
 
-/* ─── Form Card ──────────────────────────────────────────────────────────────── */
+
+/* ============================================================
+   FORM CARD
+   ============================================================ */
+
 .msf-form-card {
-  background: var(--msf-white);
-  border-radius: var(--msf-radius);
-  box-shadow: var(--msf-shadow-lg);
-  overflow: hidden;
+  position: relative;
+
+  background: var(--msf-card);
+
   border: 1px solid var(--msf-border);
-  animation: msf-slide-in 0.3s ease both;
+
+  border-radius: var(--msf-radius-lg);
+
+  overflow: hidden;
+
+  box-shadow: var(--msf-shadow-lg);
+
+  animation: msfFadeUp 0.35s ease both;
 }
 
-@keyframes msf-slide-in {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+@keyframes msfFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ─── Step Body ──────────────────────────────────────────────────────────────── */
+
+/* ============================================================
+   STEP BODY
+   ============================================================ */
+
 .msf-step-body {
   display: flex;
-  min-height: 260px;
+  min-height: 330px;
 }
 
 .msf-step-accent {
-  width: 6px;
-  background: linear-gradient(180deg, var(--msf-green) 0%, #4ade80 100%);
+  width: 8px;
   flex-shrink: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--msf-green) 0%,
+      #19c77c 60%,
+      var(--msf-yellow) 100%
+    );
 }
 
 .msf-step-content {
-  padding: 36px 40px 36px 36px;
-  flex: 1;
+  width: 100%;
+  padding: 42px 46px 44px;
 }
 
 .msf-step-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--msf-navy);
-  margin: 0 0 28px;
-  letter-spacing: -0.4px;
+  position: relative;
+
+  margin: 0 0 30px;
+
+  color: var(--msf-text);
+
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
 }
 
-/* ─── Fields ─────────────────────────────────────────────────────────────────── */
+.msf-step-title::after {
+  content: "";
+
+  display: block;
+
+  width: 54px;
+  height: 4px;
+
+  margin-top: 12px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--msf-green),
+      var(--msf-yellow)
+    );
+}
+
+
+/* ============================================================
+   INTRO TEXT
+   ============================================================ */
+
+.msf-intro-text {
+  margin: 0 0 14px;
+
+  color: var(--msf-muted);
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   FIELDS
+   ============================================================ */
+
 .msf-field {
-  margin-bottom: 28px;
+  margin-bottom: 30px;
 }
 
 .msf-field:last-child {
@@ -177,23 +336,88 @@
 
 .msf-label {
   display: block;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--msf-navy-mid);
-  margin-bottom: 12px;
-  letter-spacing: 0.01em;
+
+  margin-bottom: 10px;
+
+  color: var(--msf-text-2);
+
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .msf-required {
-  color: var(--msf-red);
-  margin-left: 2px;
+  color: var(--msf-danger);
+  margin-left: 3px;
 }
 
-/* ─── Radio Buttons ──────────────────────────────────────────────────────────── */
+
+/* ============================================================
+   INPUTS
+   ============================================================ */
+
+.msf-input {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  background: #ffffff;
+
+  border: 1.5px solid var(--msf-border);
+
+  border-radius: var(--msf-radius-sm);
+
+  color: var(--msf-text);
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.msf-input::placeholder {
+  color: #a6b0aa;
+}
+
+.msf-input:hover {
+  border-color: var(--msf-border-strong);
+}
+
+.msf-input:focus {
+  border-color: var(--msf-green);
+
+  box-shadow:
+    0 0 0 4px rgba(0, 159, 92, 0.08);
+
+  background: #ffffff;
+}
+
+select.msf-input {
+  cursor: pointer;
+}
+
+.msf-textarea {
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   RADIO GROUP
+   ============================================================ */
+
 .msf-radio-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 }
 
 .msf-radio-group--wrap {
@@ -201,33 +425,50 @@
 }
 
 .msf-radio-label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border: 2px solid var(--msf-border);
-  border-radius: 50px;
-  cursor: pointer;
+
+  gap: 9px;
+
+  padding: 11px 16px;
+
+  border: 1.5px solid var(--msf-border);
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  color: var(--msf-text-2);
+
   font-size: 13.5px;
-  font-weight: 500;
-  color: var(--msf-slate);
-  background: var(--msf-white);
-  transition: all 0.2s ease;
+  font-weight: 600;
+
+  cursor: pointer;
+
   user-select: none;
-  white-space: nowrap;
+
+  transition:
+    all 0.2s ease;
 }
 
 .msf-radio-label:hover {
   border-color: var(--msf-green);
-  color: var(--msf-green);
-  background: var(--msf-green-light);
+
+  background: var(--msf-green-soft);
+
+  color: var(--msf-green-dark);
+
+  transform: translateY(-1px);
 }
 
 .msf-radio-label.selected {
-  border-color: var(--msf-green);
   background: var(--msf-green);
-  color: #fff;
-  box-shadow: 0 3px 10px rgba(22, 163, 74, 0.25);
+  border-color: var(--msf-green);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 18px rgba(0, 159, 92, 0.2);
 }
 
 .msf-radio-label input[type="radio"] {
@@ -235,256 +476,779 @@
 }
 
 .msf-radio-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
+
   border-radius: 50%;
+
   border: 2px solid currentColor;
+
   flex-shrink: 0;
-  transition: background 0.2s;
+
+  transition: all 0.2s ease;
 }
 
 .msf-radio-label.selected .msf-radio-dot {
-  background: #fff;
-  border-color: #fff;
+  background: #ffffff;
+  border-color: #ffffff;
+
+  box-shadow:
+    inset 0 0 0 3px var(--msf-green);
 }
 
-/* ─── Text Inputs ────────────────────────────────────────────────────────────── */
-.msf-input {
-  width: 100%;
-  padding: 12px 16px;
-  border: 2px solid var(--msf-border);
-  border-radius: 8px;
-  font-size: 14px;
-  color: var(--msf-navy);
-  background: var(--msf-white);
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  box-sizing: border-box;
-  font-family: inherit;
+
+/* ============================================================
+   OPTION GRID
+   ============================================================ */
+
+.msf-option-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
 }
 
-.msf-input:focus {
+
+/* ============================================================
+   CHECKBOX LIST
+   ============================================================ */
+
+.msf-checkbox-list {
+  display: grid;
+  gap: 10px;
+}
+
+.msf-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 11px;
+
+  padding: 12px 14px;
+
+  border: 1.5px solid var(--msf-border);
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  color: var(--msf-text-2);
+
+  font-size: 13.5px;
+  font-weight: 500;
+
+  line-height: 1.45;
+
+  cursor: pointer;
+
+  transition:
+    all 0.2s ease;
+}
+
+.msf-checkbox-label:hover {
   border-color: var(--msf-green);
-  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.1);
+
+  background: var(--msf-green-soft-2);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 6px 18px rgba(0, 90, 50, 0.06);
 }
 
-.msf-textarea {
-  resize: vertical;
-  min-height: 88px;
-  line-height: 1.6;
+.msf-checkbox-label.selected {
+  border-color: var(--msf-green);
+
+  background:
+    linear-gradient(
+      180deg,
+      #f3fff9,
+      #eaf8f1
+    );
+
+  color: var(--msf-green-deep);
+
+  box-shadow:
+    0 8px 18px rgba(0, 159, 92, 0.08);
 }
 
-/* ─── Navigation ─────────────────────────────────────────────────────────────── */
+.msf-checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.msf-checkbox-box {
+  position: relative;
+
+  width: 19px;
+  height: 19px;
+
+  flex-shrink: 0;
+
+  margin-top: 1px;
+
+  border-radius: 6px;
+
+  border: 2px solid #c9d7cf;
+
+  background: #ffffff;
+
+  transition: all 0.2s ease;
+}
+
+.msf-checkbox-label.selected .msf-checkbox-box,
+.msf-checkbox-label:has(input:checked) .msf-checkbox-box {
+  border-color: var(--msf-green);
+  background: var(--msf-green);
+}
+
+.msf-checkbox-label.selected .msf-checkbox-box::after,
+.msf-checkbox-label:has(input:checked) .msf-checkbox-box::after {
+  content: "✓";
+
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 900;
+}
+
+
+/* ============================================================
+   HELP TEXT
+   ============================================================ */
+
+.msf-help-text {
+  margin: 20px 0 0;
+
+  padding: 14px 16px;
+
+  border-left: 4px solid var(--msf-yellow);
+
+  border-radius: 8px;
+
+  background: var(--msf-yellow-soft);
+
+  color: #64530b;
+
+  font-size: 12.5px;
+  line-height: 1.7;
+}
+
+
+/* ============================================================
+   SUMMARY BUTTON
+   ============================================================ */
+
+.msf-summary-toggle {
+  width: calc(100% - 92px);
+
+  margin:
+    0 46px
+    30px;
+
+  padding: 14px 20px;
+
+  border: 1.5px solid var(--msf-border);
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff,
+      #f7faf8
+    );
+
+  color: var(--msf-green-dark);
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+
+  transition:
+    all 0.2s ease;
+}
+
+.msf-summary-toggle:hover {
+  background: var(--msf-green-soft);
+
+  border-color: var(--msf-green);
+
+  color: var(--msf-green);
+
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   SUMMARY
+   ============================================================ */
+
+.msf-summary {
+  margin:
+    0 46px
+    44px;
+
+  padding: 26px;
+
+  border-radius: 18px;
+
+  border: 1px solid var(--msf-border);
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f4fbf7
+    );
+
+  box-shadow:
+    0 14px 36px rgba(0, 90, 50, 0.08);
+
+  animation: msfFadeUp 0.25s ease both;
+}
+
+.msf-summary h3 {
+  margin: 0 0 22px;
+
+  color: var(--msf-text);
+
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.msf-summary h3::after {
+  content: "";
+
+  display: block;
+
+  width: 42px;
+  height: 3px;
+
+  margin-top: 8px;
+
+  border-radius: 999px;
+
+  background: var(--msf-yellow);
+}
+
+.msf-summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.msf-summary-grid > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  padding: 14px 16px;
+
+  border: 1px solid var(--msf-border);
+
+  border-radius: 12px;
+
+  background: #ffffff;
+}
+
+.msf-summary-grid span {
+  color: var(--msf-muted);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.msf-summary-grid strong {
+  color: var(--msf-text);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  word-break: break-word;
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
 .msf-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  gap: 14px;
+
   margin-top: 28px;
-  gap: 16px;
 }
 
 .msf-btn-next,
+.msf-btn-prev,
 .msf-btn-submit {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 13px 32px;
-  background: var(--msf-green);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 13px 26px;
+
+  border-radius: 12px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 0.02em;
+
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  text-transform: uppercase;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.msf-btn-next {
   margin-left: auto;
-  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+
+  border: 1px solid var(--msf-green);
+
+  background: var(--msf-green);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 20px rgba(0, 159, 92, 0.18);
 }
 
-.msf-btn-next:hover,
-.msf-btn-submit:hover {
+.msf-btn-next:hover {
   background: var(--msf-green-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.38);
-}
 
-.msf-btn-submit {
-  background: var(--msf-navy);
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
-}
+  border-color: var(--msf-green-dark);
 
-.msf-btn-submit:hover {
-  background: #334155;
-  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.3);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 14px 26px rgba(0, 159, 92, 0.24);
 }
 
 .msf-btn-prev {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 13px 24px;
-  background: transparent;
-  color: var(--msf-slate);
-  border: 2px solid var(--msf-border);
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
+  border: 1.5px solid var(--msf-border);
+
+  background: #ffffff;
+
+  color: var(--msf-text-2);
 }
 
 .msf-btn-prev:hover {
-  border-color: var(--msf-slate);
-  color: var(--msf-navy);
-  background: var(--msf-bg);
+  border-color: var(--msf-green);
+
+  background: var(--msf-green-soft);
+
+  color: var(--msf-green-dark);
+
+  transform: translateY(-1px);
 }
 
-/* ─── Success ────────────────────────────────────────────────────────────────── */
+.msf-btn-submit {
+  margin-left: auto;
+
+  border: 1px solid var(--msf-yellow);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--msf-yellow),
+      #ffd62e
+    );
+
+  color: #24320c;
+
+  box-shadow:
+    0 12px 24px rgba(245, 196, 0, 0.22);
+}
+
+.msf-btn-submit:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #e4b900,
+      var(--msf-yellow)
+    );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 30px rgba(245, 196, 0, 0.28);
+}
+
+
+/* ============================================================
+   ERROR
+   ============================================================ */
+
+.msf-error {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin: 9px 0 0;
+
+  color: var(--msf-danger);
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.msf-error::before {
+  content: "!";
+
+  width: 17px;
+  height: 17px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--msf-danger);
+
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.msf-input--error {
+  border-color: var(--msf-danger) !important;
+
+  background: var(--msf-danger-soft);
+}
+
+
+/* ============================================================
+   SHAKE
+   ============================================================ */
+
+@keyframes msfShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-7px);
+  }
+
+  40% {
+    transform: translateX(7px);
+  }
+
+  60% {
+    transform: translateX(-4px);
+  }
+
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+.msf-shake {
+  animation: msfShake 0.45s ease;
+}
+
+
+/* ============================================================
+   SUCCESS
+   ============================================================ */
+
 .msf-success {
   text-align: center;
-  padding: 72px 40px;
-  animation: msf-slide-in 0.4s ease;
+
+  padding: 70px 30px;
+
+  border-radius: var(--msf-radius-lg);
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f1fbf6
+    );
+
+  border: 1px solid var(--msf-border);
+
+  box-shadow: var(--msf-shadow-lg);
 }
 
 .msf-success-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--msf-green);
-  color: #fff;
-  font-size: 32px;
+  width: 78px;
+  height: 78px;
+
+  margin: 0 auto 24px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 24px;
-  box-shadow: 0 8px 28px rgba(22, 163, 74, 0.35);
+
+  border-radius: 50%;
+
+  background: var(--msf-green);
+
+  color: #ffffff;
+
+  font-size: 34px;
+  font-weight: 900;
+
+  box-shadow:
+    0 12px 30px rgba(0, 159, 92, 0.25);
+}
+
+.msf-success-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  background: var(--msf-yellow-soft);
+
+  color: #6d5800;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .msf-success h2 {
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--msf-navy);
   margin: 0 0 12px;
+
+  color: var(--msf-text);
+
+  font-size: 30px;
+  font-weight: 800;
 }
 
 .msf-success p {
-  color: var(--msf-slate);
-  font-size: 15px;
-  margin: 0 0 32px;
+  max-width: 560px;
+
+  margin: 0 auto 28px;
+
+  color: var(--msf-muted);
+
+  font-size: 14px;
+  line-height: 1.7;
 }
 
-/* ─── Responsive ─────────────────────────────────────────────────────────────── */
-@media (max-width: 640px) {
-  .msf-step-content {
-    padding: 24px 20px;
+
+/* ============================================================
+   DISABLED
+   ============================================================ */
+
+.msf-btn--disabled {
+  opacity: 0.45;
+
+  pointer-events: none;
+
+  filter: grayscale(0.3);
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .msf-wrapper {
+    max-width: 760px;
   }
 
-  .msf-step-title {
-    font-size: 18px;
-    margin-bottom: 20px;
+  .msf-step-content {
+    padding: 34px 30px;
+  }
+
+  .msf-option-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .msf-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .msf-summary,
+  .msf-summary-toggle {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  .msf-summary-toggle {
+    width: calc(100% - 60px);
   }
 
   .msf-step-label {
-    font-size: 10px;
+    font-size: 10.5px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 640px) {
+
+  .msf-section {
+    padding: 42px 14px 60px;
+  }
+
+  .msf-stepper {
+    overflow-x: auto;
+
+    justify-content: flex-start;
+
+    gap: 0;
+
+    padding:
+      6px 4px
+      16px;
+
+    scrollbar-width: none;
+  }
+
+  .msf-stepper::-webkit-scrollbar {
+    display: none;
+  }
+
+  .msf-stepper__item {
+    min-width: 82px;
+    flex: 0 0 82px;
   }
 
   .msf-step-circle {
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
+
     font-size: 13px;
   }
 
   .msf-connector {
-    top: 18px;
+    top: 20px;
+  }
+
+  .msf-step-label {
+    margin-top: 9px;
+
+    font-size: 9.5px;
+  }
+
+  .msf-step-body {
+    min-height: auto;
+  }
+
+  .msf-step-accent {
+    width: 5px;
+  }
+
+  .msf-step-content {
+    padding: 26px 18px;
+  }
+
+  .msf-step-title {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .msf-radio-group {
+    flex-direction: column;
   }
 
   .msf-radio-label {
-    padding: 8px 14px;
+    width: 100%;
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+
+    white-space: normal;
+  }
+
+  .msf-checkbox-label {
     font-size: 12.5px;
+
+    padding: 11px 12px;
+  }
+
+  .msf-input {
+    font-size: 13px;
+
+    padding: 12px 14px;
+  }
+
+  .msf-summary,
+  .msf-summary-toggle {
+    margin-left: 18px;
+    margin-right: 18px;
+  }
+
+  .msf-summary-toggle {
+    width: calc(100% - 36px);
+  }
+
+  .msf-summary {
+    padding: 18px;
+  }
+
+  .msf-nav {
+    flex-direction: column-reverse;
+
+    align-items: stretch;
   }
 
   .msf-btn-next,
   .msf-btn-prev,
   .msf-btn-submit {
-    padding: 11px 20px;
-    font-size: 13px;
+    width: 100%;
+
+    margin-left: 0;
   }
 
-  .msf-section {
-    padding: 48px 16px 56px;
+  .msf-success {
+    padding: 50px 20px;
   }
-}
 
-/* ─── Validation ─────────────────────────────────────────────────────────────── */
-.msf-error {
-  margin: 8px 0 0;
-  font-size: 12.5px;
-  color: var(--msf-red);
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  animation: msf-fade-in 0.2s ease;
-}
-
-.msf-error::before {
-  content: "!";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--msf-red);
-  color: #fff;
-  font-size: 10px;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-@keyframes msf-fade-in {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.msf-input--error {
-  border-color: var(--msf-red) !important;
-  background: #fff5f5;
-}
-
-.msf-input--error:focus {
-  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1) !important;
-}
-
-/* ─── Shake Animation ────────────────────────────────────────────────────────── */
-@keyframes msf-shake {
-  0%, 100% { transform: translateX(0); }
-  15%       { transform: translateX(-8px); }
-  30%       { transform: translateX(8px); }
-  45%       { transform: translateX(-6px); }
-  60%       { transform: translateX(6px); }
-  75%       { transform: translateX(-3px); }
-  90%       { transform: translateX(3px); }
-}
-
-.msf-shake {
-  animation: msf-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  border: 1px solid rgba(220, 38, 38, 0.3) !important;
-}
-
-/* ─── Disabled Button ────────────────────────────────────────────────────────── */
-.msf-btn--disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-  filter: grayscale(0.3);
-  transform: none !important;
-  box-shadow: none !important;
-}
-
-.msf-btn--disabled:hover {
-  background: var(--msf-green) !important;
-  transform: none !important;
-  box-shadow: none !important;
+  .msf-success h2 {
+    font-size: 24px;
+  }
 }
