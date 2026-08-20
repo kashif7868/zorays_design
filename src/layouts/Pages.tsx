@@ -1,56 +1,61 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 import Home from "../pages/Home/Home";
 import NetMetering from "../pages/NetMetering/NetMetering";
+import SolarBackup from "../pages/SolarBackup/SolarBackup";
+import SolarFinancing from "../pages/SolarFinancing/SolarFinancing";
+import SolarAgriculture from "../pages/SolarAgriculture/SolarAgriculture";
 
 import CartPage from "../pages/Cart/CartPage";
 import CheckoutPage from "../pages/Cart/Checkout/CheckoutPage";
 
 import ZoraysShop from "../pages/Shop/ZoraysShop";
 import ZoraysProductView from "../pages/Shop/ProductView/ZoraysProductView";
-import SolarBackup from "../pages/SolarBackup/SolarBackup";
-import SolarFinancing from "../pages/SolarFinancing/SolarFinancing";
-import SolarAgriculture from "../pages/SolarAgriculture/SolarAgriculture";
+
 import NotFound from "./NotFound";
 
-export default function Pages() {
+const Pages = () => {
   return (
     <Routes>
       {/* =====================================================
           MAIN WEBSITE
           ===================================================== */}
 
-      <Route path="/" element={<Home />} />
+      <Route
+        path="/"
+        element={<Home />}
+      />
+
+
       {/* =====================================================
-          Solar Net Metering
+          SOLAR PAGES
           ===================================================== */}
+
       <Route
         path="/solar-net-metering"
         element={<NetMetering />}
       />
-      {/* =====================================================
-          Solar Backup
-          ===================================================== */}
+
       <Route
         path="/solar-backup"
         element={<SolarBackup />}
       />
-      {/* =====================================================
-          Solar Financing
-          ===================================================== */}
+
       <Route
         path="/solar-financing"
         element={<SolarFinancing />}
       />
 
-      {/* =====================================================
-          Solar Agriculture
-          ===================================================== */}
-
       <Route
         path="/solar-agricultural-solutions"
         element={<SolarAgriculture />}
       />
+
+
       {/* =====================================================
           CART / CHECKOUT
           ===================================================== */}
@@ -102,7 +107,7 @@ export default function Pages() {
 
 
       {/* =====================================================
-          OLD / INCORRECT ROUTES
+          OLD INCORRECT ROUTE
           ===================================================== */}
 
       <Route
@@ -126,4 +131,6 @@ export default function Pages() {
       />
     </Routes>
   );
-}
+};
+
+export default Pages;
