@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import {
-  HelpCircle,
   MessageCircleQuestion,
   Plus,
   Minus,
@@ -21,7 +20,6 @@ const NetMeteringFaq = () => {
   return (
     <section className="nm-faq-section">
       <div className="nm-faq-container">
-
         <div className="nm-faq-header">
           <span className="nm-faq-eyebrow">
             <Zap size={14} />
@@ -108,7 +106,6 @@ const NetMeteringFaq = () => {
             })}
           </div>
         </div>
-
       </div>
     </section>
   );

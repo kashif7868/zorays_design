@@ -1,52 +1,105 @@
 import { useMemo } from "react";
+
 import { useNavigate } from "react-router-dom";
+
 import { toast } from "react-toastify";
+
 import {
   ArrowRight,
   Eye,
-  Minus,
-  Plus,
   ShoppingCart,
   Star,
   Zap,
 } from "lucide-react";
+
 import {
   zoraysShopProductsData,
   type ZoraysShopProduct,
 } from "../../../Data/shop/zoraysShopProductsData";
-import { useAppDispatch, useAppSelector } from "../../../app/reduxHooks";
-import { addToCart } from "../../../app/features/cart/cartSlice";
+
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../app/reduxHooks";
+
+import {
+  addToCart,
+} from "../../../app/features/cart/cartSlice";
+
 import "../../../assets/css/shop/productView/relatedProductsSection.css";
+
 
 type RelatedProductsSectionProps = {
   product: ZoraysShopProduct;
 };
 
-const RelatedProductsSection = ({ product }: RelatedProductsSectionProps) => {
+
+const RelatedProductsSection = ({
+  product,
+}: RelatedProductsSectionProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const cartItems = useAppSelector((state) => state.cart.items);
+  const cartItems = useAppSelector(
+    (state) => state.cart.items
+  );
+
+
+  /* ============================================================
+     RELATED PRODUCTS
+     ============================================================ */
 
   const relatedProducts = useMemo(() => {
-    const sameCategory = zoraysShopProductsData.filter(
-      (item) => item.category === product.category && item.id !== product.id
-    );
+    const sameCategory =
+      zoraysShopProductsData.filter(
+        (item) =>
+          item.category === product.category &&
+          item.id !== product.id
+      );
 
-    const otherProducts = zoraysShopProductsData.filter(
-      (item) => item.category !== product.category && item.id !== product.id
-    );
+    const otherProducts =
+      zoraysShopProductsData.filter(
+        (item) =>
+          item.category !== product.category &&
+          item.id !== product.id
+      );
 
-    return [...sameCategory, ...otherProducts].slice(0, 4);
+    return [
+      ...sameCategory,
+      ...otherProducts,
+    ].slice(0, 4);
   }, [product]);
 
-  const isProductAlreadyInCart = (productId: number) => {
-    return cartItems.some((item) => item.id === productId);
+
+  /* ============================================================
+     CART CHECK
+     ============================================================ */
+
+  const isProductAlreadyInCart = (
+    productId: number
+  ) => {
+    return cartItems.some(
+      (item) => item.id === productId
+    );
   };
 
-const handleViewProduct = (productId: number) => {
-  navigate(`/zorays-shop/product/${productId}`);
-};
+
+  /* ============================================================
+     PRODUCT VIEW
+     ============================================================ */
+
+  const handleViewProduct = (
+    productId: number
+  ) => {
+    navigate(
+      `/zorays-shop/product/${productId}`
+    );
+  };
+
+
+  /* ============================================================
+     ADD TO CART
+     ============================================================ */
 
   const handleAddToCart = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -54,8 +107,15 @@ const handleViewProduct = (productId: number) => {
   ) => {
     event.stopPropagation();
 
-    if (isProductAlreadyInCart(selectedProduct.id)) {
-      toast.info("This product is already added to cart.");
+    if (
+      isProductAlreadyInCart(
+        selectedProduct.id
+      )
+    ) {
+      toast.info(
+        "This product is already added to cart."
+      );
+
       return;
     }
 
@@ -66,8 +126,15 @@ const handleViewProduct = (productId: number) => {
       })
     );
 
-    toast.success("Product added to cart.");
+    toast.success(
+      "Product added to cart."
+    );
   };
+
+
+  /* ============================================================
+     ORDER NOW
+     ============================================================ */
 
   const handleOrderNow = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -75,7 +142,11 @@ const handleViewProduct = (productId: number) => {
   ) => {
     event.stopPropagation();
 
-    if (!isProductAlreadyInCart(selectedProduct.id)) {
+    if (
+      !isProductAlreadyInCart(
+        selectedProduct.id
+      )
+    ) {
       dispatch(
         addToCart({
           product: selectedProduct,
@@ -87,13 +158,24 @@ const handleViewProduct = (productId: number) => {
     navigate("/checkout");
   };
 
+
+  /* ============================================================
+     EMPTY STATE
+     ============================================================ */
+
   if (relatedProducts.length === 0) {
     return null;
   }
 
+
   return (
     <section className="zpr-section">
       <div className="zpv-container">
+
+        {/* ====================================================
+            HEADER
+            ==================================================== */}
+
         <div className="zpr-header">
           <div>
             <span className="zpr-eyebrow">
@@ -101,40 +183,69 @@ const handleViewProduct = (productId: number) => {
               Related Products
             </span>
 
-            <h2>You May Also Need</h2>
+            <h2>
+              You May Also Need
+            </h2>
           </div>
 
           <p>
-            Related products are selected from the same or nearby solar product
-            category.
+            Related products are selected
+            from the same or nearby solar
+            product category.
           </p>
         </div>
+
+
+        {/* ====================================================
+            PRODUCTS
+            ==================================================== */}
 
         <div className="zpr-grid">
           {relatedProducts.map((item) => (
             <article
               className="zpr-card"
               key={item.id}
-              onClick={() => handleViewProduct(item.id)}
+              onClick={() =>
+                handleViewProduct(item.id)
+              }
               role="button"
               tabIndex={0}
               onKeyDown={(event) => {
-                if (event.key === "Enter") {
-                  handleViewProduct(item.id);
+                if (
+                  event.key === "Enter" ||
+                  event.key === " "
+                ) {
+                  event.preventDefault();
+
+                  handleViewProduct(
+                    item.id
+                  );
                 }
               }}
             >
-              <div className="zpr-image-wrap">
-                <img src={item.image} alt={item.title} loading="lazy" />
 
-                <span className="zpr-tag">{item.tag}</span>
+              {/* IMAGE */}
+
+              <div className="zpr-image-wrap">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  loading="lazy"
+                />
+
+                <span className="zpr-tag">
+                  {item.tag}
+                </span>
 
                 <button
                   type="button"
                   className="zpr-view-btn"
                   onClick={(event) => {
                     event.stopPropagation();
-                    handleViewProduct(item.id);
+
+                    handleViewProduct(
+                      item.id
+                    );
                   }}
                   aria-label={`View ${item.title}`}
                 >
@@ -142,29 +253,59 @@ const handleViewProduct = (productId: number) => {
                 </button>
               </div>
 
+
+              {/* CONTENT */}
+
               <div className="zpr-content">
+
                 <div className="zpr-meta">
-                  <span>{item.brand}</span>
+                  <span>
+                    {item.brand}
+                  </span>
 
                   <div>
-                    <Star size={13} fill="currentColor" />
-                    <strong>{item.rating}</strong>
+                    <Star
+                      size={13}
+                      fill="currentColor"
+                    />
+
+                    <strong>
+                      {item.rating}
+                    </strong>
                   </div>
                 </div>
 
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
+                <h3>
+                  {item.title}
+                </h3>
+
+                <p>
+                  {item.desc}
+                </p>
 
                 <div className="zpr-price-row">
-                  <strong>{item.price}</strong>
-                  <del>{item.oldPrice}</del>
+                  <strong>
+                    {item.price}
+                  </strong>
+
+                  <del>
+                    {item.oldPrice}
+                  </del>
                 </div>
+
+
+                {/* ACTIONS */}
 
                 <div className="zpr-actions">
                   <button
                     type="button"
                     className="zpr-cart-btn"
-                    onClick={(event) => handleAddToCart(event, item)}
+                    onClick={(event) =>
+                      handleAddToCart(
+                        event,
+                        item
+                      )
+                    }
                   >
                     <ShoppingCart size={14} />
                     Add
@@ -173,16 +314,23 @@ const handleViewProduct = (productId: number) => {
                   <button
                     type="button"
                     className="zpr-order-btn"
-                    onClick={(event) => handleOrderNow(event, item)}
+                    onClick={(event) =>
+                      handleOrderNow(
+                        event,
+                        item
+                      )
+                    }
                   >
                     Order
                     <ArrowRight size={14} />
                   </button>
                 </div>
+
               </div>
             </article>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent } from "react";
+
 import {
   Link,
   useLocation,
@@ -49,6 +50,9 @@ import "../assets/css/navbar.css";
    ============================================================ */
 
 const NET_METERING_ROUTE = "/solar-net-metering";
+const SOLAR_AGRICULTURE_ROUTE =
+  "/solar-agricultural-solutions";
+
 const SOLAR_FORM_HASH = "#multi-step-form";
 
 
@@ -74,7 +78,7 @@ const navLinks = [
 
   {
     label: "Solar Tubewell",
-    href: "/solar-agricultural-solutions",
+    href: SOLAR_AGRICULTURE_ROUTE,
   },
 
   {
@@ -116,7 +120,7 @@ const drawerLinks = [
 
   {
     label: "Solar Tubewell",
-    href: "/solar-tubewell",
+    href: SOLAR_AGRICULTURE_ROUTE,
   },
 
   {
@@ -194,10 +198,16 @@ const Navbar = () => {
 
   const cartCount = useAppSelector((state) =>
     state.cart.items.reduce(
-      (total, item) => total + item.quantity,
+      (total, item) =>
+        total + item.quantity,
       0
     )
   );
+
+
+  /* ============================================================
+     STATE
+     ============================================================ */
 
   const [mobileOpen, setMobileOpen] =
     useState(false);
@@ -208,11 +218,13 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] =
     useState("");
 
-  const [activeLink, setActiveLink] =
-    useState<string | null>(null);
-
   const [activeBottom, setActiveBottom] =
     useState<string>("Home");
+
+
+  /* ============================================================
+     REFS
+     ============================================================ */
 
   const searchInputRef =
     useRef<HTMLInputElement>(null);
@@ -222,13 +234,26 @@ const Navbar = () => {
 
 
   /* ============================================================
-     ACTIVE ROUTE STATE
+     HELPERS
+     ============================================================ */
+
+  const closeMobile = () => {
+    setMobileOpen(false);
+  };
+
+  const closeSearch = () => {
+    setSearchOpen(false);
+    setSearchQuery("");
+  };
+
+
+  /* ============================================================
+     ACTIVE BOTTOM NAV STATE
      ============================================================ */
 
   useEffect(() => {
     if (location.pathname === "/") {
       setActiveBottom("Home");
-      setActiveLink(null);
       return;
     }
 
@@ -238,9 +263,6 @@ const Navbar = () => {
       )
     ) {
       setActiveBottom("Solar");
-      setActiveLink(
-        "Solar Net Metering"
-      );
       return;
     }
 
@@ -250,7 +272,6 @@ const Navbar = () => {
       )
     ) {
       setActiveBottom("Shop");
-      setActiveLink("Zorays Shop");
       return;
     }
 
@@ -260,22 +281,8 @@ const Navbar = () => {
       )
     ) {
       setActiveBottom("Quote");
-      setActiveLink(null);
       return;
     }
-
-    const matchedLink = navLinks.find(
-      (item) =>
-        location.pathname.startsWith(
-          item.href
-        )
-    );
-
-    setActiveLink(
-      matchedLink
-        ? matchedLink.label
-        : null
-    );
 
     setActiveBottom("");
   }, [location.pathname]);
@@ -286,7 +293,7 @@ const Navbar = () => {
      ============================================================ */
 
   useEffect(() => {
-    const fn = () => {
+    const handleResize = () => {
       if (window.innerWidth > 960) {
         setMobileOpen(false);
       }
@@ -294,14 +301,15 @@ const Navbar = () => {
 
     window.addEventListener(
       "resize",
-      fn
+      handleResize
     );
 
-    return () =>
+    return () => {
       window.removeEventListener(
         "resize",
-        fn
+        handleResize
       );
+    };
   }, []);
 
 
@@ -324,13 +332,15 @@ const Navbar = () => {
      ============================================================ */
 
   useEffect(() => {
-    if (searchOpen) {
-      setTimeout(
-        () =>
-          searchInputRef.current?.focus(),
-        40
-      );
-    }
+    if (!searchOpen) return;
+
+    const timer = window.setTimeout(() => {
+      searchInputRef.current?.focus();
+    }, 40);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
   }, [searchOpen]);
 
 
@@ -341,11 +351,13 @@ const Navbar = () => {
   useEffect(() => {
     if (!searchOpen) return;
 
-    const fn = (e: MouseEvent) => {
+    const handleOutsideClick = (
+      event: MouseEvent
+    ) => {
       if (
         searchRowRef.current &&
         !searchRowRef.current.contains(
-          e.target as Node
+          event.target as Node
         )
       ) {
         closeSearch();
@@ -354,14 +366,15 @@ const Navbar = () => {
 
     document.addEventListener(
       "mousedown",
-      fn
+      handleOutsideClick
     );
 
-    return () =>
+    return () => {
       document.removeEventListener(
         "mousedown",
-        fn
+        handleOutsideClick
       );
+    };
   }, [searchOpen]);
 
 
@@ -370,34 +383,39 @@ const Navbar = () => {
      ============================================================ */
 
   useEffect(() => {
-    const fn = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+    const handleEscape = (
+      event: KeyboardEvent
+    ) => {
+      if (
+        event.key === "Escape"
+      ) {
         closeSearch();
       }
     };
 
     document.addEventListener(
       "keydown",
-      fn
+      handleEscape
     );
 
-    return () =>
+    return () => {
       document.removeEventListener(
         "keydown",
-        fn
+        handleEscape
       );
+    };
   }, []);
 
 
   /* ============================================================
-     MOBILE
+     MOBILE MENU
      ============================================================ */
 
-  const toggleMobile = () =>
-    setMobileOpen((value) => !value);
-
-  const closeMobile = () =>
-    setMobileOpen(false);
+  const toggleMobile = () => {
+    setMobileOpen(
+      (value) => !value
+    );
+  };
 
 
   /* ============================================================
@@ -409,17 +427,13 @@ const Navbar = () => {
     closeMobile();
   };
 
-  const closeSearch = () => {
-    setSearchOpen(false);
-    setSearchQuery("");
-  };
-
   const toggleSearch = () => {
     if (searchOpen) {
       closeSearch();
-    } else {
-      openSearch();
+      return;
     }
+
+    openSearch();
   };
 
 
@@ -437,7 +451,9 @@ const Navbar = () => {
     const target =
       document.querySelector(href);
 
-    if (!target) return;
+    if (!target) {
+      return;
+    }
 
     target.scrollIntoView({
       behavior: "smooth",
@@ -449,28 +465,22 @@ const Navbar = () => {
   /* ============================================================
      SOLAR NET METERING SPECIAL ROUTING
 
-     HOME
-     Solar Net Metering
-     -> #multi-step-form
+     HOME:
+     Solar Net Metering -> #multi-step-form
 
-     ANY OTHER PAGE
-     Solar Net Metering
-     -> /solar-net-metering
+     OTHER PAGES:
+     Solar Net Metering -> /solar-net-metering
      ============================================================ */
 
   const handleNetMeteringNavigation =
     () => {
       closeMobile();
 
-      setActiveLink(
-        "Solar Net Metering"
-      );
-
       setActiveBottom("Solar");
 
       /*
-       * User is currently on HOME.
-       * Go to the solar assessment form.
+       * HOME PAGE
+       * Scroll directly to quote form.
        */
       if (location.pathname === "/") {
         const formSection =
@@ -489,15 +499,15 @@ const Navbar = () => {
       }
 
       /*
-       * User is on any other page.
-       * Open dedicated Net Metering page.
+       * ANY OTHER PAGE
+       * Open Net Metering detail page.
        */
       navigate(NET_METERING_ROUTE);
     };
 
 
   /* ============================================================
-     GENERIC ROUTING
+     GENERIC NAVIGATION
      ============================================================ */
 
   const goToLink = (
@@ -511,7 +521,7 @@ const Navbar = () => {
 
       navigate("/");
 
-      setTimeout(() => {
+      window.setTimeout(() => {
         scrollToSection(href);
       }, 150);
 
@@ -523,25 +533,20 @@ const Navbar = () => {
 
 
   /* ============================================================
-     DESKTOP / DRAWER CLICK
+     DESKTOP / DRAWER NAV CLICK
      ============================================================ */
 
   const handleNavClick = (
     label: string,
     href: string
   ) => {
-    /*
-     * Solar Net Metering has
-     * special route behaviour.
-     */
     if (
-      label === "Solar Net Metering"
+      label ===
+      "Solar Net Metering"
     ) {
       handleNetMeteringNavigation();
       return;
     }
-
-    setActiveLink(label);
 
     closeMobile();
 
@@ -561,10 +566,6 @@ const Navbar = () => {
       return;
     }
 
-    /*
-     * Same Solar behaviour
-     * as desktop navbar.
-     */
     if (item.label === "Solar") {
       handleNetMeteringNavigation();
       return;
@@ -581,14 +582,16 @@ const Navbar = () => {
      ============================================================ */
 
   const handleSearchSubmit = (
-    e: FormEvent
+    event: FormEvent
   ) => {
-    e.preventDefault();
+    event.preventDefault();
 
     const cleanQuery =
       searchQuery.trim();
 
-    if (!cleanQuery) return;
+    if (!cleanQuery) {
+      return;
+    }
 
     navigate(
       `/zorays-shop?search=${encodeURIComponent(
@@ -602,7 +605,7 @@ const Navbar = () => {
 
 
   /* ============================================================
-     ACTIVE DESKTOP / DRAWER NAV
+     ACTIVE DESKTOP / DRAWER ROUTE
      ============================================================ */
 
   const isNavItemActive = (
@@ -618,13 +621,16 @@ const Navbar = () => {
       );
     }
 
+    /*
+     * Product detail pages should
+     * keep Shop context active.
+     */
     if (
-      href === "/zorays-shop" &&
-      location.pathname.startsWith(
-        "/zorays-shop"
-      )
+      href === "/zorays-shop"
     ) {
-      return true;
+      return location.pathname.startsWith(
+        "/zorays-shop"
+      );
     }
 
     return (
@@ -641,7 +647,6 @@ const Navbar = () => {
 
       <div className="zr-topbar">
         <div className="zr-topbar__inner">
-
           <div className="zr-topbar__social">
             <a
               href="https://wa.me/923001234567"
@@ -682,14 +687,18 @@ const Navbar = () => {
 
           <div className="zr-topbar__center">
             <span className="zr-topbar__badge">
-              <IoShieldCheckmark className="badge-icon" />
+              <IoShieldCheckmark
+                className="badge-icon"
+              />
 
               Pakistan&apos;s Trusted
               Solar Energy Partner
             </span>
 
             <span className="zr-topbar__badge">
-              <FaStar className="badge-icon" />
+              <FaStar
+                className="badge-icon"
+              />
 
               10+ Years of Excellence
             </span>
@@ -697,7 +706,6 @@ const Navbar = () => {
 
 
           <div className="zr-topbar__right">
-
             <a
               href="tel:+923001234567"
               className="zr-topbar__contact"
@@ -709,7 +717,6 @@ const Navbar = () => {
               </span>
             </a>
 
-
             <a
               href="mailto:info@zorays.com.pk"
               className="zr-topbar__contact"
@@ -720,7 +727,6 @@ const Navbar = () => {
                 info@zorays.com.pk
               </span>
             </a>
-
           </div>
         </div>
       </div>
@@ -765,7 +771,6 @@ const Navbar = () => {
           {/* DESKTOP MENU */}
 
           <ul className="zr-navbar__menu">
-
             {navLinks.map((item) => {
               const isActive =
                 isNavItemActive(
@@ -785,8 +790,8 @@ const Navbar = () => {
                         ? " is-active"
                         : ""
                     }`}
-                    onClick={(e) => {
-                      e.preventDefault();
+                    onClick={(event) => {
+                      event.preventDefault();
 
                       handleNavClick(
                         item.label,
@@ -861,9 +866,9 @@ const Navbar = () => {
                   className="zr-search-input"
                   placeholder="Search solar solutions..."
                   value={searchQuery}
-                  onChange={(e) =>
+                  onChange={(event) =>
                     setSearchQuery(
-                      e.target.value
+                      event.target.value
                     )
                   }
                   aria-label="Search"
@@ -933,7 +938,9 @@ const Navbar = () => {
                   : 0
               }
             >
-              <FaSun className="zr-cta-icon" />
+              <FaSun
+                className="zr-cta-icon"
+              />
 
               Get Solar Quote
             </Link>
@@ -962,6 +969,7 @@ const Navbar = () => {
                 />
               )}
             </button>
+
           </div>
         </div>
       </nav>
@@ -990,7 +998,6 @@ const Navbar = () => {
           role="dialog"
           aria-modal="true"
         >
-
           <div className="zr-mobile-header">
 
             <Link
@@ -1050,9 +1057,9 @@ const Navbar = () => {
                 className="zr-drawer-search-input"
                 placeholder="Search solar solutions..."
                 value={searchQuery}
-                onChange={(e) =>
+                onChange={(event) =>
                   setSearchQuery(
-                    e.target.value
+                    event.target.value
                   )
                 }
                 aria-label="Search"
@@ -1078,70 +1085,63 @@ const Navbar = () => {
           {/* MOBILE LINKS */}
 
           <ul className="zr-mobile-nav">
+            {drawerLinks.map((item) => {
+              const isActive =
+                isNavItemActive(
+                  item.label,
+                  item.href
+                );
 
-            {drawerLinks.map(
-              (item) => {
-                const isActive =
-                  isNavItemActive(
-                    item.label,
-                    item.href
-                  );
+              return (
+                <li
+                  key={item.label}
+                  className="zr-mobile-item"
+                >
+                  <a
+                    href={item.href}
+                    className={`zr-mobile-link${
+                      isActive
+                        ? " is-active"
+                        : ""
+                    }`}
+                    onClick={(event) => {
+                      event.preventDefault();
 
-                return (
-                  <li
-                    key={item.label}
-                    className="zr-mobile-item"
+                      handleNavClick(
+                        item.label,
+                        item.href
+                      );
+                    }}
                   >
-                    <a
-                      href={item.href}
-                      className={`zr-mobile-link${
-                        isActive
-                          ? " is-active"
-                          : ""
-                      }`}
-                      onClick={(e) => {
-                        e.preventDefault();
+                    {item.icon && (
+                      <span
+                        className="zr-mobile-link__icon"
+                        aria-hidden="true"
+                      >
+                        {item.icon}
+                      </span>
+                    )}
 
-                        handleNavClick(
-                          item.label,
-                          item.href
-                        );
-                      }}
-                    >
+                    <span className="zr-mobile-link__text">
+                      {item.label}
+                    </span>
 
-                      {item.icon && (
-                        <span
-                          className="zr-mobile-link__icon"
-                          aria-hidden="true"
-                        >
-                          {item.icon}
+                    {item.hasCartBadge &&
+                      cartCount > 0 && (
+                        <span className="zr-mobile-cart-badge">
+                          {cartCount}
                         </span>
                       )}
-
-
-                      <span className="zr-mobile-link__text">
-                        {item.label}
-                      </span>
-
-
-                      {item.hasCartBadge &&
-                        cartCount > 0 && (
-                          <span className="zr-mobile-cart-badge">
-                            {cartCount}
-                          </span>
-                        )}
-                    </a>
-                  </li>
-                );
-              }
-            )}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
 
           {/* CONTACTS */}
 
           <div className="zr-mobile-contacts">
-
             <a href="tel:+923001234567">
               <MdPhone size={15} />
 
@@ -1153,24 +1153,23 @@ const Navbar = () => {
 
               info@zorays.com.pk
             </a>
-
           </div>
 
 
           {/* MOBILE CTA */}
 
           <div className="zr-mobile-footer">
-
             <Link
               to="/quote"
               className="zr-cta zr-cta--full"
               onClick={closeMobile}
             >
-              <FaSun className="zr-cta-icon" />
+              <FaSun
+                className="zr-cta-icon"
+              />
 
               Get Solar Quote
             </Link>
-
           </div>
         </div>
       </div>
@@ -1220,21 +1219,18 @@ const Navbar = () => {
                     : "Search"
                   : item.label
               }
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={(event) => {
+                event.preventDefault();
 
                 handleBottomClick(
                   item
                 );
               }}
             >
-
               <span className="zr-bottom-nav__icon">
-
                 {isActive
                   ? item.iconActive
                   : item.icon}
-
 
                 {item.hasCartBadge &&
                   cartCount > 0 && (
@@ -1242,25 +1238,19 @@ const Navbar = () => {
                       {cartCount}
                     </span>
                   )}
-
               </span>
 
-
               <span className="zr-bottom-nav__label">
-
                 {item.isSearch &&
                 searchOpen
                   ? "Close"
                   : item.label}
-
               </span>
-
 
               {isActive &&
                 !item.isCta && (
                   <span className="zr-bottom-nav__dot" />
                 )}
-
             </a>
           );
         })}
@@ -1280,14 +1270,12 @@ const Navbar = () => {
         onClick={closeSearch}
         aria-hidden={!searchOpen}
       >
-
         <div
           className="zr-mob-search-panel"
-          onClick={(e) =>
-            e.stopPropagation()
+          onClick={(event) =>
+            event.stopPropagation()
           }
         >
-
           <form
             onSubmit={
               handleSearchSubmit
@@ -1295,28 +1283,25 @@ const Navbar = () => {
             className="zr-mob-search-form"
             role="search"
           >
-
             <IoSearchOutline
               size={20}
               className="zr-mob-search-icon"
               aria-hidden="true"
             />
 
-
             <input
               type="search"
               className="zr-mob-search-input"
               placeholder="Search solar solutions..."
               value={searchQuery}
-              onChange={(e) =>
+              onChange={(event) =>
                 setSearchQuery(
-                  e.target.value
+                  event.target.value
                 )
               }
               autoFocus
               aria-label="Search"
             />
-
 
             <button
               type="button"
@@ -1326,12 +1311,10 @@ const Navbar = () => {
             >
               <IoClose size={20} />
             </button>
-
           </form>
 
 
           <div className="zr-mob-search-tags">
-
             {[
               "Solar Net Metering",
               "Solar Panels",
@@ -1350,8 +1333,8 @@ const Navbar = () => {
                 {tag}
               </button>
             ))}
-
           </div>
+
         </div>
       </div>
     </>

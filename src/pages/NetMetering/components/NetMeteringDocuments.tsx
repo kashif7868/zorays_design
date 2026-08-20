@@ -1,7 +1,6 @@
 import {
   BadgeCheck,
   FileText,
-  Home,
   PlugZap,
   ShieldCheck,
   UserRound,
@@ -33,12 +32,15 @@ const NetMeteringDocuments = () => {
 
           <h2>
             {netMeteringDocumentsData.title}
+
             <span>
               {netMeteringDocumentsData.highlightedTitle}
             </span>
           </h2>
 
-          <p>{netMeteringDocumentsData.description}</p>
+          <p>
+            {netMeteringDocumentsData.description}
+          </p>
         </div>
 
         <div className="nm-documents-grid">
@@ -87,8 +89,13 @@ const NetMeteringDocuments = () => {
           <ShieldCheck size={17} />
 
           <div>
-            <strong>Documentation Check</strong>
-            <p>{netMeteringDocumentsData.note}</p>
+            <strong>
+              Documentation Check
+            </strong>
+
+            <p>
+              {netMeteringDocumentsData.note}
+            </p>
           </div>
         </div>
       </div>
