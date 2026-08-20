@@ -7,7 +7,7 @@ import {
   Sun,
 } from "lucide-react";
 
-import "../../../assets/css/NetMetering/netMeteringIntro.css";
+import "../../../assets/css/netMetering/netMeteringIntro.css";
 
 import {
   netMeteringIntroData,
@@ -62,6 +62,7 @@ const NetMeteringIntro = () => {
               <div className="nm-intro-flow-split">
                 <div>
                   <ArrowUpRight size={14} />
+
                   <span>
                     {netMeteringIntroData.diagram.exportLabel}
                   </span>
@@ -69,6 +70,7 @@ const NetMeteringIntro = () => {
 
                 <div>
                   <ArrowDownLeft size={14} />
+
                   <span>
                     {netMeteringIntroData.diagram.importLabel}
                   </span>
@@ -95,6 +97,7 @@ const NetMeteringIntro = () => {
 
             <h2>
               {netMeteringIntroData.title}
+
               <span>
                 {netMeteringIntroData.highlightedTitle}
               </span>
