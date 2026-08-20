@@ -1,0 +1,417 @@
+/* ============================================================
+   ZORAYS SOLAR — NET METERING TECHNICAL
+   Engineering Standards + Protection + Commissioning
+   ============================================================ */
+
+.nm-technical-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 52px 18px 56px;
+
+  background:
+    radial-gradient(
+      circle at 8% 18%,
+      rgba(0, 159, 92, 0.065),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 82%,
+      rgba(245, 196, 0, 0.075),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7fbf8 100%
+    );
+}
+
+.nm-technical-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(0, 159, 92, 0.022) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 159, 92, 0.022) 1px,
+      transparent 1px
+    );
+
+  background-size: 56px 56px;
+
+  opacity: 0.38;
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+
+.nm-technical-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1220px, 100%);
+
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.nm-technical-header {
+  max-width: 760px;
+
+  margin: 0 auto 25px;
+
+  text-align: center;
+}
+
+.nm-technical-eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 10px;
+
+  color: #009f5c;
+
+  font-size: 10.5px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nm-technical-header h2 {
+  margin: 0;
+
+  color: #19251f;
+
+  font-size: clamp(28px, 3.3vw, 44px);
+  line-height: 1.08;
+
+  font-weight: 950;
+
+  letter-spacing: -0.04em;
+}
+
+.nm-technical-header h2 span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #009f5c;
+}
+
+.nm-technical-header p {
+  max-width: 700px;
+
+  margin: 12px auto 0;
+
+  color: #5d6862;
+
+  font-size: 13px;
+  line-height: 1.62;
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.nm-technical-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+
+/* ============================================================
+   CARD
+   ============================================================ */
+
+.nm-technical-card {
+  position: relative;
+
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    40px minmax(0, 1fr);
+
+  gap: 10px;
+
+  align-items: flex-start;
+
+  padding: 15px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.1);
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 8px 22px rgba(13, 55, 35, 0.05);
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.nm-technical-card:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(0, 159, 92, 0.2);
+
+  box-shadow:
+    0 14px 30px rgba(13, 55, 35, 0.08);
+}
+
+
+/* ============================================================
+   ICON
+   ============================================================ */
+
+.nm-technical-icon {
+  width: 40px;
+  height: 40px;
+
+  flex: 0 0 40px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 11px;
+
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  border:
+    1px solid rgba(0, 159, 92, 0.1);
+}
+
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.nm-technical-card h3 {
+  margin: 0;
+
+  color: #173522;
+
+  font-size: 13px;
+  line-height: 1.3;
+
+  font-weight: 950;
+
+  letter-spacing: -0.02em;
+}
+
+.nm-technical-card p {
+  margin: 6px 0 0;
+
+  color: #646f68;
+
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   CHECK
+   ============================================================ */
+
+.nm-technical-check {
+  position: absolute;
+
+  top: 11px;
+  right: 11px;
+
+  width: 25px;
+  height: 25px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 8px;
+
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.06);
+}
+
+
+/* ============================================================
+   NOTE
+   ============================================================ */
+
+.nm-technical-note {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+
+  max-width: 900px;
+
+  margin: 18px auto 0;
+
+  padding: 10px 12px;
+
+  border:
+    1px solid rgba(245, 196, 0, 0.18);
+
+  border-radius: 10px;
+
+  background:
+    rgba(245, 196, 0, 0.07);
+}
+
+.nm-technical-note svg {
+  flex: 0 0 auto;
+
+  margin-top: 1px;
+
+  color: #806300;
+}
+
+.nm-technical-note p {
+  margin: 0;
+
+  color: #626b66;
+
+  font-size: 9.6px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 960px) {
+  .nm-technical-section {
+    padding:
+      44px 16px
+      48px;
+  }
+
+  .nm-technical-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .nm-technical-section {
+    padding:
+      34px 13px
+      38px;
+  }
+
+  .nm-technical-header {
+    margin-bottom: 18px;
+
+    text-align: left;
+  }
+
+  .nm-technical-header h2 {
+    font-size: 27px;
+  }
+
+  .nm-technical-header p {
+    font-size: 12px;
+  }
+
+  .nm-technical-grid {
+    display: flex;
+
+    gap: 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    margin-right: -13px;
+
+    padding:
+      2px 13px
+      12px 0;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+  }
+
+  .nm-technical-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nm-technical-card {
+    flex: 0 0 84%;
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+    scroll-snap-align: start;
+  }
+
+  .nm-technical-card h3 {
+    font-size: 12.5px;
+  }
+
+  .nm-technical-card p {
+    font-size: 9.8px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 430px) {
+  .nm-technical-section {
+    padding:
+      30px 12px
+      34px;
+  }
+
+  .nm-technical-header h2 {
+    font-size: 24px;
+  }
+
+  .nm-technical-card {
+    flex-basis: 90%;
+  }
+}

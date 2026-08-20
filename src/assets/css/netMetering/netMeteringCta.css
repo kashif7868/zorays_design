@@ -1,0 +1,540 @@
+/* ============================================================
+   ZORAYS SOLAR — NET METERING CTA
+   Final Conversion Section
+   ============================================================ */
+
+.nm-cta-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 50px 18px 58px;
+
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(0, 159, 92, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 82%,
+      rgba(245, 196, 0, 0.09),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f6fbf8 100%
+    );
+}
+
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+
+.nm-cta-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1220px, 100%);
+
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   CTA CARD
+   ============================================================ */
+
+.nm-cta-card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.2fr)
+    minmax(300px, 0.8fr);
+
+  gap: 28px;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  padding: 30px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.16);
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.97) 0%,
+      rgba(241, 250, 245, 0.97) 100%
+    );
+
+  box-shadow:
+    0 18px 44px rgba(13, 55, 35, 0.1);
+}
+
+
+/* ============================================================
+   DECORATION
+   ============================================================ */
+
+.nm-cta-decoration {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.nm-cta-decoration-one {
+  right: -100px;
+  top: -120px;
+
+  width: 320px;
+  height: 320px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 159, 92, 0.11),
+      transparent 68%
+    );
+}
+
+.nm-cta-decoration-two {
+  left: -120px;
+  bottom: -140px;
+
+  width: 300px;
+  height: 300px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(245, 196, 0, 0.11),
+      transparent 68%
+    );
+}
+
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.nm-cta-content {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+}
+
+.nm-cta-eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 10px;
+
+  color: #009f5c;
+
+  font-size: 10.5px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nm-cta-content h2 {
+  max-width: 640px;
+
+  margin: 0;
+
+  color: #19251f;
+
+  font-size:
+    clamp(30px, 3.6vw, 48px);
+
+  line-height: 1.05;
+
+  font-weight: 950;
+
+  letter-spacing: -0.045em;
+}
+
+.nm-cta-content h2 span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #009f5c;
+}
+
+.nm-cta-content > p {
+  max-width: 660px;
+
+  margin: 13px 0 0;
+
+  color: #5e6963;
+
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   TRUST POINTS
+   ============================================================ */
+
+.nm-cta-trust-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 18px;
+}
+
+.nm-cta-trust-list > div {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 7px 9px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.09);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.78);
+
+  color: #4f5c55;
+}
+
+.nm-cta-trust-list svg {
+  flex: 0 0 auto;
+
+  color: #009f5c;
+}
+
+.nm-cta-trust-list span {
+  font-size: 9px;
+  line-height: 1.25;
+
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   ACTIONS AREA
+   ============================================================ */
+
+.nm-cta-actions {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+
+/* ============================================================
+   SHIELD BOX
+   ============================================================ */
+
+.nm-cta-shield {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.12);
+
+  border-radius: 13px;
+
+  background:
+    rgba(255, 255, 255, 0.82);
+}
+
+.nm-cta-shield > svg {
+  flex: 0 0 auto;
+
+  color: #009f5c;
+}
+
+.nm-cta-shield div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.nm-cta-shield strong {
+  color: #183822;
+
+  font-size: 10.5px;
+  font-weight: 900;
+}
+
+.nm-cta-shield span {
+  color: #6a746e;
+
+  font-size: 8.8px;
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   PRIMARY BUTTON
+   ============================================================ */
+
+.nm-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  min-height: 44px;
+
+  padding: 0 16px;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #12b96c 0%,
+      #009f5c 100%
+    );
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  box-shadow:
+    0 10px 22px rgba(0, 159, 92, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.nm-cta-primary:hover {
+  transform: translateY(-1px);
+
+  background: #078d55;
+
+  box-shadow:
+    0 14px 28px rgba(0, 159, 92, 0.25);
+}
+
+
+/* ============================================================
+   PHONE BUTTON
+   ============================================================ */
+
+.nm-cta-secondary {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-height: 48px;
+
+  padding: 9px 12px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.16);
+
+  border-radius: 11px;
+
+  background:
+    rgba(255, 255, 255, 0.88);
+
+  color: #26332c;
+
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.nm-cta-secondary:hover {
+  transform: translateY(-1px);
+
+  border-color:
+    rgba(0, 159, 92, 0.3);
+
+  background: #ffffff;
+}
+
+.nm-cta-secondary > svg {
+  width: 32px;
+  height: 32px;
+
+  padding: 8px;
+
+  flex: 0 0 32px;
+
+  border-radius: 9px;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  color: #009f5c;
+}
+
+.nm-cta-secondary div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.nm-cta-secondary span {
+  color: #6b756f;
+
+  font-size: 8.8px;
+  font-weight: 700;
+}
+
+.nm-cta-secondary strong {
+  color: #009f5c;
+
+  font-size: 11px;
+  font-weight: 900;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .nm-cta-section {
+    padding:
+      44px 16px
+      48px;
+  }
+
+  .nm-cta-card {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+
+    padding: 24px;
+  }
+
+  .nm-cta-actions {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+  .nm-cta-shield {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .nm-cta-section {
+    padding:
+      34px 13px
+      38px;
+  }
+
+  .nm-cta-card {
+    padding: 18px;
+
+    border-radius: 16px;
+  }
+
+  .nm-cta-content h2 {
+    font-size: 27px;
+  }
+
+  .nm-cta-content > p {
+    font-size: 12px;
+  }
+
+  .nm-cta-trust-list {
+    display: grid;
+
+    gap: 6px;
+  }
+
+  .nm-cta-trust-list > div {
+    width: 100%;
+
+    border-radius: 10px;
+  }
+
+  .nm-cta-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .nm-cta-shield {
+    grid-column: auto;
+  }
+
+  .nm-cta-primary {
+    min-height: 42px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 430px) {
+  .nm-cta-section {
+    padding:
+      30px 12px
+      34px;
+  }
+
+  .nm-cta-card {
+    padding: 16px;
+
+    border-radius: 14px;
+  }
+
+  .nm-cta-content h2 {
+    font-size: 24px;
+  }
+
+  .nm-cta-primary,
+  .nm-cta-secondary {
+    width: 100%;
+  }
+}

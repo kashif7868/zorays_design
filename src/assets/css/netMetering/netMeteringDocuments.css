@@ -1,0 +1,474 @@
+/* ============================================================
+   ZORAYS SOLAR — NET METERING DOCUMENTS
+   Customer + Connection + Technical Requirements
+   ============================================================ */
+
+.nm-documents-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 52px 18px 56px;
+
+  background:
+    radial-gradient(
+      circle at 8% 18%,
+      rgba(0, 159, 92, 0.065),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 82%,
+      rgba(245, 196, 0, 0.075),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #f7fbf8 0%,
+      #ffffff 100%
+    );
+}
+
+.nm-documents-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(0, 159, 92, 0.022) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 159, 92, 0.022) 1px,
+      transparent 1px
+    );
+
+  background-size: 56px 56px;
+
+  opacity: 0.38;
+
+  pointer-events: none;
+}
+
+.nm-documents-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1220px, 100%);
+
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.nm-documents-header {
+  max-width: 760px;
+
+  margin: 0 auto 25px;
+
+  text-align: center;
+}
+
+.nm-documents-eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 10px;
+
+  color: #009f5c;
+
+  font-size: 10.5px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nm-documents-header h2 {
+  margin: 0;
+
+  color: #19251f;
+
+  font-size: clamp(28px, 3.3vw, 44px);
+  line-height: 1.08;
+
+  font-weight: 950;
+
+  letter-spacing: -0.04em;
+}
+
+.nm-documents-header h2 span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #009f5c;
+}
+
+.nm-documents-header p {
+  max-width: 700px;
+
+  margin: 12px auto 0;
+
+  color: #5d6862;
+
+  font-size: 13px;
+  line-height: 1.62;
+}
+
+
+/* ============================================================
+   GRID
+   ============================================================ */
+
+.nm-documents-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 13px;
+
+  align-items: stretch;
+}
+
+
+/* ============================================================
+   DOCUMENT CARD
+   ============================================================ */
+
+.nm-document-card {
+  min-width: 0;
+
+  padding: 17px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.1);
+
+  border-radius: 15px;
+
+  background:
+    rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 9px 24px rgba(13, 55, 35, 0.055);
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.nm-document-card:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(0, 159, 92, 0.2);
+
+  box-shadow:
+    0 15px 32px rgba(13, 55, 35, 0.085);
+}
+
+
+/* ============================================================
+   CARD HEAD
+   ============================================================ */
+
+.nm-document-card-head {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 14px;
+
+  padding-bottom: 12px;
+
+  border-bottom:
+    1px solid rgba(0, 159, 92, 0.08);
+}
+
+.nm-document-card-icon {
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  border:
+    1px solid rgba(0, 159, 92, 0.1);
+}
+
+.nm-document-card-head h3 {
+  margin: 0;
+
+  color: #173522;
+
+  font-size: 13.5px;
+  line-height: 1.25;
+
+  font-weight: 950;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* ============================================================
+   DOCUMENT LIST
+   ============================================================ */
+
+.nm-document-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.nm-document-item {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 9px;
+
+  padding: 10px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.07);
+
+  border-radius: 10px;
+
+  background:
+    rgba(247, 252, 249, 0.8);
+}
+
+.nm-document-check {
+  width: 28px;
+  height: 28px;
+
+  flex: 0 0 28px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 8px;
+
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+}
+
+.nm-document-item h4 {
+  margin: 0;
+
+  color: #26342d;
+
+  font-size: 10.5px;
+  line-height: 1.3;
+
+  font-weight: 900;
+}
+
+.nm-document-item p {
+  margin: 4px 0 0;
+
+  color: #657069;
+
+  font-size: 9.3px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   NOTE
+   ============================================================ */
+
+.nm-documents-note {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 9px;
+
+  max-width: 920px;
+
+  margin: 18px auto 0;
+
+  padding: 11px 13px;
+
+  border:
+    1px solid rgba(245, 196, 0, 0.18);
+
+  border-radius: 10px;
+
+  background:
+    rgba(245, 196, 0, 0.07);
+}
+
+.nm-documents-note > svg {
+  flex: 0 0 auto;
+
+  margin-top: 1px;
+
+  color: #806300;
+}
+
+.nm-documents-note strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #3d4035;
+
+  font-size: 9px;
+  font-weight: 950;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.nm-documents-note p {
+  margin: 0;
+
+  color: #626b66;
+
+  font-size: 9.6px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 960px) {
+  .nm-documents-section {
+    padding:
+      44px 16px
+      48px;
+  }
+
+  .nm-documents-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .nm-document-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .nm-documents-section {
+    padding:
+      34px 13px
+      38px;
+  }
+
+  .nm-documents-header {
+    margin-bottom: 18px;
+
+    text-align: left;
+  }
+
+  .nm-documents-header h2 {
+    font-size: 27px;
+  }
+
+  .nm-documents-header p {
+    font-size: 12px;
+  }
+
+  .nm-documents-grid {
+    display: flex;
+
+    gap: 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    margin-right: -13px;
+
+    padding:
+      2px 13px
+      12px 0;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+  }
+
+  .nm-documents-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nm-document-card {
+    flex: 0 0 86%;
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+    scroll-snap-align: start;
+  }
+
+  .nm-document-card:last-child {
+    grid-column: auto;
+  }
+
+  .nm-document-card-head h3 {
+    font-size: 12.5px;
+  }
+
+  .nm-document-item h4 {
+    font-size: 10px;
+  }
+
+  .nm-document-item p {
+    font-size: 9px;
+  }
+
+  .nm-documents-note {
+    margin-top: 14px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 430px) {
+  .nm-documents-section {
+    padding:
+      30px 12px
+      34px;
+  }
+
+  .nm-documents-header h2 {
+    font-size: 24px;
+  }
+
+  .nm-document-card {
+    flex-basis: 92%;
+  }
+}

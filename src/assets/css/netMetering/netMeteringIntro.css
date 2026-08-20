@@ -1,0 +1,569 @@
+/* ============================================================
+   ZORAYS SOLAR — NET METERING INTRO
+   What Is Net Metering + Energy Flow
+   ============================================================ */
+
+.nm-intro-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 52px 18px;
+
+  background:
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(0, 159, 92, 0.07),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 82%,
+      rgba(245, 196, 0, 0.08),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7fbf8 100%
+    );
+}
+
+.nm-intro-container {
+  width: min(1220px, 100%);
+  margin: 0 auto;
+}
+
+.nm-intro-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.92fr)
+    minmax(0, 1.08fr);
+
+  gap: 34px;
+
+  align-items: center;
+}
+
+
+/* ============================================================
+   LEFT VISUAL
+   ============================================================ */
+
+.nm-intro-visual {
+  position: relative;
+
+  min-width: 0;
+
+  padding:
+    8px 14px
+    42px 0;
+}
+
+.nm-intro-image-wrap {
+  position: relative;
+
+  min-height: 340px;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.12);
+
+  border-radius: 20px;
+
+  background: #e5f0e9;
+
+  box-shadow:
+    0 16px 38px rgba(12, 52, 31, 0.1);
+
+  isolation: isolate;
+}
+
+.nm-intro-image-wrap img {
+  width: 100%;
+  height: 100%;
+
+  min-height: 340px;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.35s ease;
+}
+
+.nm-intro-image-wrap:hover img {
+  transform: scale(1.025);
+}
+
+.nm-intro-image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 45%,
+      rgba(5, 52, 30, 0.2)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   FLOW CARD
+   ============================================================ */
+
+.nm-intro-flow-card {
+  position: absolute;
+
+  left: 18px;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 12px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.13);
+
+  border-radius: 15px;
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 14px 32px rgba(13, 55, 35, 0.11);
+
+  backdrop-filter: blur(10px);
+}
+
+.nm-intro-flow-node {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  min-width: 0;
+}
+
+.nm-intro-flow-node small {
+  color: #4f5b54;
+
+  font-size: 9px;
+  line-height: 1.25;
+
+  font-weight: 800;
+}
+
+.nm-intro-flow-icon {
+  width: 32px;
+  height: 32px;
+
+  flex: 0 0 32px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 9px;
+}
+
+.nm-intro-flow-icon.solar {
+  color: #765c00;
+
+  background:
+    rgba(245, 196, 0, 0.2);
+}
+
+.nm-intro-flow-icon.property {
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.09);
+}
+
+.nm-intro-flow-icon.grid {
+  color: #1d5138;
+
+  background:
+    rgba(22, 82, 56, 0.08);
+}
+
+.nm-intro-flow-arrow {
+  flex: 0 0 auto;
+
+  color: #009f5c;
+}
+
+
+/* ============================================================
+   IMPORT / EXPORT SPLIT
+   ============================================================ */
+
+.nm-intro-flow-split {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding: 0 5px;
+
+  border-left:
+    1px solid rgba(0, 159, 92, 0.1);
+
+  border-right:
+    1px solid rgba(0, 159, 92, 0.1);
+}
+
+.nm-intro-flow-split > div {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  white-space: nowrap;
+
+  color: #536058;
+
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.nm-intro-flow-split > div:first-child {
+  color: #009f5c;
+}
+
+.nm-intro-flow-split > div:last-child {
+  color: #6e756f;
+}
+
+
+/* ============================================================
+   RIGHT CONTENT
+   ============================================================ */
+
+.nm-intro-content {
+  min-width: 0;
+}
+
+.nm-intro-eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 12px;
+
+  color: #009f5c;
+
+  font-size: 10.5px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nm-intro-content h2 {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #19251f;
+
+  font-size:
+    clamp(28px, 3.3vw, 44px);
+
+  line-height: 1.08;
+
+  font-weight: 950;
+
+  letter-spacing: -0.04em;
+}
+
+.nm-intro-content h2 span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #009f5c;
+}
+
+.nm-intro-lead {
+  max-width: 690px;
+
+  margin: 16px 0 0;
+
+  color: #4f5b55;
+
+  font-size: 14px;
+  line-height: 1.68;
+
+  font-weight: 500;
+}
+
+.nm-intro-secondary {
+  max-width: 690px;
+
+  margin: 11px 0 0;
+
+  color: #66716b;
+
+  font-size: 12.5px;
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   POINTS
+   ============================================================ */
+
+.nm-intro-points {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 9px;
+
+  margin-top: 20px;
+}
+
+.nm-intro-point {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 9px;
+
+  padding: 12px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.09);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.86);
+
+  box-shadow:
+    0 7px 18px rgba(13, 55, 35, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.nm-intro-point:hover {
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(0, 159, 92, 0.2);
+
+  box-shadow:
+    0 10px 24px rgba(13, 55, 35, 0.07);
+}
+
+.nm-intro-point-check {
+  width: 28px;
+  height: 28px;
+
+  flex: 0 0 28px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 8px;
+
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+}
+
+.nm-intro-point h3 {
+  margin: 0;
+
+  color: #173522;
+
+  font-size: 11px;
+  line-height: 1.25;
+
+  font-weight: 900;
+}
+
+.nm-intro-point p {
+  margin: 5px 0 0;
+
+  color: #68736d;
+
+  font-size: 9.5px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 960px) {
+  .nm-intro-section {
+    padding:
+      44px 16px;
+  }
+
+  .nm-intro-layout {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+  .nm-intro-visual {
+    max-width: 720px;
+
+    width: 100%;
+
+    margin: 0 auto;
+  }
+
+  .nm-intro-content {
+    max-width: 760px;
+  }
+
+  .nm-intro-points {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .nm-intro-section {
+    padding:
+      34px 13px;
+  }
+
+  .nm-intro-visual {
+    padding:
+      0 0
+      70px;
+  }
+
+  .nm-intro-image-wrap,
+  .nm-intro-image-wrap img {
+    min-height: 255px;
+  }
+
+  .nm-intro-image-wrap {
+    border-radius: 16px;
+  }
+
+  .nm-intro-flow-card {
+    left: 8px;
+    right: 8px;
+
+    overflow-x: auto;
+
+    justify-content: flex-start;
+
+    padding: 10px;
+
+    scrollbar-width: none;
+  }
+
+  .nm-intro-flow-card::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nm-intro-flow-node {
+    flex: 0 0 auto;
+  }
+
+  .nm-intro-content h2 {
+    font-size: 27px;
+  }
+
+  .nm-intro-lead {
+    margin-top: 12px;
+
+    font-size: 12.5px;
+  }
+
+  .nm-intro-secondary {
+    font-size: 11.5px;
+  }
+
+  .nm-intro-points {
+    display: flex;
+
+    gap: 9px;
+
+    overflow-x: auto;
+
+    margin-right: -13px;
+
+    padding:
+      2px 13px
+      10px 0;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+  }
+
+  .nm-intro-points::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nm-intro-point {
+    flex: 0 0 78%;
+
+    scroll-snap-align: start;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 430px) {
+  .nm-intro-section {
+    padding:
+      30px 12px;
+  }
+
+  .nm-intro-content h2 {
+    font-size: 24px;
+  }
+
+  .nm-intro-image-wrap,
+  .nm-intro-image-wrap img {
+    min-height: 225px;
+  }
+
+  .nm-intro-flow-card {
+    gap: 7px;
+  }
+
+  .nm-intro-flow-node small {
+    font-size: 8px;
+  }
+
+  .nm-intro-flow-split > div {
+    font-size: 7.5px;
+  }
+
+  .nm-intro-point {
+    flex-basis: 86%;
+  }
+}

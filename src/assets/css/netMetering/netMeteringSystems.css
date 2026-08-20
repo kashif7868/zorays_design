@@ -1,0 +1,722 @@
+/* ============================================================
+   ZORAYS SOLAR — NET METERING SYSTEMS
+   On-Grid vs Hybrid Comparison
+   ============================================================ */
+
+.nm-systems-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 52px 18px 56px;
+
+  background:
+    radial-gradient(
+      circle at 10% 18%,
+      rgba(0, 159, 92, 0.07),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 82%,
+      rgba(245, 196, 0, 0.09),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #f7fbf8 0%,
+      #ffffff 100%
+    );
+}
+
+.nm-systems-section::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(0, 159, 92, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 159, 92, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 52px 52px;
+
+  opacity: 0.45;
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+
+.nm-systems-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1220px, 100%);
+
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.nm-systems-header {
+  max-width: 760px;
+
+  margin: 0 auto 26px;
+
+  text-align: center;
+}
+
+.nm-systems-eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 11px;
+
+  color: #009f5c;
+
+  font-size: 10.5px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nm-systems-header h2 {
+  margin: 0;
+
+  color: #19251f;
+
+  font-size:
+    clamp(28px, 3.3vw, 44px);
+
+  line-height: 1.08;
+
+  font-weight: 950;
+
+  letter-spacing: -0.04em;
+}
+
+.nm-systems-header h2 span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #009f5c;
+}
+
+.nm-systems-header p {
+  max-width: 720px;
+
+  margin: 12px auto 0;
+
+  color: #5b6660;
+
+  font-size: 13.5px;
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   SYSTEM GRID
+   ============================================================ */
+
+.nm-systems-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+
+/* ============================================================
+   SYSTEM CARD
+   ============================================================ */
+
+.nm-system-card {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 20px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.1);
+
+  border-radius: 18px;
+
+  background:
+    rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 12px 30px rgba(13, 55, 35, 0.07);
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.nm-system-card:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(0, 159, 92, 0.2);
+
+  box-shadow:
+    0 17px 38px rgba(13, 55, 35, 0.1);
+}
+
+.nm-system-card--on-grid {
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f8fdf9 100%
+    );
+}
+
+.nm-system-card--hybrid {
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fffdf5 100%
+    );
+}
+
+
+/* ============================================================
+   TOP
+   ============================================================ */
+
+.nm-system-card-top {
+  display: grid;
+
+  grid-template-columns:
+    44px minmax(0, 1fr) auto;
+
+  gap: 11px;
+
+  align-items: center;
+}
+
+.nm-system-icon {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  border:
+    1px solid rgba(0, 159, 92, 0.12);
+}
+
+.nm-system-card--hybrid
+.nm-system-icon {
+  color: #765c00;
+
+  background:
+    rgba(245, 196, 0, 0.16);
+
+  border-color:
+    rgba(245, 196, 0, 0.22);
+}
+
+.nm-system-heading {
+  min-width: 0;
+}
+
+.nm-system-heading > span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #009f5c;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.nm-system-card--hybrid
+.nm-system-heading > span {
+  color: #8a6b00;
+}
+
+.nm-system-heading h3 {
+  margin: 0;
+
+  color: #173322;
+
+  font-size: 17px;
+  line-height: 1.2;
+
+  font-weight: 950;
+
+  letter-spacing: -0.02em;
+}
+
+.nm-system-badge {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 6px 9px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  color: #008c51;
+
+  font-size: 8.5px;
+  line-height: 1.2;
+
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+.nm-system-card--hybrid
+.nm-system-badge {
+  background:
+    rgba(245, 196, 0, 0.16);
+
+  color: #715800;
+}
+
+
+/* ============================================================
+   DESCRIPTION
+   ============================================================ */
+
+.nm-system-description {
+  margin: 14px 0 0;
+
+  color: #59645e;
+
+  font-size: 12px;
+  line-height: 1.62;
+}
+
+
+/* ============================================================
+   ENERGY FLOW
+   ============================================================ */
+
+.nm-system-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  margin-top: 16px;
+
+  padding: 11px 10px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.09);
+
+  border-radius: 12px;
+
+  background:
+    #f8fcf9;
+
+  overflow-x: auto;
+
+  scrollbar-width: none;
+}
+
+.nm-system-flow::-webkit-scrollbar {
+  display: none;
+}
+
+.nm-system-flow > svg {
+  flex: 0 0 auto;
+
+  color: #009f5c;
+}
+
+.nm-system-flow > div {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  flex: 0 0 auto;
+}
+
+.nm-system-flow small {
+  color: #4f5b55;
+
+  font-size: 8.5px;
+  font-weight: 800;
+}
+
+.nm-system-flow-icon {
+  width: 29px;
+  height: 29px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 8px;
+}
+
+.nm-system-flow-icon.solar {
+  color: #7a5f00;
+
+  background:
+    rgba(245, 196, 0, 0.18);
+}
+
+.nm-system-flow-icon.property {
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+}
+
+.nm-system-flow-icon.battery {
+  color: #765c00;
+
+  background:
+    rgba(245, 196, 0, 0.16);
+}
+
+.nm-system-flow-icon.grid {
+  color: #244d38;
+
+  background:
+    rgba(36, 77, 56, 0.08);
+}
+
+
+/* ============================================================
+   CONTENT BLOCKS
+   ============================================================ */
+
+.nm-system-block {
+  margin-top: 16px;
+}
+
+.nm-system-block-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #27342d;
+
+  font-size: 9px;
+  font-weight: 950;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.07em;
+}
+
+
+/* ============================================================
+   IDEAL FOR
+   ============================================================ */
+
+.nm-system-ideal-list {
+  display: grid;
+
+  gap: 6px;
+}
+
+.nm-system-ideal-list > div {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 7px;
+
+  padding: 8px 9px;
+
+  border-radius: 9px;
+
+  background:
+    rgba(0, 159, 92, 0.045);
+}
+
+.nm-system-ideal-list svg {
+  flex: 0 0 auto;
+
+  margin-top: 1px;
+
+  color: #009f5c;
+}
+
+.nm-system-ideal-list span {
+  color: #566159;
+
+  font-size: 9.5px;
+  line-height: 1.45;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   FEATURE LIST
+   ============================================================ */
+
+.nm-system-feature-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 6px;
+}
+
+.nm-system-feature-list > div {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  min-width: 0;
+}
+
+.nm-system-feature-list > div > span {
+  width: 20px;
+  height: 20px;
+
+  flex: 0 0 20px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 6px;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  color: #009f5c;
+}
+
+.nm-system-card--hybrid
+.nm-system-feature-list > div > span {
+  background:
+    rgba(245, 196, 0, 0.15);
+
+  color: #806400;
+}
+
+.nm-system-feature-list p {
+  margin: 0;
+
+  color: #5a655f;
+
+  font-size: 9.2px;
+  line-height: 1.3;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   NOTE
+   ============================================================ */
+
+.nm-system-note {
+  margin-top: 16px;
+
+  padding: 10px 11px;
+
+  border-left:
+    3px solid #009f5c;
+
+  border-radius:
+    0 9px 9px 0;
+
+  background:
+    rgba(0, 159, 92, 0.055);
+}
+
+.nm-system-card--hybrid
+.nm-system-note {
+  border-left-color: #f5c400;
+
+  background:
+    rgba(245, 196, 0, 0.09);
+}
+
+.nm-system-note strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #123b27;
+
+  font-size: 9px;
+  font-weight: 950;
+
+  text-transform: uppercase;
+}
+
+.nm-system-note p {
+  margin: 0;
+
+  color: #626c66;
+
+  font-size: 9.5px;
+  line-height: 1.48;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 960px) {
+  .nm-systems-section {
+    padding:
+      44px 16px
+      48px;
+  }
+
+  .nm-system-card {
+    padding: 17px;
+  }
+
+  .nm-system-card-top {
+    grid-template-columns:
+      42px minmax(0, 1fr);
+
+    align-items: start;
+  }
+
+  .nm-system-badge {
+    grid-column: 1 / -1;
+
+    width: fit-content;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .nm-systems-section {
+    padding:
+      34px 13px
+      38px;
+  }
+
+  .nm-systems-header {
+    margin-bottom: 19px;
+
+    text-align: left;
+  }
+
+  .nm-systems-header h2 {
+    font-size: 27px;
+  }
+
+  .nm-systems-header p {
+    font-size: 12px;
+  }
+
+  .nm-systems-grid {
+    display: flex;
+
+    gap: 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    margin-right: -13px;
+
+    padding:
+      2px 13px
+      12px 0;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+  }
+
+  .nm-systems-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nm-system-card {
+    flex: 0 0 88%;
+
+    padding: 15px;
+
+    border-radius: 14px;
+
+    scroll-snap-align: start;
+  }
+
+  .nm-system-heading h3 {
+    font-size: 15px;
+  }
+
+  .nm-system-description {
+    font-size: 11.2px;
+  }
+
+  .nm-system-feature-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 430px) {
+  .nm-systems-section {
+    padding:
+      30px 12px
+      34px;
+  }
+
+  .nm-systems-header h2 {
+    font-size: 24px;
+  }
+
+  .nm-system-card {
+    flex-basis: 92%;
+  }
+
+  .nm-system-flow {
+    justify-content: flex-start;
+  }
+}

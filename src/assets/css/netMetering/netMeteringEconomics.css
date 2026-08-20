@@ -1,0 +1,455 @@
+/* ============================================================
+   ZORAYS SOLAR — NET METERING ECONOMICS
+   Import / Export / Savings Logic
+   ============================================================ */
+
+.nm-economics-section {
+  position: relative;
+  overflow: hidden;
+  padding: 52px 18px 56px;
+
+  background:
+    radial-gradient(
+      circle at 8% 20%,
+      rgba(0, 159, 92, 0.07),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 78%,
+      rgba(245, 196, 0, 0.08),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #f7fbf8 0%,
+      #ffffff 100%
+    );
+}
+
+.nm-economics-section::before {
+  content: "";
+  position: absolute;
+  right: -120px;
+  top: 40px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 159, 92, 0.06) 1.4px,
+      transparent 1.4px
+    );
+
+  background-size: 17px 17px;
+  pointer-events: none;
+}
+
+.nm-economics-container {
+  position: relative;
+  z-index: 2;
+  width: min(1220px, 100%);
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+
+.nm-economics-layout {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.9fr)
+    minmax(0, 1.1fr);
+
+  gap: 28px;
+  align-items: center;
+}
+
+
+/* ============================================================
+   LEFT CONTENT
+   ============================================================ */
+
+.nm-economics-content {
+  min-width: 0;
+}
+
+.nm-economics-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 11px;
+
+  color: #009f5c;
+
+  font-size: 10.5px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nm-economics-content h2 {
+  max-width: 620px;
+  margin: 0;
+
+  color: #19251f;
+
+  font-size: clamp(28px, 3.3vw, 44px);
+  line-height: 1.08;
+
+  font-weight: 950;
+  letter-spacing: -0.04em;
+}
+
+.nm-economics-content h2 span {
+  display: block;
+  margin-top: 6px;
+  color: #009f5c;
+}
+
+.nm-economics-description {
+  max-width: 650px;
+  margin: 14px 0 0;
+
+  color: #59645e;
+
+  font-size: 13px;
+  line-height: 1.66;
+}
+
+
+/* ============================================================
+   FACTORS
+   ============================================================ */
+
+.nm-economics-factors {
+  margin-top: 20px;
+}
+
+.nm-economics-factors-title {
+  display: block;
+  margin-bottom: 9px;
+
+  color: #28362f;
+
+  font-size: 9.5px;
+  font-weight: 950;
+
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.nm-economics-factor-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 7px;
+}
+
+.nm-economics-factor-grid > div {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 7px;
+
+  padding: 8px 9px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.08);
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.75);
+}
+
+.nm-economics-factor-grid svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #009f5c;
+}
+
+.nm-economics-factor-grid span {
+  color: #5c6861;
+
+  font-size: 9.5px;
+  line-height: 1.4;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   NOTE
+   ============================================================ */
+
+.nm-economics-note {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 9px;
+
+  margin-top: 15px;
+  padding: 11px;
+
+  border-left:
+    3px solid #f5c400;
+
+  border-radius:
+    0 10px 10px 0;
+
+  background:
+    rgba(245, 196, 0, 0.08);
+}
+
+.nm-economics-note svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #8b6c00;
+}
+
+.nm-economics-note p {
+  margin: 0;
+
+  color: #626b66;
+
+  font-size: 9.7px;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   RIGHT CARDS
+   ============================================================ */
+
+.nm-economics-cards {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.nm-economics-card {
+  position: relative;
+  min-width: 0;
+
+  padding: 16px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.1);
+
+  border-radius: 15px;
+
+  background:
+    rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 9px 24px rgba(13, 55, 35, 0.055);
+
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.nm-economics-card:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(0, 159, 92, 0.2);
+
+  box-shadow:
+    0 14px 30px rgba(13, 55, 35, 0.085);
+}
+
+
+/* ============================================================
+   CARD TOP
+   ============================================================ */
+
+.nm-economics-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 9px;
+
+  margin-bottom: 12px;
+}
+
+.nm-economics-card-icon {
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  border:
+    1px solid rgba(0, 159, 92, 0.1);
+}
+
+.nm-economics-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 25px;
+
+  padding: 0 8px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(0, 159, 92, 0.07);
+
+  color: #008c51;
+
+  font-size: 8.5px;
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   CARD CONTENT
+   ============================================================ */
+
+.nm-economics-card h3 {
+  margin: 0;
+
+  color: #173522;
+
+  font-size: 13.5px;
+  line-height: 1.28;
+
+  font-weight: 950;
+  letter-spacing: -0.02em;
+}
+
+.nm-economics-card > p {
+  margin: 7px 0 0;
+
+  color: #636e68;
+
+  font-size: 10.3px;
+  line-height: 1.55;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 960px) {
+  .nm-economics-section {
+    padding:
+      44px 16px
+      48px;
+  }
+
+  .nm-economics-layout {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .nm-economics-content {
+    max-width: 760px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .nm-economics-section {
+    padding:
+      34px 13px
+      38px;
+  }
+
+  .nm-economics-content h2 {
+    font-size: 27px;
+  }
+
+  .nm-economics-description {
+    font-size: 12px;
+  }
+
+  .nm-economics-factor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nm-economics-cards {
+    display: flex;
+
+    gap: 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    margin-right: -13px;
+
+    padding:
+      2px 13px
+      12px 0;
+
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none;
+  }
+
+  .nm-economics-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nm-economics-card {
+    flex: 0 0 80%;
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+    scroll-snap-align: start;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 430px) {
+  .nm-economics-section {
+    padding:
+      30px 12px
+      34px;
+  }
+
+  .nm-economics-content h2 {
+    font-size: 24px;
+  }
+
+  .nm-economics-card {
+    flex-basis: 88%;
+  }
+}
