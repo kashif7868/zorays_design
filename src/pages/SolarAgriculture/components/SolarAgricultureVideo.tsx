@@ -13,7 +13,6 @@ const SolarAgricultureVideo = () => {
   return (
     <section className="sa-video-section">
       <div className="sa-video-container">
-
         <div className="sa-video-header">
           <span className="sa-video-eyebrow">
             <Sprout size={14} />
@@ -60,7 +59,6 @@ const SolarAgricultureVideo = () => {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

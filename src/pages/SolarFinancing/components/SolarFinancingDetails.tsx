@@ -82,7 +82,9 @@ const SolarFinancingDetails = () => {
 
         <div className="sf-details-cta">
           <div>
-            <span>Ready to move forward?</span>
+            <span>
+              Ready to move forward?
+            </span>
 
             <h3>
               Discuss your solar financing requirement with our team.

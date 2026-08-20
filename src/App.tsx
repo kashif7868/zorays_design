@@ -1,8 +1,11 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Preloader from "./components/Preloader";
+
 import useNavigation from "./hooks/useNavigation";
+
 import Pages from "./layouts/Pages";
+
 import "./App.css";
 
 function App() {

@@ -16,7 +16,6 @@ const SolarBackupOverview = () => {
     <section className="sb-overview-section">
       <div className="sb-overview-container">
         <div className="sb-overview-card">
-
           <div className="sb-overview-content">
             <span className="sb-overview-eyebrow">
               <Zap size={14} />
@@ -73,12 +72,16 @@ const SolarBackupOverview = () => {
               <BatteryCharging size={20} />
 
               <div>
-                <strong>Solar + Battery</strong>
-                <span>Backup when you need it</span>
+                <strong>
+                  Solar + Battery
+                </strong>
+
+                <span>
+                  Backup when you need it
+                </span>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>

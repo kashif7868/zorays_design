@@ -153,37 +153,43 @@ export const solarFinancingDetailsData = {
     {
       id: "equity",
       title: "Upfront Equity",
-      text: "Some financing arrangements may require an upfront customer contribution depending on the bank and project profile.",
+      text:
+        "Some financing arrangements may require an upfront customer contribution depending on the bank and project profile.",
     },
 
     {
       id: "vendor-commission",
       title: "Vendor / Processing Charges",
-      text: "Banks or financing partners may apply processing, vendor, documentation, or related administrative charges.",
+      text:
+        "Banks or financing partners may apply processing, vendor, documentation, or related administrative charges.",
     },
 
     {
       id: "client-commission",
       title: "Client Charges",
-      text: "Additional application or service charges may apply depending on the selected financing structure.",
+      text:
+        "Additional application or service charges may apply depending on the selected financing structure.",
     },
 
     {
       id: "insurance",
       title: "Insurance",
-      text: "Some financed solar systems may require insurance coverage as part of the financing arrangement.",
+      text:
+        "Some financed solar systems may require insurance coverage as part of the financing arrangement.",
     },
 
     {
       id: "installments",
       title: "Installment Structure",
-      text: "Monthly installments depend on project cost, financing tenure, markup rate, and approved facility amount.",
+      text:
+        "Monthly installments depend on project cost, financing tenure, markup rate, and approved facility amount.",
     },
 
     {
       id: "due-diligence",
       title: "Due Diligence",
-      text: "Banks can require salary evidence, account history, business records, collateral, or additional documentation before approval.",
+      text:
+        "Banks can require salary evidence, account history, business records, collateral, or additional documentation before approval.",
     },
   ],
 

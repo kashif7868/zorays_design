@@ -1,14 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./app/store.ts";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import ScrollToTop from "./components/common/ScrollToTop.tsx";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+import App from "./App";
+import { store } from "./app/store";
+import ScrollToTop from "./components/common/ScrollToTop";
+
+import "react-toastify/dist/ReactToastify.css";
+
+ReactDOM.createRoot(
+  document.getElementById("root")!
+).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>

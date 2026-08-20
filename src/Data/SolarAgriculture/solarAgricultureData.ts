@@ -132,37 +132,52 @@ export const solarAgricultureArticlesData = {
 export const solarAgricultureArticles: AgricultureArticle[] = [
   {
     id: "biogas",
+
     title:
       "Biogas & Solar Thermal Energy in Pakistan: Turning Waste into Wealth",
+
     date: "December 23, 2025",
+
     excerpt:
       "A practical look at renewable energy applications involving biogas, solar thermal systems, and agricultural energy opportunities.",
+
     image:
       "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80",
+
     link: "/solar-blog",
   },
 
   {
     id: "water-management",
+
     title:
       "Solar Water Pumping for Agricultural Irrigation",
+
     date: "Solar Agriculture",
+
     excerpt:
       "How solar-powered water pumping can support irrigation requirements while reducing dependence on conventional energy sources.",
+
     image:
       "https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?auto=format&fit=crop&w=900&q=80",
+
     link: "/solar-blog",
   },
 
   {
     id: "smog",
+
     title:
       "Smog, Energy and Sustainable Development in Pakistan",
+
     date: "Environmental Insight",
+
     excerpt:
       "Understanding how cleaner energy systems can support broader environmental and sustainability objectives.",
+
     image:
       "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=900&q=80",
+
     link: "/solar-blog",
   },
 ];
