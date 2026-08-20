@@ -1,0 +1,253 @@
+/* ============================================================
+   ZORAYS SOLAR — AGRICULTURE VIDEO
+   On-Farm Water Management
+   ============================================================ */
+
+.sa-video-section {
+  position: relative;
+  overflow: hidden;
+
+  padding: 46px 18px 50px;
+
+  background:
+    radial-gradient(
+      circle at 8% 18%,
+      rgba(0, 159, 92, 0.06),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 92% 82%,
+      rgba(245, 196, 0, 0.07),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #f7fbf8 0%,
+      #ffffff 100%
+    );
+}
+
+.sa-video-container {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.sa-video-header {
+  max-width: 700px;
+
+  margin: 0 auto 22px;
+
+  text-align: center;
+}
+
+.sa-video-eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 10px;
+
+  color: #009f5c;
+
+  font-size: 10.5px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sa-video-header h2 {
+  margin: 0;
+
+  color: #19251f;
+
+  font-size:
+    clamp(28px, 3.3vw, 42px);
+
+  line-height: 1.08;
+
+  font-weight: 950;
+
+  letter-spacing: -0.04em;
+}
+
+.sa-video-header h2 span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #009f5c;
+}
+
+.sa-video-header p {
+  max-width: 650px;
+
+  margin: 12px auto 0;
+
+  color: #5e6963;
+
+  font-size: 12.5px;
+  line-height: 1.62;
+}
+
+
+/* ============================================================
+   VIDEO CARD
+   ============================================================ */
+
+.sa-video-card {
+  position: relative;
+
+  max-width: 920px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.12);
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 16px 38px rgba(13, 55, 35, 0.09);
+}
+
+.sa-video-frame {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  background: #0a2d1d;
+}
+
+.sa-video-frame iframe {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ============================================================
+   VIDEO LABEL
+   ============================================================ */
+
+.sa-video-label {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 13px 15px;
+
+  border-top:
+    1px solid rgba(0, 159, 92, 0.08);
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #f6fbf8 100%
+    );
+}
+
+.sa-video-label > span {
+  width: 36px;
+  height: 36px;
+
+  flex: 0 0 36px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+}
+
+.sa-video-label strong {
+  display: block;
+
+  color: #173522;
+
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.sa-video-label p {
+  margin: 3px 0 0;
+
+  color: #68736d;
+
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .sa-video-section {
+    padding:
+      34px 13px
+      38px;
+  }
+
+  .sa-video-header {
+    margin-bottom: 18px;
+
+    text-align: left;
+  }
+
+  .sa-video-header h2 {
+    font-size: 27px;
+  }
+
+  .sa-video-header p {
+    font-size: 11.8px;
+  }
+
+  .sa-video-card {
+    border-radius: 14px;
+  }
+
+  .sa-video-label {
+    padding: 11px 12px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 430px) {
+  .sa-video-section {
+    padding:
+      30px 12px
+      34px;
+  }
+
+  .sa-video-header h2 {
+    font-size: 24px;
+  }
+}

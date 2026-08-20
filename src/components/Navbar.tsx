@@ -74,7 +74,7 @@ const navLinks = [
 
   {
     label: "Solar Tubewell",
-    href: "/solar-tubewell",
+    href: "/solar-agricultural-solutions",
   },
 
   {

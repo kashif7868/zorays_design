@@ -10,6 +10,7 @@ import ZoraysShop from "../pages/Shop/ZoraysShop";
 import ZoraysProductView from "../pages/Shop/ProductView/ZoraysProductView";
 import SolarBackup from "../pages/SolarBackup/SolarBackup";
 import SolarFinancing from "../pages/SolarFinancing/SolarFinancing";
+import SolarAgriculture from "../pages/SolarAgriculture/SolarAgriculture";
 import NotFound from "./NotFound";
 
 export default function Pages() {
@@ -42,6 +43,14 @@ export default function Pages() {
         element={<SolarFinancing />}
       />
 
+      {/* =====================================================
+          Solar Agriculture
+          ===================================================== */}
+
+      <Route
+        path="/solar-agricultural-solutions"
+        element={<SolarAgriculture />}
+      />
       {/* =====================================================
           CART / CHECKOUT
           ===================================================== */}
