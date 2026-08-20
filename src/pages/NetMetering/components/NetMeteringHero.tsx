@@ -7,7 +7,7 @@ import {
   Zap,
 } from "lucide-react";
 
-import "../../../assets/css/NetMetering/netMeteringHero.css";
+import "../../../assets/css/netMetering/netMeteringHero.css";
 
 import {
   netMeteringHeroData,
