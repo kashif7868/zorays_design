@@ -90,11 +90,6 @@ const navLinks = [
     label: "Solar Blog",
     href: "/solar-blog",
   },
-
-  {
-    label: "Zorays Pakistan",
-    href: "/zorays-pakistan",
-  },
 ];
 
 
@@ -138,11 +133,6 @@ const drawerLinks = [
   {
     label: "Solar Blog",
     href: "/solar-blog",
-  },
-
-  {
-    label: "Zorays Pakistan",
-    href: "/zorays-pakistan",
   },
 ];
 
