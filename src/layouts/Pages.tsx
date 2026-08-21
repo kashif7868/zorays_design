@@ -16,6 +16,9 @@ import CheckoutPage from "../pages/Cart/Checkout/CheckoutPage";
 import ZoraysShop from "../pages/Shop/ZoraysShop";
 import ZoraysProductView from "../pages/Shop/ProductView/ZoraysProductView";
 
+import SolarClientele from "../pages/SolarClientele/SolarClientele";
+
+import SolarBlog from "../pages/SolarBlog/SolarBlog";
 import NotFound from "./NotFound";
 
 const Pages = () => {
@@ -54,7 +57,15 @@ const Pages = () => {
         path="/solar-agricultural-solutions"
         element={<SolarAgriculture />}
       />
+      <Route
+        path="/solar-clientele"
+        element={<SolarClientele />}
+      />
 
+      <Route
+        path="/solar-blog"
+        element={<SolarBlog />}
+      />
 
       {/* =====================================================
           CART / CHECKOUT
