@@ -1,316 +1,516 @@
 /* ============================================================
-SHOP CATEGORY FILTER
-White + Purple + Orange Theme
-============================================================ */
+   ZORAYS SOLAR TRADE HUB — CATEGORY FILTER
+   Search + Sort + Product Categories
+   ============================================================ */
 
 .zs-filter-section {
-position: relative;
-padding: 34px 18px 24px;
-background:
-radial-gradient(circle at top left, rgba(91, 44, 255, 0.05), transparent 30%),
-radial-gradient(circle at top right, rgba(255, 138, 0, 0.06), transparent 28%),
-#ffffff;
+  position: relative;
+
+  padding: 24px 18px 36px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f7fbf8 0%,
+      #ffffff 100%
+    );
 }
 
 .zs-filter-panel {
-position: relative;
-background:
-radial-gradient(circle at top left, rgba(91, 44, 255, 0.08), transparent 34%),
-linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(251, 248, 255, 0.98));
-border: 1px solid var(--zs-border);
-border-radius: 30px;
-padding: 24px;
-box-shadow: 0 10px 30px rgba(50, 20, 120, 0.08);
-overflow: hidden;
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 22px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.11);
+
+  border-radius: 18px;
+
+  background:
+    rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    0 12px 30px rgba(14, 55, 36, 0.06);
 }
 
 .zs-filter-panel::before {
-content: "";
-position: absolute;
-inset: 0 0 auto 0;
-height: 5px;
-background: linear-gradient(
-90deg,
-var(--zs-purple),
-var(--zs-orange),
-var(--zs-purple-dark)
-);
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #009f5c 0%,
+      #f5c400 50%,
+      #009f5c 100%
+    );
 }
+
+
+/* ============================================================
+   TOP ROW
+   ============================================================ */
 
 .zs-filter-top {
-display: grid;
-grid-template-columns: minmax(0, 1fr) minmax(360px, 0.86fr);
-gap: 22px;
-align-items: end;
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(420px, 0.9fr);
+
+  gap: 24px;
+
+  align-items: end;
 }
 
-.zs-filter-heading span {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-background: var(--zs-purple-soft);
-color: var(--zs-purple-dark);
-border: 1px solid var(--zs-purple-mid);
-padding: 8px 12px;
-border-radius: 999px;
-font-size: 12px;
-font-weight: 800;
-margin-bottom: 12px;
+
+/* ============================================================
+   HEADING
+   ============================================================ */
+
+.zs-filter-heading {
+  min-width: 0;
 }
 
-.zs-filter-heading span svg {
-color: var(--zs-orange);
+.zs-filter-eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  margin-bottom: 8px;
+
+  color: #009f5c;
+
+  font-size: 9.5px;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
 }
 
 .zs-filter-heading h2 {
-margin: 0;
-color: var(--zs-text);
-font-size: clamp(25px, 3vw, 36px);
-line-height: 1.15;
-letter-spacing: -0.8px;
-font-weight: 800;
-}
+  margin: 0;
 
-.zs-filter-heading h2 strong {
-background: linear-gradient(135deg, var(--zs-purple), var(--zs-orange));
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
+  color: #18261e;
+
+  font-size: clamp(23px, 3vw, 34px);
+  line-height: 1.12;
+
+  font-weight: 950;
+
+  letter-spacing: -0.035em;
 }
 
 .zs-filter-heading p {
-margin: 9px 0 0;
-max-width: 570px;
-color: var(--zs-muted);
-font-size: 14px;
-line-height: 1.7;
-font-weight: 500;
+  max-width: 590px;
+
+  margin: 9px 0 0;
+
+  color: #66716b;
+
+  font-size: 11px;
+  line-height: 1.55;
 }
+
+
+/* ============================================================
+   CONTROLS
+   ============================================================ */
 
 .zs-filter-controls {
-display: grid;
-grid-template-columns: minmax(0, 1fr) 170px;
-gap: 12px;
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    170px;
+
+  gap: 9px;
+
+  align-items: end;
 }
 
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+
 .zs-shop-search {
-min-height: 48px;
-display: flex;
-align-items: center;
-gap: 10px;
-background: #ffffff;
-border: 1px solid var(--zs-border);
-border-radius: 15px;
-padding: 0 14px;
-transition:
-border-color 0.22s ease,
-box-shadow 0.22s ease,
-background 0.22s ease;
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  min-height: 43px;
+
+  padding: 0 12px;
+
+  border:
+    1px solid #dce6e0;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .zs-shop-search:focus-within {
-border-color: rgba(91, 44, 255, 0.55);
-box-shadow: 0 0 0 4px rgba(91, 44, 255, 0.10);
-background: #ffffff;
+  border-color: #009f5c;
+
+  box-shadow:
+    0 0 0 3px rgba(0, 159, 92, 0.08);
 }
 
 .zs-shop-search svg {
-color: var(--zs-orange);
-flex-shrink: 0;
+  flex: 0 0 auto;
+
+  color: #009f5c;
 }
 
 .zs-shop-search input {
-width: 100%;
-min-width: 0;
-border: 0;
-outline: 0;
-background: transparent;
-color: var(--zs-text);
-font-family: var(--zs-font);
-font-size: 13.5px;
-font-weight: 500;
+  width: 100%;
+  min-width: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #26332c;
+
+  font: inherit;
+
+  font-size: 10.5px;
 }
 
 .zs-shop-search input::placeholder {
-color: #9a8fa8;
+  color: #9ca6a1;
 }
 
-.zs-shop-search input::-webkit-search-cancel-button {
-display: none;
+
+/* ============================================================
+   SORT
+   ============================================================ */
+
+.zs-shop-sort-wrap {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.zs-shop-sort-wrap > span {
+  color: #6d7872;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .zs-shop-sort {
-min-height: 48px;
-width: 100%;
-border: 1px solid var(--zs-border);
-border-radius: 15px;
-background: #ffffff;
-color: var(--zs-text);
-font-family: var(--zs-font);
-font-size: 13px;
-font-weight: 700;
-outline: 0;
-padding: 0 12px;
-cursor: pointer;
-transition:
-border-color 0.22s ease,
-box-shadow 0.22s ease,
-background 0.22s ease;
+  width: 100%;
+
+  min-height: 43px;
+
+  padding: 0 10px;
+
+  border:
+    1px solid #dce6e0;
+
+  border-radius: 10px;
+
+  outline: 0;
+
+  background: #ffffff;
+
+  color: #344239;
+
+  font-size: 9.5px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .zs-shop-sort:focus {
-border-color: rgba(91, 44, 255, 0.55);
-box-shadow: 0 0 0 4px rgba(91, 44, 255, 0.10);
+  border-color: #009f5c;
+
+  box-shadow:
+    0 0 0 3px rgba(0, 159, 92, 0.08);
 }
 
+
+/* ============================================================
+   CATEGORY ROW
+   ============================================================ */
+
 .zs-category-row {
-display: flex;
-align-items: center;
-gap: 10px;
-overflow-x: auto;
-padding: 20px 2px 4px;
-scrollbar-width: thin;
-scrollbar-color: rgba(91, 44, 255, 0.45) transparent;
+  display: flex;
+
+  gap: 7px;
+
+  margin-top: 20px;
+
+  padding-bottom: 2px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: none;
 }
 
 .zs-category-row::-webkit-scrollbar {
-height: 6px;
+  display: none;
 }
 
-.zs-category-row::-webkit-scrollbar-track {
-background: transparent;
-}
 
-.zs-category-row::-webkit-scrollbar-thumb {
-background: linear-gradient(90deg, var(--zs-purple), var(--zs-orange));
-border-radius: 999px;
-}
+/* ============================================================
+   CATEGORY PILL
+   ============================================================ */
 
 .zs-category-pill {
-flex: 0 0 auto;
-display: inline-flex;
-align-items: center;
-gap: 8px;
-min-height: 42px;
-padding: 10px 14px;
-border: 1px solid var(--zs-border);
-border-radius: 999px;
-background: #ffffff;
-color: var(--zs-muted);
-font-family: var(--zs-font);
-font-size: 13px;
-font-weight: 800;
-cursor: pointer;
-transition:
-transform 0.22s ease,
-background 0.22s ease,
-color 0.22s ease,
-border-color 0.22s ease,
-box-shadow 0.22s ease;
-white-space: nowrap;
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  min-height: 38px;
+
+  padding: 0 11px;
+
+  border:
+    1px solid #dfe8e3;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  color: #59655f;
+
+  font-size: 9px;
+  font-weight: 850;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .zs-category-pill:hover {
-color: var(--zs-purple-dark);
-background: var(--zs-purple-soft);
-border-color: var(--zs-purple-mid);
-transform: translateY(-1px);
+  transform: translateY(-1px);
+
+  border-color:
+    rgba(0, 159, 92, 0.24);
+
+  color: #009f5c;
+
+  background:
+    rgba(0, 159, 92, 0.035);
 }
 
 .zs-category-pill.is-active {
-background: var(--zs-gradient);
-color: #ffffff;
-border-color: transparent;
-box-shadow: 0 12px 24px rgba(91, 44, 255, 0.20);
+  border-color: #009f5c;
+
+  background: #009f5c;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 18px rgba(0, 159, 92, 0.17);
 }
 
-.zs-category-icon {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-line-height: 1;
-}
-
-.zs-category-pill.is-active .zs-category-icon {
-color: #ffffff;
-}
-
-.zs-filter-note {
-margin-top: 16px;
-background:
-linear-gradient(
-135deg,
-rgba(91, 44, 255, 0.07),
-rgba(255, 138, 0, 0.08)
-);
-border: 1px dashed rgba(91, 44, 255, 0.35);
-color: var(--zs-muted);
-border-radius: 16px;
-padding: 12px 14px;
-font-size: 13px;
-line-height: 1.6;
-font-weight: 600;
-}
-
-.zs-filter-note span {
-color: var(--zs-purple-dark);
-font-weight: 800;
-}
 
 /* ============================================================
-RESPONSIVE
-============================================================ */
+   CATEGORY ICON
+   ============================================================ */
 
-@media (max-width: 980px) {
-.zs-filter-top {
-grid-template-columns: 1fr;
-}
+.zs-category-icon {
+  width: 25px;
+  height: 25px;
 
-.zs-filter-controls {
-grid-template-columns: 1fr 170px;
-}
-}
+  flex: 0 0 25px;
 
-@media (max-width: 680px) {
-.zs-filter-section {
-padding: 26px 12px 20px;
-}
+  display: grid;
+  place-items: center;
 
-.zs-filter-panel {
-border-radius: 24px;
-padding: 20px;
-}
+  border-radius: 8px;
 
-.zs-filter-controls {
-grid-template-columns: 1fr;
+  background:
+    rgba(0, 159, 92, 0.07);
+
+  color: #009f5c;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
-.zs-category-row {
-padding-top: 17px;
+.zs-category-pill.is-active
+.zs-category-icon {
+  background:
+    rgba(255, 255, 255, 0.16);
+
+  color: #ffffff;
 }
 
-.zs-category-pill {
-min-height: 40px;
-font-size: 12.5px;
-padding: 9px 13px;
-}
-}
 
-@media (max-width: 420px) {
-.zs-filter-panel {
-padding: 18px 14px;
-}
-
-.zs-filter-heading h2 {
-font-size: 25px;
-}
-
-.zs-shop-search,
-.zs-shop-sort {
-min-height: 46px;
-}
+/* ============================================================
+   NOTE
+   ============================================================ */
 
 .zs-filter-note {
-font-size: 12.5px;
+  display: flex;
+  align-items: flex-start;
+
+  gap: 6px;
+
+  margin-top: 14px;
+
+  padding: 9px 11px;
+
+  border-left:
+    3px solid #f5c400;
+
+  border-radius:
+    0 8px 8px 0;
+
+  background:
+    rgba(245, 196, 0, 0.055);
+
+  color: #68726c;
+
+  font-size: 8.8px;
+  line-height: 1.45;
 }
+
+.zs-filter-note strong {
+  flex: 0 0 auto;
+
+  color: #715800;
+
+  font-weight: 900;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 950px) {
+  .zs-filter-top {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .zs-filter-controls {
+    grid-template-columns:
+      minmax(0, 1fr)
+      180px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .zs-filter-section {
+    padding:
+      18px 13px
+      28px;
+  }
+
+  .zs-filter-panel {
+    padding: 16px;
+
+    border-radius: 14px;
+  }
+
+  .zs-filter-heading h2 {
+    font-size: 24px;
+  }
+
+  .zs-filter-heading p {
+    font-size: 10.5px;
+  }
+
+  .zs-filter-controls {
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+  }
+
+  .zs-shop-sort-wrap > span {
+    display: none;
+  }
+
+  .zs-category-row {
+    margin-top: 16px;
+
+    margin-right: -16px;
+
+    padding-right: 16px;
+  }
+
+  .zs-category-pill {
+    min-height: 36px;
+
+    padding: 0 10px;
+  }
+
+  .zs-filter-note {
+    font-size: 8.4px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 430px) {
+  .zs-filter-section {
+    padding:
+      16px 12px
+      24px;
+  }
+
+  .zs-filter-panel {
+    padding: 14px;
+  }
+
+  .zs-filter-heading h2 {
+    font-size: 22px;
+  }
+
+  .zs-category-pill {
+    font-size: 8.5px;
+  }
 }

@@ -1,62 +1,34 @@
 import {
-  BatteryCharging,
-  Boxes,
-  Cable,
-  Grid3X3,
   Search,
-  ShieldCheck,
   SlidersHorizontal,
-  SolarPanel,
-  Zap,
 } from "lucide-react";
+
 import "../../assets/css/shop/shopCategoryFilter.css";
+
+import {
+  shopCategories,
+  shopSortOptions,
+} from "../../Data/shop/shopCategoryData";
 
 type ShopCategoryFilterProps = {
   activeCategory: string;
-  onCategoryChange: (category: string) => void;
-  searchQuery: string;
-  onSearchChange: (query: string) => void;
-  sortOption: string;
-  onSortChange: (option: string) => void;
-};
 
-const categories = [
-  {
-    label: "All",
-    value: "All",
-    icon: <Grid3X3 size={17} />,
-  },
-  {
-    label: "Solar Panels",
-    value: "Solar Panel",
-    icon: <SolarPanel size={17} />,
-  },
-  {
-    label: "Hybrid Inverters",
-    value: "Hybrid Inverter",
-    icon: <Zap size={17} />,
-  },
-  {
-    label: "Lithium Batteries",
-    value: "Lithium Battery",
-    icon: <BatteryCharging size={17} />,
-  },
-  {
-    label: "Protection",
-    value: "Protection",
-    icon: <ShieldCheck size={17} />,
-  },
-  {
-    label: "Cables",
-    value: "Cable",
-    icon: <Cable size={17} />,
-  },
-  {
-    label: "Accessories",
-    value: "Accessories",
-    icon: <Boxes size={17} />,
-  },
-];
+  onCategoryChange: (
+    category: string
+  ) => void;
+
+  searchQuery: string;
+
+  onSearchChange: (
+    query: string
+  ) => void;
+
+  sortOption: string;
+
+  onSortChange: (
+    option: string
+  ) => void;
+};
 
 const ShopCategoryFilter = ({
   activeCategory,
@@ -67,70 +39,137 @@ const ShopCategoryFilter = ({
   onSortChange,
 }: ShopCategoryFilterProps) => {
   return (
-    <section className="zs-filter-section" id="shop-products">
+    <section
+      className="zs-filter-section"
+      id="shop-products"
+    >
       <div className="zs-shop-container">
         <div className="zs-filter-panel">
+
           <div className="zs-filter-top">
             <div className="zs-filter-heading">
-              <span>
-                <SlidersHorizontal size={16} />
-                Shop Filters
+              <span className="zs-filter-eyebrow">
+                <SlidersHorizontal size={15} />
+                Solar Trade Hub
               </span>
 
-              <h2>Find the Right Solar Product</h2>
+              <h2>
+                Browse Solar Equipment
+              </h2>
 
               <p>
-                Search by product name, filter by category, and sort products
-                for faster selection.
+                Search products, select a category,
+                and sort listings to find the right
+                equipment faster.
               </p>
             </div>
 
             <div className="zs-filter-controls">
-              <div className="zs-shop-search">
-                <Search size={18} />
+
+              <label className="zs-shop-search">
+                <Search size={17} />
+
                 <input
                   type="search"
-                  placeholder="Search panels, inverters, batteries..."
+                  placeholder="Search solar products..."
                   value={searchQuery}
-                  onChange={(event) => onSearchChange(event.target.value)}
+                  onChange={(event) =>
+                    onSearchChange(
+                      event.target.value
+                    )
+                  }
                   aria-label="Search shop products"
                 />
-              </div>
+              </label>
 
-              <select
-                className="zs-shop-sort"
-                value={sortOption}
-                onChange={(event) => onSortChange(event.target.value)}
-                aria-label="Sort products"
-              >
-                <option value="featured">Featured Products</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="rating">Highest Rated</option>
-              </select>
+              <label className="zs-shop-sort-wrap">
+                <span>
+                  Sort by
+                </span>
+
+                <select
+                  className="zs-shop-sort"
+                  value={sortOption}
+                  onChange={(event) =>
+                    onSortChange(
+                      event.target.value
+                    )
+                  }
+                  aria-label="Sort products"
+                >
+                  {shopSortOptions.map(
+                    (option) => (
+                      <option
+                        value={option.value}
+                        key={option.value}
+                      >
+                        {option.label}
+                      </option>
+                    )
+                  )}
+                </select>
+              </label>
+
             </div>
           </div>
 
-          <div className="zs-category-row">
-            {categories.map((category) => (
-              <button
-                key={category.value}
-                type="button"
-                className={`zs-category-pill${
-                  activeCategory === category.value ? " is-active" : ""
-                }`}
-                onClick={() => onCategoryChange(category.value)}
-              >
-                <span className="zs-category-icon">{category.icon}</span>
-                <span>{category.label}</span>
-              </button>
-            ))}
+          <div
+            className="zs-category-row"
+            role="group"
+            aria-label="Product categories"
+          >
+            {shopCategories.map(
+              (category) => {
+                const Icon =
+                  category.icon;
+
+                const isActive =
+                  activeCategory ===
+                  category.value;
+
+                return (
+                  <button
+                    key={category.id}
+                    type="button"
+                    className={`zs-category-pill${
+                      isActive
+                        ? " is-active"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      onCategoryChange(
+                        category.value
+                      )
+                    }
+                    aria-pressed={
+                      isActive
+                    }
+                  >
+                    <span className="zs-category-icon">
+                      <Icon size={16} />
+                    </span>
+
+                    <span>
+                      {category.label}
+                    </span>
+                  </button>
+                );
+              }
+            )}
           </div>
 
           <div className="zs-filter-note">
-            <span>Tip:</span> Choose “Order Now” for direct checkout or “Add to
-            Cart” to save products before final review.
+            <strong>
+              Buying tip:
+            </strong>
+
+            <span>
+              Compare products first, add preferred
+              items to cart, then proceed to checkout
+              when your equipment selection is ready.
+            </span>
           </div>
+
         </div>
       </div>
     </section>

@@ -1,22 +1,51 @@
-import type { CartProduct } from "../../app/features/cart/cartSlice";
-
 export type ProductSpecification = {
   label: string;
   value: string;
 };
 
-export type ZoraysShopProduct = CartProduct & {
+export type ZoraysShopProduct = {
+  id: number;
+
+  title: string;
+
+  desc: string;
+
+  price: string;
+
+  oldPrice: string;
+
+  priceAmount: number;
+
+  oldPriceAmount?: number;
+
+  tag: string;
+
+  rating: string;
+
+  image: string;
+
   category: string;
+
   brand: string;
+
   model?: string;
+
   sku?: string;
+
   featured?: boolean;
+
   stockStatus: string;
+
   warranty: string;
+
   productOverview: string;
+
   keyFeatures: string[];
+
   specifications: ProductSpecification[];
+
   bestFor: string[];
+
   relatedProductIds: number[];
 };
 
@@ -24,7 +53,8 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
   {
     id: 1,
     title: "Canadian Solar 620W N-Type Bifacial Panel",
-    desc: "High-efficiency N-Type bifacial solar panel for residential and commercial solar systems.",
+    desc:
+      "High-efficiency N-Type bifacial solar panel for residential and commercial solar systems.",
     price: "Rs. 29,915",
     oldPrice: "Rs. 31,500",
     priceAmount: 29915,
@@ -47,10 +77,22 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
       "Reliable performance for rooftop and commercial projects",
     ],
     specifications: [
-      { label: "Panel Capacity", value: "620W" },
-      { label: "Technology", value: "N-Type Bifacial" },
-      { label: "Application", value: "Residential / Commercial" },
-      { label: "System Type", value: "On-grid / Hybrid Compatible" },
+      {
+        label: "Panel Capacity",
+        value: "620W",
+      },
+      {
+        label: "Technology",
+        value: "N-Type Bifacial",
+      },
+      {
+        label: "Application",
+        value: "Residential / Commercial",
+      },
+      {
+        label: "System Type",
+        value: "On-grid / Hybrid Compatible",
+      },
     ],
     bestFor: [
       "Residential solar systems",
@@ -61,10 +103,12 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
     image:
       "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=900&auto=format&fit=crop",
   },
+
   {
     id: 2,
     title: "Jinko 725W N-Type Solar Panel",
-    desc: "Premium high-wattage N-Type module for large residential, commercial, and industrial systems.",
+    desc:
+      "Premium high-wattage N-Type module for large residential, commercial, and industrial systems.",
     price: "Rs. 37,156",
     oldPrice: "Rs. 39,500",
     priceAmount: 37156,
@@ -87,10 +131,22 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
       "Designed for high energy yield",
     ],
     specifications: [
-      { label: "Panel Capacity", value: "725W" },
-      { label: "Technology", value: "N-Type" },
-      { label: "Application", value: "Commercial / Industrial" },
-      { label: "System Type", value: "On-grid / Hybrid Compatible" },
+      {
+        label: "Panel Capacity",
+        value: "725W",
+      },
+      {
+        label: "Technology",
+        value: "N-Type",
+      },
+      {
+        label: "Application",
+        value: "Commercial / Industrial",
+      },
+      {
+        label: "System Type",
+        value: "On-grid / Hybrid Compatible",
+      },
     ],
     bestFor: [
       "Commercial solar projects",
@@ -101,10 +157,12 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
     image:
       "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=900&auto=format&fit=crop",
   },
+
   {
     id: 3,
     title: "Solis 6kW Hybrid Inverter",
-    desc: "Smart hybrid inverter for solar charging, battery backup, and load management.",
+    desc:
+      "Smart hybrid inverter for solar charging, battery backup, and load management.",
     price: "Rs. 265,000",
     oldPrice: "Rs. 285,000",
     priceAmount: 265000,
@@ -127,10 +185,22 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
       "Suitable for residential backup systems",
     ],
     specifications: [
-      { label: "Inverter Capacity", value: "6kW" },
-      { label: "Type", value: "Hybrid Inverter" },
-      { label: "Use Case", value: "Solar + Battery Backup" },
-      { label: "Application", value: "Residential" },
+      {
+        label: "Inverter Capacity",
+        value: "6kW",
+      },
+      {
+        label: "Type",
+        value: "Hybrid Inverter",
+      },
+      {
+        label: "Use Case",
+        value: "Solar + Battery Backup",
+      },
+      {
+        label: "Application",
+        value: "Residential",
+      },
     ],
     bestFor: [
       "Home solar backup",
@@ -141,10 +211,12 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
     image:
       "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=900&auto=format&fit=crop",
   },
+
   {
     id: 4,
     title: "GoodWe 8kW Hybrid Inverter",
-    desc: "Premium hybrid inverter for efficient backup and advanced solar applications.",
+    desc:
+      "Premium hybrid inverter for efficient backup and advanced solar applications.",
     price: "Rs. 360,000",
     oldPrice: "Rs. 385,000",
     priceAmount: 360000,
@@ -167,10 +239,22 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
       "Suitable for higher residential and light commercial loads",
     ],
     specifications: [
-      { label: "Inverter Capacity", value: "8kW" },
-      { label: "Type", value: "Hybrid Inverter" },
-      { label: "Use Case", value: "Solar + Battery Backup" },
-      { label: "Application", value: "Residential / Light Commercial" },
+      {
+        label: "Inverter Capacity",
+        value: "8kW",
+      },
+      {
+        label: "Type",
+        value: "Hybrid Inverter",
+      },
+      {
+        label: "Use Case",
+        value: "Solar + Battery Backup",
+      },
+      {
+        label: "Application",
+        value: "Residential / Light Commercial",
+      },
     ],
     bestFor: [
       "Large home backup systems",
@@ -181,10 +265,12 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
     image:
       "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=900&auto=format&fit=crop",
   },
+
   {
     id: 5,
     title: "SES 314Ah Lithium Battery",
-    desc: "Long-life LiFePO₄ battery for stable backup and solar energy storage.",
+    desc:
+      "Long-life LiFePO₄ battery for stable backup and solar energy storage.",
     price: "Rs. 475,000",
     oldPrice: "Rs. 505,000",
     priceAmount: 475000,
@@ -207,10 +293,22 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
       "Suitable for hybrid solar backup",
     ],
     specifications: [
-      { label: "Battery Type", value: "LiFePO₄ Lithium" },
-      { label: "Capacity", value: "314Ah" },
-      { label: "Application", value: "Solar Backup / Energy Storage" },
-      { label: "Compatibility", value: "Hybrid Inverter Systems" },
+      {
+        label: "Battery Type",
+        value: "LiFePO₄ Lithium",
+      },
+      {
+        label: "Capacity",
+        value: "314Ah",
+      },
+      {
+        label: "Application",
+        value: "Solar Backup / Energy Storage",
+      },
+      {
+        label: "Compatibility",
+        value: "Hybrid Inverter Systems",
+      },
     ],
     bestFor: [
       "Solar backup systems",
@@ -221,10 +319,12 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
     image:
       "https://images.unsplash.com/photo-1605648916361-9bc12ad6a569?q=80&w=900&auto=format&fit=crop",
   },
+
   {
     id: 6,
     title: "KNOX Powerbase 16.0 Lithium Battery",
-    desc: "High-capacity 51.2V lithium storage solution for solar backup and hybrid systems.",
+    desc:
+      "High-capacity 51.2V lithium storage solution for solar backup and hybrid systems.",
     price: "Rs. 598,000",
     oldPrice: "Rs. 635,000",
     priceAmount: 598000,
@@ -247,10 +347,22 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
       "Designed for hybrid inverter systems",
     ],
     specifications: [
-      { label: "Battery Type", value: "Lithium / LiFePO₄" },
-      { label: "Nominal Voltage", value: "51.2V" },
-      { label: "Model", value: "Powerbase 16.0" },
-      { label: "Application", value: "Solar Energy Storage" },
+      {
+        label: "Battery Type",
+        value: "Lithium / LiFePO₄",
+      },
+      {
+        label: "Nominal Voltage",
+        value: "51.2V",
+      },
+      {
+        label: "Model",
+        value: "Powerbase 16.0",
+      },
+      {
+        label: "Application",
+        value: "Solar Energy Storage",
+      },
     ],
     bestFor: [
       "Hybrid solar systems",
@@ -261,10 +373,12 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
     image:
       "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=900&auto=format&fit=crop",
   },
+
   {
     id: 7,
     title: "DC Protection Box",
-    desc: "Solar protection accessories including breakers, fuses, SPD, and isolators.",
+    desc:
+      "Solar protection accessories including breakers, fuses, SPD, and isolators.",
     price: "Rs. 5,000",
     oldPrice: "Rs. 6,500",
     priceAmount: 5000,
@@ -287,10 +401,22 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
       "Suitable for rooftop solar systems",
     ],
     specifications: [
-      { label: "Product Type", value: "Protection Box" },
-      { label: "Use Side", value: "DC Side" },
-      { label: "Application", value: "Solar Protection" },
-      { label: "Recommended For", value: "Panels / Strings / Inverter DC Input" },
+      {
+        label: "Product Type",
+        value: "Protection Box",
+      },
+      {
+        label: "Use Side",
+        value: "DC Side",
+      },
+      {
+        label: "Application",
+        value: "Solar Protection",
+      },
+      {
+        label: "Recommended For",
+        value: "Panels / Strings / Inverter DC Input",
+      },
     ],
     bestFor: [
       "Solar DC protection",
@@ -301,10 +427,12 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
     image:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=900&auto=format&fit=crop",
   },
+
   {
     id: 8,
     title: "Solar DC Cable 6mm",
-    desc: "Durable solar cable for safe DC wiring and reliable rooftop installations.",
+    desc:
+      "Durable solar cable for safe DC wiring and reliable rooftop installations.",
     price: "Rs. 180 / meter",
     oldPrice: "Rs. 220 / meter",
     priceAmount: 180,
@@ -327,10 +455,22 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
       "Supports safe solar installation practice",
     ],
     specifications: [
-      { label: "Cable Size", value: "6mm" },
-      { label: "Cable Type", value: "Solar DC Cable" },
-      { label: "Application", value: "Solar DC Wiring" },
-      { label: "Selling Unit", value: "Per meter" },
+      {
+        label: "Cable Size",
+        value: "6mm",
+      },
+      {
+        label: "Cable Type",
+        value: "Solar DC Cable",
+      },
+      {
+        label: "Application",
+        value: "Solar DC Wiring",
+      },
+      {
+        label: "Selling Unit",
+        value: "Per meter",
+      },
     ],
     bestFor: [
       "Solar panel wiring",
@@ -341,10 +481,12 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
     image:
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=900&auto=format&fit=crop",
   },
+
   {
     id: 9,
     title: "MC4 Connector Set",
-    desc: "Reliable solar connector set for safe module-to-module and string connections.",
+    desc:
+      "Reliable solar connector set for safe module-to-module and string connections.",
     price: "Rs. 550",
     oldPrice: "Rs. 700",
     priceAmount: 550,
@@ -367,10 +509,22 @@ export const zoraysShopProductsData: ZoraysShopProduct[] = [
       "Supports clean and safe installation",
     ],
     specifications: [
-      { label: "Product Type", value: "MC4 Connector Set" },
-      { label: "Application", value: "Solar DC Connection" },
-      { label: "Use Case", value: "Panel / String Wiring" },
-      { label: "Category", value: "Solar Accessory" },
+      {
+        label: "Product Type",
+        value: "MC4 Connector Set",
+      },
+      {
+        label: "Application",
+        value: "Solar DC Connection",
+      },
+      {
+        label: "Use Case",
+        value: "Panel / String Wiring",
+      },
+      {
+        label: "Category",
+        value: "Solar Accessory",
+      },
     ],
     bestFor: [
       "Solar panel connections",

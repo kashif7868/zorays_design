@@ -34,6 +34,10 @@ type RelatedProductsSectionProps = {
 };
 
 
+const PRODUCT_FALLBACK_IMAGE =
+  "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80";
+
+
 const RelatedProductsSection = ({
   product,
 }: RelatedProductsSectionProps) => {
@@ -79,7 +83,8 @@ const RelatedProductsSection = ({
     productId: number
   ) => {
     return cartItems.some(
-      (item) => item.id === productId
+      (item) =>
+        item.id === productId
     );
   };
 
@@ -159,10 +164,6 @@ const RelatedProductsSection = ({
   };
 
 
-  /* ============================================================
-     EMPTY STATE
-     ============================================================ */
-
   if (relatedProducts.length === 0) {
     return null;
   }
@@ -179,8 +180,8 @@ const RelatedProductsSection = ({
         <div className="zpr-header">
           <div>
             <span className="zpr-eyebrow">
-              <Zap size={16} />
-              Related Products
+              <Zap size={15} />
+              Related Solar Equipment
             </span>
 
             <h2>
@@ -189,148 +190,189 @@ const RelatedProductsSection = ({
           </div>
 
           <p>
-            Related products are selected
-            from the same or nearby solar
-            product category.
+            Recommended products from the same
+            or complementary solar categories.
           </p>
         </div>
 
 
         {/* ====================================================
-            PRODUCTS
+            PRODUCT GRID
             ==================================================== */}
 
         <div className="zpr-grid">
-          {relatedProducts.map((item) => (
-            <article
-              className="zpr-card"
-              key={item.id}
-              onClick={() =>
-                handleViewProduct(item.id)
-              }
-              role="button"
-              tabIndex={0}
-              onKeyDown={(event) => {
-                if (
-                  event.key === "Enter" ||
-                  event.key === " "
-                ) {
-                  event.preventDefault();
+          {relatedProducts.map((item) => {
+            const inCart =
+              isProductAlreadyInCart(
+                item.id
+              );
 
+            return (
+              <article
+                className="zpr-card"
+                key={item.id}
+                onClick={() =>
                   handleViewProduct(
                     item.id
-                  );
+                  )
                 }
-              }}
-            >
-
-              {/* IMAGE */}
-
-              <div className="zpr-image-wrap">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                />
-
-                <span className="zpr-tag">
-                  {item.tag}
-                </span>
-
-                <button
-                  type="button"
-                  className="zpr-view-btn"
-                  onClick={(event) => {
-                    event.stopPropagation();
+                role="link"
+                tabIndex={0}
+                aria-label={`View ${item.title}`}
+                onKeyDown={(event) => {
+                  if (
+                    event.key === "Enter" ||
+                    event.key === " "
+                  ) {
+                    event.preventDefault();
 
                     handleViewProduct(
                       item.id
                     );
-                  }}
-                  aria-label={`View ${item.title}`}
-                >
-                  <Eye size={15} />
-                </button>
-              </div>
+                  }
+                }}
+              >
 
+                {/* IMAGE */}
 
-              {/* CONTENT */}
+                <div className="zpr-image-wrap">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    onError={(event) => {
+                      event.currentTarget.onerror =
+                        null;
 
-              <div className="zpr-content">
+                      event.currentTarget.src =
+                        PRODUCT_FALLBACK_IMAGE;
+                    }}
+                  />
 
-                <div className="zpr-meta">
-                  <span>
-                    {item.brand}
-                  </span>
+                  <div className="zpr-image-overlay" />
 
-                  <div>
-                    <Star
-                      size={13}
-                      fill="currentColor"
-                    />
+                  <div className="zpr-badges">
+                    <span className="zpr-tag">
+                      {item.tag}
+                    </span>
 
-                    <strong>
-                      {item.rating}
-                    </strong>
+                    {item.featured && (
+                      <span className="zpr-featured">
+                        Featured
+                      </span>
+                    )}
                   </div>
-                </div>
-
-                <h3>
-                  {item.title}
-                </h3>
-
-                <p>
-                  {item.desc}
-                </p>
-
-                <div className="zpr-price-row">
-                  <strong>
-                    {item.price}
-                  </strong>
-
-                  <del>
-                    {item.oldPrice}
-                  </del>
-                </div>
-
-
-                {/* ACTIONS */}
-
-                <div className="zpr-actions">
-                  <button
-                    type="button"
-                    className="zpr-cart-btn"
-                    onClick={(event) =>
-                      handleAddToCart(
-                        event,
-                        item
-                      )
-                    }
-                  >
-                    <ShoppingCart size={14} />
-                    Add
-                  </button>
 
                   <button
                     type="button"
-                    className="zpr-order-btn"
-                    onClick={(event) =>
-                      handleOrderNow(
-                        event,
-                        item
-                      )
-                    }
+                    className="zpr-view-btn"
+                    onClick={(event) => {
+                      event.stopPropagation();
+
+                      handleViewProduct(
+                        item.id
+                      );
+                    }}
+                    aria-label={`View ${item.title}`}
                   >
-                    Order
-                    <ArrowRight size={14} />
+                    <Eye size={15} />
                   </button>
                 </div>
 
-              </div>
-            </article>
-          ))}
+
+                {/* CONTENT */}
+
+                <div className="zpr-content">
+
+                  <div className="zpr-meta">
+                    <span className="zpr-brand">
+                      {item.brand}
+                    </span>
+
+                    <div className="zpr-rating">
+                      <Star
+                        size={12}
+                        fill="currentColor"
+                      />
+
+                      <strong>
+                        {item.rating}
+                      </strong>
+                    </div>
+                  </div>
+
+                  <h3>
+                    {item.title}
+                  </h3>
+
+                  <p>
+                    {item.desc}
+                  </p>
+
+                  <div className="zpr-price-row">
+                    <div>
+                      <span>
+                        Price
+                      </span>
+
+                      <strong>
+                        {item.price}
+                      </strong>
+                    </div>
+
+                    {item.oldPrice && (
+                      <del>
+                        {item.oldPrice}
+                      </del>
+                    )}
+                  </div>
+
+
+                  {/* ACTIONS */}
+
+                  <div className="zpr-actions">
+                    <button
+                      type="button"
+                      className={`zpr-cart-btn${
+                        inCart
+                          ? " is-added"
+                          : ""
+                      }`}
+                      onClick={(event) =>
+                        handleAddToCart(
+                          event,
+                          item
+                        )
+                      }
+                    >
+                      <ShoppingCart size={14} />
+
+                      {inCart
+                        ? "In Cart"
+                        : "Add"}
+                    </button>
+
+                    <button
+                      type="button"
+                      className="zpr-order-btn"
+                      onClick={(event) =>
+                        handleOrderNow(
+                          event,
+                          item
+                        )
+                      }
+                    >
+                      Order
+
+                      <ArrowRight size={14} />
+                    </button>
+                  </div>
+
+                </div>
+              </article>
+            );
+          })}
         </div>
-
       </div>
     </section>
   );

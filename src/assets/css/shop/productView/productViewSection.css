@@ -1,383 +1,777 @@
 /* ============================================================
-   PRODUCT VIEW SECTION
+   ZORAYS SOLAR TRADE HUB — PRODUCT VIEW
+   Main Product Detail Section
    ============================================================ */
 
 .zpv-detail-section {
   position: relative;
-  padding: 54px 18px 40px;
+
+  padding: 30px 18px 44px;
+
   background:
-    radial-gradient(circle at 8% 12%, rgba(245, 196, 0, 0.14), transparent 28%),
-    radial-gradient(circle at 94% 72%, rgba(245, 196, 0, 0.1), transparent 28%),
-    linear-gradient(180deg, #ffffff 0%, #fffcf0 100%);
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7fbf8 100%
+    );
 }
+
+
+/* ============================================================
+   TOP STATUS ROW
+   ============================================================ */
 
 .zpv-detail-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: 16px;
-  margin-bottom: 22px;
+
+  margin-bottom: 16px;
 }
 
-.zpv-detail-back,
+.zpv-detail-product-code {
+  display: flex;
+  align-items: baseline;
+
+  gap: 5px;
+
+  color: #6b756f;
+}
+
+.zpv-detail-product-code span {
+  font-size: 8px;
+  font-weight: 850;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.zpv-detail-product-code strong {
+  color: #173522;
+
+  font-size: 10px;
+  font-weight: 950;
+}
+
 .zpv-detail-status {
-  min-height: 42px;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+
+  gap: 6px;
+
+  min-height: 32px;
+
+  padding: 0 10px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.13);
+
   border-radius: 999px;
-  padding: 10px 14px;
-  font-size: 12.5px;
-  font-weight: 800;
+
+  background:
+    rgba(0, 159, 92, 0.055);
+
+  color: #087d4d;
+
+  font-size: 8.5px;
+  font-weight: 900;
 }
 
-.zpv-detail-back {
-  background: #ffffff;
-  color: var(--zpv-text);
-  border: 1px solid var(--zpv-border);
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(60, 48, 0, 0.06);
-  transition: 0.22s ease;
-}
 
-.zpv-detail-back:hover {
-  background: var(--zpv-yellow-soft);
-  transform: translateY(-1px);
-}
-
-.zpv-detail-status {
-  background: var(--zpv-yellow-soft);
-  color: var(--zpv-text);
-  border: 1px solid rgba(245, 196, 0, 0.35);
-}
+/* ============================================================
+   MAIN GRID
+   ============================================================ */
 
 .zpv-detail-grid {
   display: grid;
-  grid-template-columns: minmax(360px, 0.92fr) minmax(0, 1.08fr);
-  gap: 28px;
-  align-items: stretch;
+
+  grid-template-columns:
+    minmax(360px, 0.95fr)
+    minmax(0, 1.05fr);
+
+  gap: 24px;
+
+  align-items: start;
+}
+
+
+/* ============================================================
+   IMAGE COLUMN
+   ============================================================ */
+
+.zpv-detail-image-column {
+  min-width: 0;
 }
 
 .zpv-detail-image-card {
   position: relative;
-  min-height: 520px;
-  border-radius: 34px;
+
   overflow: hidden;
-  background: #fff7d1;
-  border: 1px solid var(--zpv-border);
-  box-shadow: var(--zpv-shadow);
+
+  width: 100%;
+
+  aspect-ratio: 1 / 1;
+
+  border:
+    1px solid #e3ebe6;
+
+  border-radius: 18px;
+
+  background: #eef4f0;
+
+  box-shadow:
+    0 12px 30px rgba(14, 55, 36, 0.07);
 }
 
 .zpv-detail-image-card img {
   width: 100%;
   height: 100%;
-  min-height: 520px;
-  object-fit: cover;
+
   display: block;
-  transition: 0.35s ease;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.35s ease;
 }
 
 .zpv-detail-image-card:hover img {
-  transform: scale(1.035);
+  transform: scale(1.025);
+}
+
+.zpv-detail-image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 64%,
+      rgba(8, 53, 31, 0.16)
+    );
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   IMAGE BADGES
+   ============================================================ */
+
+.zpv-detail-badges {
+  position: absolute;
+
+  left: 12px;
+  top: 12px;
+
+  z-index: 2;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 6px;
 }
 
 .zpv-detail-tag,
 .zpv-detail-featured {
-  position: absolute;
-  z-index: 2;
-  top: 18px;
   display: inline-flex;
   align-items: center;
+
+  min-height: 24px;
+
+  padding: 0 9px;
+
   border-radius: 999px;
-  padding: 8px 12px;
-  font-size: 11.5px;
-  font-weight: 800;
-  backdrop-filter: blur(10px);
+
+  font-size: 8px;
+  font-weight: 900;
 }
 
 .zpv-detail-tag {
-  left: 18px;
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--zpv-text);
-  border: 1px solid rgba(245, 196, 0, 0.45);
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  color: #009f5c;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.12);
 }
 
 .zpv-detail-featured {
-  right: 18px;
-  background: var(--zpv-yellow);
-  color: #111111;
-  box-shadow: 0 10px 22px rgba(245, 196, 0, 0.28);
+  background: #f5c400;
+
+  color: #423400;
 }
 
-.zpv-detail-content {
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid var(--zpv-border);
-  border-radius: 34px;
-  padding: 30px;
-  box-shadow: var(--zpv-shadow-soft);
+
+/* ============================================================
+   IMAGE NOTE
+   ============================================================ */
+
+.zpv-detail-image-note {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 7px;
+
+  margin-top: 10px;
+
+  padding: 9px 10px;
+
+  border-left:
+    3px solid #f5c400;
+
+  border-radius:
+    0 8px 8px 0;
+
+  background:
+    rgba(245, 196, 0, 0.05);
+
+  color: #69736d;
+
+  font-size: 8.2px;
+  line-height: 1.45;
 }
+
+.zpv-detail-image-note svg {
+  flex: 0 0 auto;
+
+  margin-top: 1px;
+
+  color: #7d6200;
+}
+
+
+/* ============================================================
+   CONTENT CARD
+   ============================================================ */
+
+.zpv-detail-content {
+  min-width: 0;
+
+  padding: 24px;
+
+  border:
+    1px solid #e3ebe6;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 12px 30px rgba(14, 55, 36, 0.065);
+}
+
+
+/* ============================================================
+   META
+   ============================================================ */
 
 .zpv-detail-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 16px;
+
+  gap: 14px;
+
+  margin-bottom: 12px;
 }
 
-.zpv-detail-meta > span {
+.zpv-detail-brand {
   display: inline-flex;
   align-items: center;
-  background: var(--zpv-yellow-soft);
-  border: 1px solid rgba(245, 196, 0, 0.35);
-  color: var(--zpv-text);
+
+  min-height: 27px;
+
+  padding: 0 9px;
+
   border-radius: 999px;
-  padding: 7px 11px;
-  font-size: 12px;
-  font-weight: 800;
+
+  background:
+    rgba(0, 159, 92, 0.06);
+
+  color: #009f5c;
+
+  font-size: 8px;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.zpv-detail-meta > div {
+.zpv-detail-rating {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: var(--zpv-yellow);
+
+  gap: 4px;
+
+  color: #f0b400;
 }
 
-.zpv-detail-meta strong {
-  color: var(--zpv-text);
-  font-size: 13px;
-  font-weight: 800;
+.zpv-detail-rating strong {
+  color: #26342c;
+
+  font-size: 9px;
+  font-weight: 900;
 }
 
-.zpv-detail-meta small {
-  color: var(--zpv-muted);
-  font-size: 11px;
-  font-weight: 700;
+.zpv-detail-rating small {
+  color: #7b857f;
+
+  font-size: 7.8px;
+  font-weight: 750;
 }
+
+
+/* ============================================================
+   TITLE / DESCRIPTION
+   ============================================================ */
 
 .zpv-detail-content h1 {
   margin: 0;
-  color: var(--zpv-text);
-  font-size: clamp(32px, 4vw, 52px);
+
+  color: #18261e;
+
+  font-size: clamp(28px, 3.6vw, 44px);
   line-height: 1.08;
-  letter-spacing: -1.4px;
-  font-weight: 900;
+
+  font-weight: 950;
+
+  letter-spacing: -0.04em;
 }
 
-.zpv-detail-content > p {
-  margin: 16px 0 0;
-  color: var(--zpv-muted);
-  font-size: 15px;
-  line-height: 1.8;
-  font-weight: 500;
+.zpv-detail-description {
+  margin: 13px 0 0;
+
+  color: #65706a;
+
+  font-size: 11px;
+  line-height: 1.68;
 }
+
+
+/* ============================================================
+   PRICE
+   ============================================================ */
 
 .zpv-detail-price-row {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-  margin-top: 22px;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  margin-top: 18px;
+
+  padding: 14px 0;
+
+  border-top:
+    1px solid #edf1ee;
+
+  border-bottom:
+    1px solid #edf1ee;
+}
+
+.zpv-detail-price-row > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.zpv-detail-price-row span {
+  color: #8a948e;
+
+  font-size: 7.5px;
+  font-weight: 850;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .zpv-detail-price-row strong {
-  color: var(--zpv-text);
-  font-size: 31px;
+  color: #173522;
+
+  font-size: clamp(22px, 3vw, 30px);
   line-height: 1;
-  font-weight: 900;
+
+  font-weight: 950;
 }
 
 .zpv-detail-price-row del {
-  color: #9a927c;
-  font-size: 15px;
-  font-weight: 700;
+  color: #9ba49f;
+
+  font-size: 10px;
+  font-weight: 750;
 }
+
+
+/* ============================================================
+   INFO GRID
+   ============================================================ */
 
 .zpv-detail-info-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 11px;
-  margin-top: 24px;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 9px;
+
+  margin-top: 16px;
 }
 
-.zpv-detail-info-grid div {
-  min-height: 88px;
+.zpv-detail-info-grid > div {
   display: grid;
-  place-items: center;
-  text-align: center;
+
+  grid-template-columns:
+    34px minmax(0, 1fr);
+
   gap: 8px;
-  background: #fffbeb;
-  border: 1px solid var(--zpv-border);
-  border-radius: 18px;
-  padding: 12px 8px;
-}
 
-.zpv-detail-info-grid svg {
-  color: var(--zpv-yellow-dark);
-}
-
-.zpv-detail-info-grid span {
-  color: var(--zpv-text);
-  font-size: 11.5px;
-  line-height: 1.35;
-  font-weight: 800;
-}
-
-.zpv-detail-qty-row {
-  margin-top: 24px;
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  background: #ffffff;
-  border: 1px solid var(--zpv-border);
-  border-radius: 18px;
-  padding: 12px 14px;
+
+  min-width: 0;
+
+  padding: 10px;
+
+  border:
+    1px solid #e6ece8;
+
+  border-radius: 11px;
+
+  background: #fbfdfc;
 }
 
-.zpv-detail-qty-row > span {
-  color: var(--zpv-muted);
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.zpv-detail-qty-control {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.zpv-detail-qty-control button {
+.zpv-detail-info-icon {
   width: 34px;
   height: 34px;
+
   display: grid;
   place-items: center;
-  border: 0;
-  border-radius: 50%;
-  background: var(--zpv-yellow-soft);
-  color: var(--zpv-text);
-  cursor: pointer;
-  transition: 0.18s ease;
+
+  border-radius: 9px;
+
+  background:
+    rgba(0, 159, 92, 0.07);
+
+  color: #009f5c;
 }
 
-.zpv-detail-qty-control button:hover {
-  background: var(--zpv-yellow);
-}
+.zpv-detail-info-grid strong {
+  display: block;
 
-.zpv-detail-qty-control strong {
-  min-width: 28px;
-  text-align: center;
-  color: var(--zpv-text);
-  font-size: 15px;
+  color: #1d3125;
+
+  font-size: 8.5px;
+  line-height: 1.3;
+
   font-weight: 900;
 }
 
+.zpv-detail-info-grid small {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #7b857f;
+
+  font-size: 7.2px;
+  line-height: 1.35;
+}
+
+
+/* ============================================================
+   PURCHASE PANEL
+   ============================================================ */
+
+.zpv-detail-purchase-panel {
+  margin-top: 16px;
+
+  padding: 13px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.1);
+
+  border-radius: 12px;
+
+  background:
+    rgba(0, 159, 92, 0.025);
+}
+
+
+/* ============================================================
+   QUANTITY
+   ============================================================ */
+
+.zpv-detail-qty-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.zpv-detail-qty-row > div:first-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.zpv-detail-qty-row > div:first-child > span {
+  color: #48564f;
+
+  font-size: 8.5px;
+  font-weight: 900;
+}
+
+.zpv-detail-qty-row small {
+  color: #009f5c;
+
+  font-size: 7.2px;
+  font-weight: 800;
+}
+
+
+/* ============================================================
+   QUANTITY CONTROL
+   ============================================================ */
+
+.zpv-detail-qty-control {
+  display: grid;
+
+  grid-template-columns:
+    32px 34px 32px;
+
+  overflow: hidden;
+
+  border:
+    1px solid #dce5df;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+}
+
+.zpv-detail-qty-control button {
+  width: 32px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border: 0;
+
+  background: #ffffff;
+
+  color: #009f5c;
+
+  cursor: pointer;
+
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.zpv-detail-qty-control button:hover:not(:disabled) {
+  background:
+    rgba(0, 159, 92, 0.07);
+}
+
+.zpv-detail-qty-control button:disabled {
+  color: #bac2be;
+
+  cursor: not-allowed;
+}
+
+.zpv-detail-qty-control strong {
+  display: grid;
+  place-items: center;
+
+  color: #26342c;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  border-left:
+    1px solid #edf1ee;
+
+  border-right:
+    1px solid #edf1ee;
+}
+
+
+/* ============================================================
+   ACTIONS
+   ============================================================ */
+
 .zpv-detail-actions {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 18px;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 8px;
+
+  margin-top: 12px;
 }
 
 .zpv-detail-cart-btn,
 .zpv-detail-order-btn {
-  min-height: 50px;
-  border: 0;
-  border-radius: 16px;
-  font-family: var(--zpv-font);
-  font-size: 14px;
-  font-weight: 900;
-  cursor: pointer;
+  min-height: 42px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
-  transition: 0.22s ease;
+
+  gap: 6px;
+
+  border-radius: 9px;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .zpv-detail-cart-btn {
+  border:
+    1px solid rgba(0, 159, 92, 0.2);
+
   background: #ffffff;
-  color: var(--zpv-text);
-  border: 1px solid rgba(245, 196, 0, 0.45);
+
+  color: #009f5c;
 }
 
 .zpv-detail-cart-btn:hover {
-  background: var(--zpv-yellow-soft);
   transform: translateY(-1px);
+
+  background:
+    rgba(0, 159, 92, 0.05);
+}
+
+.zpv-detail-cart-btn.is-added {
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  color: #087d4d;
+
+  border-color:
+    rgba(0, 159, 92, 0.12);
 }
 
 .zpv-detail-order-btn {
-  background: var(--zpv-yellow);
-  color: #111111;
-  box-shadow: 0 12px 26px rgba(245, 196, 0, 0.28);
+  border: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #12b96c 0%,
+      #009f5c 100%
+    );
+
+  color: #ffffff;
 }
 
 .zpv-detail-order-btn:hover {
-  background: var(--zpv-yellow-dark);
   transform: translateY(-1px);
+
+  background: #078d55;
 }
+
+
+/* ============================================================
+   FINAL NOTE
+   ============================================================ */
 
 .zpv-detail-note {
-  margin-top: 18px;
-  color: var(--zpv-muted);
-  background: var(--zpv-yellow-soft);
-  border: 1px dashed rgba(245, 196, 0, 0.45);
-  border-radius: 16px;
-  padding: 12px 14px;
-  font-size: 12.5px;
-  line-height: 1.65;
-  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+
+  gap: 7px;
+
+  margin-top: 14px;
+
+  padding: 9px 10px;
+
+  border-left:
+    3px solid #f5c400;
+
+  border-radius:
+    0 8px 8px 0;
+
+  background:
+    rgba(245, 196, 0, 0.05);
+
+  color: #69736d;
+
+  font-size: 8.2px;
+  line-height: 1.5;
 }
 
-@media (max-width: 980px) {
+.zpv-detail-note svg {
+  flex: 0 0 auto;
+
+  margin-top: 1px;
+
+  color: #7d6200;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 960px) {
   .zpv-detail-grid {
     grid-template-columns: 1fr;
   }
 
-  .zpv-detail-image-card,
-  .zpv-detail-image-card img {
-    min-height: 420px;
+  .zpv-detail-image-card {
+    max-width: 680px;
+
+    margin: 0 auto;
   }
 }
 
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
 @media (max-width: 620px) {
   .zpv-detail-section {
-    padding: 36px 12px 30px;
+    padding:
+      22px 13px
+      34px;
   }
 
   .zpv-detail-top {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .zpv-detail-back,
-  .zpv-detail-status {
-    justify-content: center;
-  }
-
-  .zpv-detail-image-card,
-  .zpv-detail-image-card img {
-    min-height: 300px;
-    border-radius: 24px;
-  }
-
-  .zpv-detail-content {
-    border-radius: 24px;
-    padding: 20px;
-  }
-
-  .zpv-detail-meta {
-    flex-direction: column;
     align-items: flex-start;
   }
 
-  .zpv-detail-content h1 {
-    font-size: 31px;
+  .zpv-detail-content {
+    padding: 17px;
+
+    border-radius: 14px;
   }
 
-  .zpv-detail-price-row strong {
-    font-size: 25px;
+  .zpv-detail-content h1 {
+    font-size: 28px;
+  }
+
+  .zpv-detail-meta {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .zpv-detail-info-grid {
@@ -387,19 +781,38 @@
   .zpv-detail-actions {
     grid-template-columns: 1fr;
   }
+
+  .zpv-detail-image-card {
+    border-radius: 14px;
+  }
 }
 
-@media (max-width: 380px) {
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 400px) {
+  .zpv-detail-section {
+    padding:
+      20px 12px
+      30px;
+  }
+
   .zpv-detail-content {
-    padding: 16px;
+    padding: 15px;
   }
 
   .zpv-detail-content h1 {
-    font-size: 27px;
+    font-size: 25px;
   }
 
-  .zpv-detail-image-card,
-  .zpv-detail-image-card img {
-    min-height: 250px;
+  .zpv-detail-qty-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .zpv-detail-qty-control {
+    width: max-content;
   }
 }

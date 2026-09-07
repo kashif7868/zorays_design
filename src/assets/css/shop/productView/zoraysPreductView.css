@@ -1,95 +1,401 @@
 /* ============================================================
-   ZORAYS PRODUCT VIEW PAGE BASE
-   White + Yellow + Black Theme
+   ZORAYS SOLAR TRADE HUB — PRODUCT VIEW PAGE BASE
+   Green + White Marketplace Theme
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
-
 :root {
+  --zpv-green: #009f5c;
+  --zpv-green-dark: #087d4d;
+  --zpv-green-soft: rgba(0, 159, 92, 0.08);
+
   --zpv-yellow: #f5c400;
-  --zpv-yellow-dark: #d6aa00;
-  --zpv-yellow-soft: rgba(245, 196, 0, 0.14);
-  --zpv-yellow-mid: rgba(245, 196, 0, 0.26);
+
   --zpv-white: #ffffff;
-  --zpv-bg: #fffcf0;
-  --zpv-text: #171717;
-  --zpv-muted: #6f6a58;
-  --zpv-border: #eee4bd;
-  --zpv-red: #dc2626;
-  --zpv-shadow: 0 20px 55px rgba(60, 48, 0, 0.12);
-  --zpv-shadow-soft: 0 10px 30px rgba(60, 48, 0, 0.08);
-  --zpv-font: "Poppins", sans-serif;
+  --zpv-bg: #f7fbf8;
+
+  --zpv-text: #18261e;
+  --zpv-muted: #68736d;
+
+  --zpv-border: #e3ebe6;
+
+  --zpv-shadow:
+    0 14px 34px rgba(14, 55, 36, 0.08);
+
+  --zpv-shadow-soft:
+    0 8px 22px rgba(14, 55, 36, 0.055);
 }
+
+
+/* ============================================================
+   PAGE
+   ============================================================ */
 
 .zpv-page {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(180deg, #ffffff 0%, #fffcf0 52%, #ffffff 100%);
-  color: var(--zpv-text);
-  font-family: var(--zpv-font);
+
   overflow-x: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7fbf8 55%,
+      #ffffff 100%
+    );
+
+  color: var(--zpv-text);
 }
 
 .zpv-container {
-  width: 100%;
-  max-width: 1180px;
+  width: min(1180px, calc(100% - 36px));
+
   margin: 0 auto;
 }
 
+
+/* ============================================================
+   PRODUCT NAVIGATION
+   ============================================================ */
+
+.zpv-product-nav {
+  position: relative;
+
+  padding: 14px 0;
+
+  border-bottom:
+    1px solid rgba(0, 159, 92, 0.08);
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  backdrop-filter: blur(10px);
+}
+
+.zpv-product-nav-inner {
+  display: grid;
+
+  grid-template-columns:
+    auto minmax(0, 1fr) auto;
+
+  gap: 18px;
+
+  align-items: center;
+}
+
+
+/* ============================================================
+   BACK LINK
+   ============================================================ */
+
+.zpv-product-back {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #526059;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.zpv-product-back:hover {
+  color: var(--zpv-green);
+
+  transform: translateX(-2px);
+}
+
+
+/* ============================================================
+   BREADCRUMB
+   ============================================================ */
+
+.zpv-breadcrumb {
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+
+  gap: 5px;
+
+  overflow: hidden;
+
+  color: #87918b;
+
+  font-size: 8.5px;
+  font-weight: 750;
+}
+
+.zpv-breadcrumb a {
+  color: #69736d;
+
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease;
+}
+
+.zpv-breadcrumb a:hover {
+  color: var(--zpv-green);
+}
+
+.zpv-breadcrumb span {
+  min-width: 0;
+
+  overflow: hidden;
+
+  color: var(--zpv-green);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-weight: 850;
+}
+
+.zpv-breadcrumb svg {
+  flex: 0 0 auto;
+
+  color: #a4aca7;
+}
+
+
+/* ============================================================
+   PRODUCT CONTEXT
+   ============================================================ */
+
+.zpv-product-context {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  min-height: 28px;
+
+  padding: 0 9px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.11);
+
+  border-radius: 999px;
+
+  background:
+    rgba(0, 159, 92, 0.045);
+
+  color: var(--zpv-green-dark);
+
+  font-size: 8px;
+  font-weight: 900;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   PRODUCT NOT FOUND
+   ============================================================ */
+
 .zpv-not-found {
-  min-height: 70vh;
+  min-height: 68vh;
+
   display: grid;
   place-items: center;
-  padding: 90px 18px;
+
+  padding: 70px 18px;
 }
 
 .zpv-not-found-card {
-  width: 100%;
-  max-width: 560px;
-  text-align: center;
+  width: min(520px, 100%);
+
+  padding: 38px 24px;
+
+  border:
+    1px solid var(--zpv-border);
+
+  border-radius: 18px;
+
   background: #ffffff;
-  border: 1px solid var(--zpv-border);
-  border-radius: 30px;
-  padding: 44px 24px;
-  box-shadow: var(--zpv-shadow-soft);
+
+  text-align: center;
+
+  box-shadow:
+    var(--zpv-shadow);
+}
+
+.zpv-not-found-icon {
+  width: 58px;
+  height: 58px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 12px;
+
+  border-radius: 14px;
+
+  background:
+    var(--zpv-green-soft);
+
+  color: var(--zpv-green);
+}
+
+.zpv-not-found-eyebrow {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--zpv-green);
+
+  font-size: 8px;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
 }
 
 .zpv-not-found-card h1 {
   margin: 0;
+
   color: var(--zpv-text);
-  font-size: 34px;
-  line-height: 1.15;
-  font-weight: 800;
+
+  font-size: 30px;
+  line-height: 1.12;
+
+  font-weight: 950;
+
+  letter-spacing: -0.035em;
 }
 
 .zpv-not-found-card p {
-  margin: 12px auto 0;
-  max-width: 430px;
+  max-width: 410px;
+
+  margin: 11px auto 0;
+
   color: var(--zpv-muted);
-  font-size: 14.5px;
-  line-height: 1.7;
-  font-weight: 500;
+
+  font-size: 10.5px;
+  line-height: 1.65;
 }
 
+
+/* ============================================================
+   BACK BUTTON
+   ============================================================ */
+
 .zpv-back-btn {
-  min-height: 46px;
-  margin-top: 24px;
+  min-height: 40px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: var(--zpv-yellow);
-  color: #111111;
-  border-radius: 14px;
-  padding: 12px 18px;
+
+  gap: 6px;
+
+  margin-top: 20px;
+
+  padding: 0 14px;
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #12b96c 0%,
+      #009f5c 100%
+    );
+
+  color: #ffffff;
+
   text-decoration: none;
-  font-size: 13.5px;
-  font-weight: 800;
-  box-shadow: 0 12px 26px rgba(245, 196, 0, 0.28);
-  transition: 0.22s ease;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  box-shadow:
+    0 9px 20px rgba(0, 159, 92, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .zpv-back-btn:hover {
-  background: var(--zpv-yellow-dark);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+
+  background: #078d55;
+
+  box-shadow:
+    0 12px 25px rgba(0, 159, 92, 0.22);
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 760px) {
+  .zpv-container {
+    width: min(100% - 26px, 1180px);
+  }
+
+  .zpv-product-nav-inner {
+    grid-template-columns:
+      auto minmax(0, 1fr);
+  }
+
+  .zpv-product-context {
+    display: none;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 520px) {
+  .zpv-container {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .zpv-product-nav {
+    padding: 11px 0;
+  }
+
+  .zpv-product-nav-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 7px;
+  }
+
+  .zpv-breadcrumb {
+    width: 100%;
+  }
+
+  .zpv-not-found {
+    padding:
+      50px 12px;
+  }
+
+  .zpv-not-found-card {
+    padding:
+      30px 18px;
+
+    border-radius: 14px;
+  }
+
+  .zpv-not-found-card h1 {
+    font-size: 25px;
+  }
 }

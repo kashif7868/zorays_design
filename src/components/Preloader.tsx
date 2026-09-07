@@ -1,28 +1,47 @@
-import "../assets/css/preloader..css";
+import "../assets/css/preloader.css";
 
 type PreloaderProps = {
   isLoading: boolean;
 };
 
-const Preloader = ({ isLoading }: PreloaderProps) => {
+const Preloader = ({
+  isLoading,
+}: PreloaderProps) => {
   return (
     <div
-      className={`zorays-preloader ${!isLoading ? "zorays-preloader-hide" : ""}`}
+      className={`zorays-preloader${
+        !isLoading
+          ? " zorays-preloader-hide"
+          : ""
+      }`}
       role="status"
       aria-live="polite"
-      aria-label="Loading Zorays Solar website"
+      aria-label="Loading Zorays Solar"
+      aria-hidden={!isLoading}
     >
       <div className="zorays-preloader-card">
-        <div className="zorays-preloader-brand-mark">
-          <span />
-          <span />
-          <span />
+        <div className="zorays-preloader-logo">
+          <div className="zorays-preloader-mark">
+            <span />
+            <span />
+            <span />
+          </div>
+
+          <div className="zorays-preloader-brand">
+            <strong>
+              Zorays Solar
+            </strong>
+
+            <span>
+              Pakistan
+            </span>
+          </div>
         </div>
 
-        <div className="zorays-solar-loader">
-          <div className="zorays-loader-sun" />
+        <div className="zorays-preloader-animation">
+          <div className="zorays-preloader-sun" />
 
-          <div className="zorays-loader-panel">
+          <div className="zorays-preloader-panel">
             <span />
             <span />
             <span />
@@ -32,10 +51,17 @@ const Preloader = ({ isLoading }: PreloaderProps) => {
           </div>
         </div>
 
-        <h3>Zorays Solar</h3>
-        <p>Loading smart solar experience</p>
+        <div className="zorays-preloader-copy">
+          <strong>
+            Powering your experience
+          </strong>
 
-        <div className="zorays-loader-bar">
+          <span>
+            Loading solar solutions
+          </span>
+        </div>
+
+        <div className="zorays-preloader-bar">
           <span />
         </div>
       </div>

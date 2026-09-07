@@ -1,483 +1,794 @@
 /* ============================================================
-SHOP HERO SECTION
-White + Purple + Orange Theme
-============================================================ */
+   ZORAYS SOLAR TRADE HUB — SHOP HERO
+   Clean Marketplace + Engineering Support
+   ============================================================ */
 
 .zs-hero-section {
-position: relative;
-padding: 72px 18px 44px;
-background:
-radial-gradient(circle at 8% 10%, rgba(91, 44, 255, 0.14), transparent 30%),
-radial-gradient(circle at 95% 12%, rgba(255, 138, 0, 0.14), transparent 28%),
-linear-gradient(180deg, #ffffff 0%, #fbf8ff 52%, #fff7ed 100%);
-overflow: hidden;
+  position: relative;
+  overflow: hidden;
+
+  padding: 58px 18px 42px;
+
+  background:
+    radial-gradient(
+      circle at 8% 12%,
+      rgba(0, 159, 92, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 92% 82%,
+      rgba(245, 196, 0, 0.08),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f7fbf8 100%
+    );
 }
 
 .zs-hero-bg-orb {
-position: absolute;
-border-radius: 999px;
-pointer-events: none;
-filter: blur(4px);
-opacity: 0.72;
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .zs-hero-bg-orb-one {
-width: 260px;
-height: 260px;
-left: -90px;
-top: 80px;
-background: rgba(91, 44, 255, 0.13);
+  width: 340px;
+  height: 340px;
+
+  left: -180px;
+  top: 80px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 159, 92, 0.1),
+      transparent 68%
+    );
 }
 
 .zs-hero-bg-orb-two {
-width: 220px;
-height: 220px;
-right: -80px;
-bottom: 40px;
-background: rgba(255, 138, 0, 0.15);
+  width: 320px;
+  height: 320px;
+
+  right: -160px;
+  bottom: -80px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(245, 196, 0, 0.09),
+      transparent 68%
+    );
 }
+
+.zs-hero-grid-pattern {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(0, 159, 92, 0.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 159, 92, 0.018) 1px,
+      transparent 1px
+    );
+
+  background-size: 56px 56px;
+
+  pointer-events: none;
+}
+
+.zs-shop-container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1240px, 100%);
+  margin: 0 auto;
+}
+
+
+/* ============================================================
+   MAIN GRID
+   ============================================================ */
 
 .zs-hero-grid {
-position: relative;
-z-index: 2;
-display: grid;
-grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
-gap: 44px;
-align-items: center;
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(380px, 0.92fr);
+
+  gap: 48px;
+
+  align-items: center;
 }
 
+
+/* ============================================================
+   LEFT CONTENT
+   ============================================================ */
+
 .zs-hero-content {
-max-width: 680px;
+  min-width: 0;
 }
 
 .zs-hero-eyebrow {
-display: inline-flex;
-align-items: center;
-gap: 8px;
-background: var(--zs-purple-soft);
-color: var(--zs-purple-dark);
-border: 1px solid var(--zs-purple-mid);
-padding: 9px 14px;
-border-radius: 999px;
-font-size: 13px;
-font-weight: 800;
-margin-bottom: 16px;
-}
+  display: inline-flex;
+  align-items: center;
 
-.zs-hero-eyebrow svg {
-color: var(--zs-orange);
+  gap: 7px;
+
+  margin-bottom: 14px;
+
+  padding: 8px 12px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.15);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.84);
+
+  color: #009f5c;
+
+  font-size: 10px;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .zs-hero-content h1 {
-margin: 0;
-font-size: clamp(36px, 5vw, 62px);
-line-height: 1.03;
-letter-spacing: -1.9px;
-color: var(--zs-text);
-font-weight: 800;
+  max-width: 700px;
+
+  margin: 0;
+
+  color: #17241d;
+
+  font-size:
+    clamp(36px, 5vw, 60px);
+
+  line-height: 1.02;
+
+  font-weight: 950;
+
+  letter-spacing: -0.05em;
 }
 
 .zs-hero-content h1 strong {
-background: linear-gradient(135deg, var(--zs-purple), var(--zs-orange));
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
+  display: block;
+
+  margin-top: 7px;
+
+  color: #009f5c;
+
+  font-weight: inherit;
 }
 
-.zs-hero-content p {
-margin: 18px 0 0;
-max-width: 620px;
-color: var(--zs-muted);
-font-size: 16px;
-line-height: 1.8;
-font-weight: 500;
+.zs-hero-description {
+  max-width: 670px;
+
+  margin: 18px 0 0;
+
+  color: #5e6963;
+
+  font-size: 14px;
+  line-height: 1.68;
 }
+
+
+/* ============================================================
+   HERO ACTIONS
+   ============================================================ */
 
 .zs-hero-actions {
-display: flex;
-flex-wrap: wrap;
-gap: 12px;
-margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 22px;
 }
 
 .zs-hero-primary-btn,
 .zs-hero-secondary-btn {
-min-height: 48px;
-display: inline-flex;
-align-items: center;
-justify-content: center;
-gap: 9px;
-padding: 13px 20px;
-border-radius: 14px;
-font-size: 14px;
-font-weight: 800;
-text-decoration: none;
-transition:
-transform 0.22s ease,
-background 0.22s ease,
-box-shadow 0.22s ease,
-border-color 0.22s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  min-height: 46px;
+
+  padding: 0 18px;
+
+  border-radius: 11px;
+
+  text-decoration: none;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .zs-hero-primary-btn {
-background: var(--zs-gradient);
-color: #ffffff;
-box-shadow: 0 14px 30px rgba(91, 44, 255, 0.22);
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      180deg,
+      #14b96d 0%,
+      #009f5c 100%
+    );
+
+  box-shadow:
+    0 10px 22px rgba(0, 159, 92, 0.2);
 }
 
 .zs-hero-primary-btn:hover {
-background: linear-gradient(135deg, var(--zs-purple-dark), var(--zs-orange-dark));
-color: #ffffff;
-transform: translateY(-2px);
-box-shadow: 0 18px 38px rgba(255, 138, 0, 0.28);
+  transform: translateY(-2px);
+
+  background: #078d55;
+
+  box-shadow:
+    0 14px 28px rgba(0, 159, 92, 0.24);
 }
 
 .zs-hero-secondary-btn {
-background: #ffffff;
-color: var(--zs-purple-dark);
-border: 1px solid var(--zs-purple-mid);
-box-shadow: 0 8px 22px rgba(50, 20, 120, 0.08);
+  border:
+    1px solid rgba(0, 159, 92, 0.18);
+
+  background: #ffffff;
+
+  color: #087d4d;
 }
 
 .zs-hero-secondary-btn:hover {
-background: var(--zs-purple-soft);
-border-color: rgba(91, 44, 255, 0.38);
-transform: translateY(-2px);
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(0, 159, 92, 0.32);
+
+  background: #f7fcf9;
 }
 
+
+/* ============================================================
+   TRUST ROW
+   ============================================================ */
+
 .zs-hero-trust-row {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 14px;
+
+  margin-top: 22px;
 }
 
 .zs-hero-trust-row span {
-display: inline-flex;
-align-items: center;
-gap: 7px;
-background: rgba(255, 255, 255, 0.86);
-color: var(--zs-text);
-border: 1px solid var(--zs-border);
-border-radius: 999px;
-padding: 8px 12px;
-font-size: 12.5px;
-font-weight: 700;
-box-shadow: 0 8px 20px rgba(50, 20, 120, 0.06);
+  display: inline-flex;
+  align-items: center;
+
+  gap: 6px;
+
+  color: #526059;
+
+  font-size: 10px;
+  font-weight: 800;
 }
 
 .zs-hero-trust-row svg {
-color: var(--zs-orange);
+  color: #009f5c;
 }
+
 
 /* ============================================================
-HERO VISUAL
-============================================================ */
+   RIGHT VISUAL
+   ============================================================ */
 
 .zs-hero-visual {
-position: relative;
-min-height: 420px;
-display: grid;
-place-items: center;
+  position: relative;
+
+  min-height: 430px;
 }
 
-.zs-hero-card {
-position: relative;
-z-index: 2;
-width: min(100%, 390px);
-background:
-linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(251, 248, 255, 0.98));
-border: 1px solid var(--zs-border);
-border-radius: 32px;
-padding: 28px;
-box-shadow: var(--zs-shadow);
-overflow: hidden;
+
+/* ============================================================
+   MAIN MARKET CARD
+   ============================================================ */
+
+.zs-hero-card-main {
+  position: absolute;
+
+  left: 0;
+  top: 34px;
+
+  width: min(100%, 380px);
+
+  padding: 24px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.13);
+
+  border-radius: 20px;
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 22px 48px rgba(14, 55, 36, 0.1);
+
+  backdrop-filter: blur(8px);
 }
 
-.zs-hero-card::before {
-content: "";
-position: absolute;
-inset: 0 0 auto 0;
-height: 6px;
-background: linear-gradient(90deg, var(--zs-purple), var(--zs-orange), var(--zs-purple-dark));
-}
+.zs-hero-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-.zs-hero-card::after {
-content: "";
-position: absolute;
-width: 190px;
-height: 190px;
-right: -70px;
-bottom: -80px;
-background: rgba(255, 138, 0, 0.12);
-border-radius: 50%;
+  gap: 10px;
+
+  margin-bottom: 16px;
 }
 
 .zs-hero-card-icon {
-width: 68px;
-height: 68px;
-display: grid;
-place-items: center;
-border-radius: 22px;
-background: var(--zs-gradient);
-color: #ffffff;
-box-shadow: 0 14px 28px rgba(91, 44, 255, 0.24);
-margin-bottom: 24px;
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  color: #009f5c;
 }
 
-.zs-hero-card span {
-display: inline-flex;
-color: var(--zs-orange-dark);
-font-size: 12px;
-font-weight: 800;
-text-transform: uppercase;
-letter-spacing: 0.08em;
-margin-bottom: 8px;
+.zs-hero-card-status {
+  display: inline-flex;
+  align-items: center;
+
+  min-height: 24px;
+
+  padding: 0 9px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  color: #009f5c;
+
+  font-size: 8px;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.zs-hero-card h3 {
-margin: 0;
-color: var(--zs-text);
-font-size: 30px;
-line-height: 1.15;
-font-weight: 800;
+.zs-hero-card-label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #009f5c;
+
+  font-size: 9px;
+  font-weight: 900;
+
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
-.zs-hero-card p {
-position: relative;
-z-index: 2;
-margin: 12px 0 22px;
-color: var(--zs-muted);
-font-size: 14.5px;
-line-height: 1.7;
-font-weight: 500;
+.zs-hero-card-main h3 {
+  margin: 0;
+
+  color: #183425;
+
+  font-size: 23px;
+  line-height: 1.2;
+
+  font-weight: 950;
+
+  letter-spacing: -0.025em;
 }
+
+.zs-hero-card-main > p {
+  margin: 11px 0 0;
+
+  color: #67716c;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   PRICE / MARKET INFO
+   ============================================================ */
 
 .zs-hero-card-price {
-position: relative;
-z-index: 2;
-display: grid;
-gap: 4px;
-background: #ffffff;
-border: 1px solid var(--zs-border);
-border-radius: 18px;
-padding: 14px 16px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-top: 18px;
+
+  padding-top: 16px;
+
+  border-top:
+    1px solid rgba(0, 159, 92, 0.09);
 }
 
 .zs-hero-card-price small {
-color: var(--zs-muted);
-font-size: 12px;
-font-weight: 700;
+  color: #7a857f;
+
+  font-size: 8.5px;
+  line-height: 1.3;
 }
 
 .zs-hero-card-price strong {
-color: var(--zs-purple-dark);
-font-size: 24px;
-font-weight: 800;
+  color: #173522;
+
+  font-size: 15px;
+  font-weight: 950;
 }
+
+
+/* ============================================================
+   CARD LINK
+   ============================================================ */
+
+.zs-hero-card-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 15px;
+
+  color: #009f5c;
+
+  font-size: 9.5px;
+  font-weight: 900;
+
+  text-decoration: none;
+}
+
+.zs-hero-card-link:hover {
+  color: #087d4d;
+}
+
+
+/* ============================================================
+   FLOATING CARDS
+   ============================================================ */
 
 .zs-hero-floating-card {
-position: absolute;
-z-index: 3;
-display: flex;
-align-items: center;
-gap: 12px;
-background: rgba(255, 255, 255, 0.94);
-border: 1px solid var(--zs-border);
-border-radius: 18px;
-padding: 13px 15px;
-box-shadow: 0 10px 30px rgba(50, 20, 120, 0.08);
-backdrop-filter: blur(10px);
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 210px;
+
+  padding: 12px 14px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.12);
+
+  border-radius: 13px;
+
+  background:
+    rgba(255, 255, 255, 0.95);
+
+  box-shadow:
+    0 14px 30px rgba(14, 55, 36, 0.09);
+
+  backdrop-filter: blur(8px);
 }
 
-.zs-hero-floating-card svg {
-color: var(--zs-orange);
-flex-shrink: 0;
+.zs-hero-floating-card-one {
+  right: 0;
+  top: 0;
+}
+
+.zs-hero-floating-card-two {
+  right: 10px;
+  bottom: 52px;
+}
+
+.zs-hero-floating-icon {
+  width: 36px;
+  height: 36px;
+
+  flex: 0 0 36px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  background:
+    rgba(0, 159, 92, 0.08);
+
+  color: #009f5c;
+}
+
+.zs-hero-floating-card div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
 }
 
 .zs-hero-floating-card strong {
-display: block;
-color: var(--zs-text);
-font-size: 13px;
-font-weight: 800;
-line-height: 1.2;
+  color: #183425;
+
+  font-size: 10px;
+  font-weight: 900;
 }
 
 .zs-hero-floating-card span {
-display: block;
-color: var(--zs-muted);
-font-size: 11px;
-font-weight: 600;
-margin-top: 3px;
+  color: #738078;
+
+  font-size: 8.5px;
 }
 
-.zs-hero-floating-card-one {
-top: 56px;
-right: 0;
-}
-
-.zs-hero-floating-card-two {
-left: 0;
-bottom: 70px;
-}
 
 /* ============================================================
-HERO STATS
-============================================================ */
+   TRADE HUB BADGE
+   ============================================================ */
+
+.zs-hero-market-badge {
+  position: absolute;
+
+  left: 28px;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 12px;
+
+  border-radius: 12px;
+
+  background:
+    #173522;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 12px 26px rgba(14, 55, 36, 0.16);
+}
+
+.zs-hero-market-badge > svg {
+  color: #f5c400;
+}
+
+.zs-hero-market-badge div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1px;
+}
+
+.zs-hero-market-badge strong {
+  font-size: 9px;
+  font-weight: 900;
+}
+
+.zs-hero-market-badge span {
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 7.8px;
+}
+
+
+/* ============================================================
+   STATS
+   ============================================================ */
 
 .zs-hero-stats {
-position: relative;
-z-index: 2;
-margin-top: 46px;
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 14px;
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin-top: 34px;
 }
 
 .zs-hero-stat {
-background: rgba(255, 255, 255, 0.92);
-border: 1px solid var(--zs-border);
-border-radius: 22px;
-padding: 18px 16px;
-box-shadow: 0 8px 24px rgba(50, 20, 120, 0.06);
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  padding: 14px 16px;
+
+  border:
+    1px solid rgba(0, 159, 92, 0.09);
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.92);
+
+  text-align: center;
+
+  box-shadow:
+    0 8px 20px rgba(14, 55, 36, 0.045);
 }
 
 .zs-hero-stat strong {
-display: block;
-background: linear-gradient(135deg, var(--zs-purple), var(--zs-orange));
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
-font-size: 28px;
-font-weight: 800;
-line-height: 1.1;
+  color: #009f5c;
+
+  font-size: 19px;
+  font-weight: 950;
 }
 
 .zs-hero-stat span {
-display: block;
-margin-top: 5px;
-color: var(--zs-muted);
-font-size: 12.5px;
-font-weight: 700;
+  color: #68736d;
+
+  font-size: 8.5px;
+  font-weight: 800;
 }
+
 
 /* ============================================================
-RESPONSIVE
-============================================================ */
+   TABLET
+   ============================================================ */
 
-@media (max-width: 980px) {
-.zs-hero-section {
-padding: 58px 16px 38px;
-}
+@media (max-width: 1000px) {
+  .zs-hero-grid {
+    grid-template-columns: 1fr;
 
-.zs-hero-grid {
-grid-template-columns: 1fr;
-gap: 34px;
-}
+    gap: 30px;
+  }
 
-.zs-hero-content {
-max-width: 100%;
-}
+  .zs-hero-content {
+    max-width: 760px;
+  }
 
-.zs-hero-visual {
-min-height: 370px;
-}
+  .zs-hero-visual {
+    max-width: 720px;
+    width: 100%;
 
-.zs-hero-floating-card-one {
-right: 8px;
+    margin: 0 auto;
+  }
 }
 
-.zs-hero-floating-card-two {
-left: 8px;
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+  .zs-hero-section {
+    padding:
+      40px 14px
+      34px;
+  }
+
+  .zs-hero-content h1 {
+    font-size: 34px;
+  }
+
+  .zs-hero-description {
+    font-size: 12.5px;
+  }
+
+  .zs-hero-actions {
+    display: grid;
+
+    grid-template-columns: 1fr;
+  }
+
+  .zs-hero-primary-btn,
+  .zs-hero-secondary-btn {
+    width: 100%;
+  }
+
+  .zs-hero-trust-row {
+    gap: 10px;
+  }
+
+  .zs-hero-visual {
+    min-height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    margin-top: 6px;
+  }
+
+  .zs-hero-card-main,
+  .zs-hero-floating-card,
+  .zs-hero-market-badge {
+    position: relative;
+
+    inset: auto;
+
+    width: 100%;
+
+    min-width: 0;
+  }
+
+  .zs-hero-floating-card-one,
+  .zs-hero-floating-card-two {
+    right: auto;
+    top: auto;
+    bottom: auto;
+  }
+
+  .zs-hero-market-badge {
+    left: auto;
+    bottom: auto;
+  }
+
+  .zs-hero-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    margin-top: 20px;
+  }
 }
 
-.zs-hero-stats {
-grid-template-columns: repeat(2, 1fr);
-}
-}
 
-@media (max-width: 560px) {
-.zs-hero-section {
-padding: 42px 12px 30px;
-}
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
 
-.zs-hero-eyebrow {
-font-size: 12px;
-padding: 8px 12px;
-}
+@media (max-width: 430px) {
+  .zs-hero-section {
+    padding:
+      34px 12px
+      30px;
+  }
 
-.zs-hero-content h1 {
-font-size: 36px;
-letter-spacing: -1.1px;
-}
+  .zs-hero-content h1 {
+    font-size: 29px;
+  }
 
-.zs-hero-content p {
-font-size: 14px;
-line-height: 1.75;
-}
+  .zs-hero-card-main {
+    padding: 19px;
 
-.zs-hero-actions {
-display: grid;
-grid-template-columns: 1fr;
-}
+    border-radius: 16px;
+  }
 
-.zs-hero-primary-btn,
-.zs-hero-secondary-btn {
-width: 100%;
-}
+  .zs-hero-card-main h3 {
+    font-size: 20px;
+  }
 
-.zs-hero-trust-row {
-gap: 8px;
-}
+  .zs-hero-stats {
+    gap: 8px;
+  }
 
-.zs-hero-trust-row span {
-width: 100%;
-justify-content: center;
-}
-
-.zs-hero-visual {
-min-height: auto;
-padding-top: 6px;
-display: block;
-}
-
-.zs-hero-card {
-width: 100%;
-border-radius: 26px;
-padding: 24px;
-}
-
-.zs-hero-card h3 {
-font-size: 26px;
-}
-
-.zs-hero-card-price strong {
-font-size: 22px;
-}
-
-.zs-hero-floating-card {
-position: relative;
-inset: auto;
-margin-top: 12px;
-width: 100%;
-}
-
-.zs-hero-stats {
-margin-top: 28px;
-grid-template-columns: 1fr;
-}
-
-.zs-hero-stat {
-text-align: center;
-}
-}
-
-@media (max-width: 380px) {
-.zs-hero-content h1 {
-font-size: 32px;
-}
-
-.zs-hero-card {
-padding: 20px;
-}
+  .zs-hero-stat {
+    padding: 12px 10px;
+  }
 }

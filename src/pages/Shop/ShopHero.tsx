@@ -1,124 +1,216 @@
 import { Link } from "react-router-dom";
+
 import {
   ArrowRight,
   BadgeCheck,
   BatteryCharging,
+  Boxes,
   ShieldCheck,
   ShoppingBag,
   SolarPanel,
   Zap,
 } from "lucide-react";
+
 import "../../assets/css/shop/shopHero.css";
+
+import {
+  shopHeroData,
+  shopHeroStats,
+  shopHeroTrustItems,
+} from "../../Data/shop/shopHeroData";
 
 const ShopHero = () => {
   return (
     <section className="zs-hero-section">
       <div className="zs-hero-bg-orb zs-hero-bg-orb-one" />
       <div className="zs-hero-bg-orb zs-hero-bg-orb-two" />
+      <div className="zs-hero-grid-pattern" />
 
       <div className="zs-shop-container">
         <div className="zs-hero-grid">
+
+          {/* ==================================================
+              LEFT CONTENT
+              ================================================== */}
+
           <div className="zs-hero-content">
             <span className="zs-hero-eyebrow">
-              <ShoppingBag size={16} />
-              Zorays Solar Shop
+              <ShoppingBag size={15} />
+              {shopHeroData.eyebrow}
             </span>
 
             <h1>
-              Buy Solar Products With <strong>Trusted Engineering Support</strong>
+              {shopHeroData.title}
+
+              <strong>
+                {shopHeroData.highlightedTitle}
+              </strong>
             </h1>
 
-            <p>
-              Explore solar panels, hybrid inverters, lithium batteries, cables,
-              protection boxes, and complete solar accessories for residential,
-              commercial, and agricultural projects.
+            <p className="zs-hero-description">
+              {shopHeroData.description}
             </p>
 
             <div className="zs-hero-actions">
-              <a href="#shop-products" className="zs-hero-primary-btn">
-                Explore Products
-                <ArrowRight size={18} />
+              <a
+                href="#shop-products"
+                className="zs-hero-primary-btn"
+              >
+                {shopHeroData.primaryButton}
+
+                <ArrowRight size={17} />
               </a>
 
-              <Link to="/quote" className="zs-hero-secondary-btn">
-                Get Solar Quote
+              <Link
+                to="/quote"
+                className="zs-hero-secondary-btn"
+              >
+                {shopHeroData.secondaryButton}
               </Link>
             </div>
 
             <div className="zs-hero-trust-row">
-              <span>
-                <BadgeCheck size={16} />
-                Verified Products
-              </span>
+              {shopHeroTrustItems.map((item, index) => (
+                <span key={item.id}>
+                  {index === 0 && (
+                    <BadgeCheck size={15} />
+                  )}
 
-              <span>
-                <ShieldCheck size={16} />
-                Zorays Support
-              </span>
+                  {index === 1 && (
+                    <ShieldCheck size={15} />
+                  )}
 
-              <span>
-                <Zap size={16} />
-                Fast Inquiry
-              </span>
+                  {index === 2 && (
+                    <Boxes size={15} />
+                  )}
+
+                  {item.label}
+                </span>
+              ))}
             </div>
           </div>
 
+
+          {/* ==================================================
+              RIGHT TRADE HUB VISUAL
+              ================================================== */}
+
           <div className="zs-hero-visual">
+
             <div className="zs-hero-card zs-hero-card-main">
-              <div className="zs-hero-card-icon">
-                <SolarPanel size={30} />
+              <div className="zs-hero-card-top">
+                <div className="zs-hero-card-icon">
+                  <SolarPanel size={28} />
+                </div>
+
+                <span className="zs-hero-card-status">
+                  Available
+                </span>
               </div>
 
-              <span>Featured Category</span>
-              <h3>Solar Panels</h3>
+              <span className="zs-hero-card-label">
+                {shopHeroData.featuredCategory.label}
+              </span>
+
+              <h3>
+                {shopHeroData.featuredCategory.title}
+              </h3>
+
               <p>
-                High-efficiency N-Type and bifacial modules for modern solar systems.
+                {shopHeroData.featuredCategory.description}
               </p>
 
               <div className="zs-hero-card-price">
-                <small>Starting From</small>
-                <strong>Rs. 29,915</strong>
+                <small>
+                  {shopHeroData.featuredCategory.priceLabel}
+                </small>
+
+                <strong>
+                  {shopHeroData.featuredCategory.price}
+                </strong>
               </div>
+
+              <a
+                href="#shop-products"
+                className="zs-hero-card-link"
+              >
+                Browse Panels
+                <ArrowRight size={14} />
+              </a>
             </div>
+
+
+            {/* BATTERY */}
 
             <div className="zs-hero-floating-card zs-hero-floating-card-one">
-              <BatteryCharging size={22} />
+              <span className="zs-hero-floating-icon">
+                <BatteryCharging size={20} />
+              </span>
+
               <div>
-                <strong>Lithium Backup</strong>
-                <span>Smart energy storage</span>
+                <strong>
+                  {shopHeroData.batteryCard.title}
+                </strong>
+
+                <span>
+                  {shopHeroData.batteryCard.subtitle}
+                </span>
               </div>
             </div>
 
+
+            {/* INVERTER */}
+
             <div className="zs-hero-floating-card zs-hero-floating-card-two">
-              <Zap size={22} />
+              <span className="zs-hero-floating-icon">
+                <Zap size={20} />
+              </span>
+
               <div>
-                <strong>Hybrid Inverters</strong>
-                <span>Backup + solar charging</span>
+                <strong>
+                  {shopHeroData.inverterCard.title}
+                </strong>
+
+                <span>
+                  {shopHeroData.inverterCard.subtitle}
+                </span>
+              </div>
+            </div>
+
+
+            {/* MARKETPLACE BADGE */}
+
+            <div className="zs-hero-market-badge">
+              <BadgeCheck size={15} />
+
+              <div>
+                <strong>Trade Hub</strong>
+                <span>Products + Engineering</span>
               </div>
             </div>
           </div>
         </div>
 
+
+        {/* ====================================================
+            MARKETPLACE STATS
+            ==================================================== */}
+
         <div className="zs-hero-stats">
-          <div className="zs-hero-stat">
-            <strong>10+</strong>
-            <span>Years Experience</span>
-          </div>
+          {shopHeroStats.map((item) => (
+            <div
+              className="zs-hero-stat"
+              key={item.id}
+            >
+              <strong>
+                {item.value}
+              </strong>
 
-          <div className="zs-hero-stat">
-            <strong>500+</strong>
-            <span>Solar Projects</span>
-          </div>
-
-          <div className="zs-hero-stat">
-            <strong>24/7</strong>
-            <span>Sales Inquiry</span>
-          </div>
-
-          <div className="zs-hero-stat">
-            <strong>PK</strong>
-            <span>Nationwide Supply</span>
-          </div>
+              <span>
+                {item.label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
+
 import { toast } from "react-toastify";
+
 import {
-  ArrowLeft,
   ArrowRight,
   BadgeCheck,
   Minus,
@@ -13,36 +15,86 @@ import {
   Truck,
   Zap,
 } from "lucide-react";
-import type { ZoraysShopProduct } from "../../../Data/shop/zoraysShopProductsData";
-import { useAppDispatch, useAppSelector } from "../../../app/reduxHooks";
-import { addToCart } from "../../../app/features/cart/cartSlice";
+
+import type {
+  ZoraysShopProduct,
+} from "../../../Data/shop/zoraysShopProductsData";
+
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../app/reduxHooks";
+
+import {
+  addToCart,
+} from "../../../app/features/cart/cartSlice";
+
 import "../../../assets/css/shop/productView/productViewSection.css";
+
 
 type ProductViewSectionProps = {
   product: ZoraysShopProduct;
 };
 
-const ProductViewSection = ({ product }: ProductViewSectionProps) => {
+
+const PRODUCT_FALLBACK_IMAGE =
+  "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=80";
+
+
+const ProductViewSection = ({
+  product,
+}: ProductViewSectionProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const cartItems = useAppSelector((state) => state.cart.items);
+  const cartItems = useAppSelector(
+    (state) => state.cart.items
+  );
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] =
+    useState(1);
 
-  const isAlreadyInCart = cartItems.some((item) => item.id === product.id);
+
+  /* ============================================================
+     CART STATE
+     ============================================================ */
+
+  const isAlreadyInCart =
+    cartItems.some(
+      (item) =>
+        item.id === product.id
+    );
+
+
+  /* ============================================================
+     QUANTITY
+     ============================================================ */
 
   const increaseQuantity = () => {
-    setQuantity((prev) => prev + 1);
+    setQuantity(
+      (prev) => prev + 1
+    );
   };
 
+
   const decreaseQuantity = () => {
-    setQuantity((prev) => Math.max(1, prev - 1));
+    setQuantity(
+      (prev) =>
+        Math.max(1, prev - 1)
+    );
   };
+
+
+  /* ============================================================
+     ADD TO CART
+     ============================================================ */
 
   const handleAddToCart = () => {
     if (isAlreadyInCart) {
-      toast.info("This product is already added to cart.");
+      toast.info(
+        "This product is already added to cart."
+      );
+
       return;
     }
 
@@ -53,8 +105,15 @@ const ProductViewSection = ({ product }: ProductViewSectionProps) => {
       })
     );
 
-    toast.success("Product added to cart.");
+    toast.success(
+      "Product added to cart."
+    );
   };
+
+
+  /* ============================================================
+     ORDER NOW
+     ============================================================ */
 
   const handleOrderNow = () => {
     if (!isAlreadyInCart) {
@@ -69,117 +128,313 @@ const ProductViewSection = ({ product }: ProductViewSectionProps) => {
     navigate("/checkout");
   };
 
+
   return (
     <section className="zpv-detail-section">
       <div className="zpv-container">
+
+        {/* ====================================================
+            TOP STATUS
+            ==================================================== */}
+
         <div className="zpv-detail-top">
-          <Link to="/zorays-shop" className="zpv-detail-back">
-            <ArrowLeft size={17} />
-            Back to Shop
-          </Link>
+          <div className="zpv-detail-product-code">
+            <span>
+              Product
+            </span>
+
+            <strong>
+              #{product.id}
+            </strong>
+          </div>
 
           <span className="zpv-detail-status">
-            <BadgeCheck size={16} />
+            <BadgeCheck size={15} />
             Available for Inquiry
           </span>
         </div>
 
+
+        {/* ====================================================
+            MAIN GRID
+            ==================================================== */}
+
         <div className="zpv-detail-grid">
-          <div className="zpv-detail-image-card">
-            <img src={product.image} alt={product.title} />
 
-            <span className="zpv-detail-tag">{product.tag}</span>
+          {/* ==================================================
+              PRODUCT IMAGE
+              ================================================== */}
 
-            {product.featured && (
-              <span className="zpv-detail-featured">Featured</span>
-            )}
-          </div>
+          <div className="zpv-detail-image-column">
+            <div className="zpv-detail-image-card">
+              <img
+                src={product.image}
+                alt={product.title}
+                loading="eager"
+                onError={(event) => {
+                  event.currentTarget.onerror =
+                    null;
 
-          <div className="zpv-detail-content">
-            <div className="zpv-detail-meta">
-              <span>{product.brand}</span>
+                  event.currentTarget.src =
+                    PRODUCT_FALLBACK_IMAGE;
+                }}
+              />
 
-              <div>
-                <Star size={15} fill="currentColor" />
-                <strong>{product.rating}</strong>
-                <small>Verified Rating</small>
+              <div className="zpv-detail-image-overlay" />
+
+              <div className="zpv-detail-badges">
+                <span className="zpv-detail-tag">
+                  {product.tag}
+                </span>
+
+                {product.featured && (
+                  <span className="zpv-detail-featured">
+                    Featured
+                  </span>
+                )}
               </div>
             </div>
 
-            <h1>{product.title}</h1>
+            <div className="zpv-detail-image-note">
+              <ShieldCheck size={14} />
 
-            <p>{product.desc}</p>
+              <span>
+                Product image is for catalogue
+                reference. Final model and
+                specifications should be confirmed
+                before order processing.
+              </span>
+            </div>
+          </div>
+
+
+          {/* ==================================================
+              PRODUCT CONTENT
+              ================================================== */}
+
+          <div className="zpv-detail-content">
+
+            {/* BRAND + RATING */}
+
+            <div className="zpv-detail-meta">
+              <span className="zpv-detail-brand">
+                {product.brand}
+              </span>
+
+              <div className="zpv-detail-rating">
+                <Star
+                  size={14}
+                  fill="currentColor"
+                />
+
+                <strong>
+                  {product.rating}
+                </strong>
+
+                <small>
+                  Product Rating
+                </small>
+              </div>
+            </div>
+
+
+            {/* TITLE */}
+
+            <h1>
+              {product.title}
+            </h1>
+
+
+            {/* DESCRIPTION */}
+
+            <p className="zpv-detail-description">
+              {product.desc}
+            </p>
+
+
+            {/* PRICE */}
 
             <div className="zpv-detail-price-row">
-              <strong>{product.price}</strong>
-              <del>{product.oldPrice}</del>
+              <div>
+                <span>
+                  Current Price
+                </span>
+
+                <strong>
+                  {product.price}
+                </strong>
+              </div>
+
+              {product.oldPrice && (
+                <del>
+                  {product.oldPrice}
+                </del>
+              )}
             </div>
+
+
+            {/* =================================================
+                TRUST FEATURES
+                ================================================= */}
 
             <div className="zpv-detail-info-grid">
               <div>
-                <ShieldCheck size={19} />
-                <span>Technical Guidance</span>
+                <span className="zpv-detail-info-icon">
+                  <ShieldCheck size={18} />
+                </span>
+
+                <div>
+                  <strong>
+                    Technical Guidance
+                  </strong>
+
+                  <small>
+                    Product compatibility support
+                  </small>
+                </div>
               </div>
 
               <div>
-                <Truck size={19} />
-                <span>Delivery Confirmation</span>
+                <span className="zpv-detail-info-icon">
+                  <Truck size={18} />
+                </span>
+
+                <div>
+                  <strong>
+                    Delivery Confirmation
+                  </strong>
+
+                  <small>
+                    Final delivery details confirmed
+                  </small>
+                </div>
               </div>
 
               <div>
-                <Zap size={19} />
-                <span>Solar Ready Product</span>
+                <span className="zpv-detail-info-icon">
+                  <Zap size={18} />
+                </span>
+
+                <div>
+                  <strong>
+                    Solar Ready
+                  </strong>
+
+                  <small>
+                    Selected for solar applications
+                  </small>
+                </div>
               </div>
             </div>
 
-            <div className="zpv-detail-qty-row">
-              <span>Quantity</span>
 
-              <div className="zpv-detail-qty-control">
+            {/* =================================================
+                QUANTITY
+                ================================================= */}
+
+            <div className="zpv-detail-purchase-panel">
+              <div className="zpv-detail-qty-row">
+                <div>
+                  <span>
+                    Quantity
+                  </span>
+
+                  {isAlreadyInCart && (
+                    <small>
+                      Product already in cart
+                    </small>
+                  )}
+                </div>
+
+                <div className="zpv-detail-qty-control">
+                  <button
+                    type="button"
+                    onClick={
+                      decreaseQuantity
+                    }
+                    disabled={
+                      quantity === 1
+                    }
+                    aria-label="Decrease quantity"
+                  >
+                    <Minus size={14} />
+                  </button>
+
+                  <strong>
+                    {quantity}
+                  </strong>
+
+                  <button
+                    type="button"
+                    onClick={
+                      increaseQuantity
+                    }
+                    aria-label="Increase quantity"
+                  >
+                    <Plus size={14} />
+                  </button>
+                </div>
+              </div>
+
+
+              {/* ===============================================
+                  ACTIONS
+                  =============================================== */}
+
+              <div className="zpv-detail-actions">
                 <button
                   type="button"
-                  onClick={decreaseQuantity}
-                  aria-label="Decrease quantity"
+                  className={`zpv-detail-cart-btn${
+                    isAlreadyInCart
+                      ? " is-added"
+                      : ""
+                  }`}
+                  onClick={
+                    handleAddToCart
+                  }
                 >
-                  <Minus size={14} />
+                  <ShoppingCart
+                    size={16}
+                  />
+
+                  {isAlreadyInCart
+                    ? "Already in Cart"
+                    : "Add to Cart"}
                 </button>
 
-                <strong>{quantity}</strong>
-
                 <button
                   type="button"
-                  onClick={increaseQuantity}
-                  aria-label="Increase quantity"
+                  className="zpv-detail-order-btn"
+                  onClick={
+                    handleOrderNow
+                  }
                 >
-                  <Plus size={14} />
+                  Order Now
+
+                  <ArrowRight
+                    size={16}
+                  />
                 </button>
               </div>
             </div>
 
-            <div className="zpv-detail-actions">
-              <button
-                type="button"
-                className="zpv-detail-cart-btn"
-                onClick={handleAddToCart}
-              >
-                <ShoppingCart size={16} />
-                Add to Cart
-              </button>
 
-              <button
-                type="button"
-                className="zpv-detail-order-btn"
-                onClick={handleOrderNow}
-              >
-                Order Now
-                <ArrowRight size={16} />
-              </button>
-            </div>
+            {/* =================================================
+                ORDER NOTE
+                ================================================= */}
 
             <div className="zpv-detail-note">
-              Final product availability, delivery charges, and technical fit
-              will be confirmed by Zorays Solar before order processing.
+              <BadgeCheck size={14} />
+
+              <span>
+                Final product availability,
+                specifications, pricing, delivery
+                charges, warranty terms, and technical
+                compatibility will be confirmed before
+                order processing.
+              </span>
             </div>
+
           </div>
         </div>
       </div>
